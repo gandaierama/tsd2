@@ -61,7 +61,7 @@ services:
     networks:
       - new
     ports:
-      - 3500:3500
+      - 3300:3300
   front:
     container_name: front
     build: ./front
