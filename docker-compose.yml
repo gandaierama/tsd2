@@ -55,13 +55,13 @@ services:
   #   networks:
   #     - new
  
-  # admin:
-  #   container_name: admin
-  #   build: ./admin
-  #   networks:
-  #     - new
-  #   ports:
-  #     - 3500:3500
+  admin:
+    container_name: admin
+    build: ./admin
+    networks:
+      - new
+    ports:
+      - 3500:3500
   front:
     container_name: front
     build: ./front
