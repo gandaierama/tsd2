@@ -1,12 +1,12 @@
 version: '3'
 services:
-  db:
+  database:
     image: mysql:5.7
-    container_name: db
+    container_name: database
     restart: unless-stopped
     tty: true
     build:
-          context: ./db
+          context: ./database
           args:
               - MYSQL_DATABASE=${MYSQL_DATABASE}
               - MYSQL_DATABASE_EMAIL=${MYSQL_DATABASE_EMAIL}
@@ -18,16 +18,16 @@ services:
       - ${MYSQL_PORT}:3306
     command: --innodb-use-native-aio=0
     volumes:
-          - "./db/db/:/var/lib/mysql"
+          - "./database/db/:/var/lib/mysql"
     networks:
       - new
   back:
     container_name: back
     depends_on:
-      - db
+      - database
     stdin_open: true
     links:
-      - db
+      - database
     build: 
           context: ./back
           args:
