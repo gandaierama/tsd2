@@ -268,8 +268,8 @@ const mooc={values:[
 
 
             <div className="col-12 col-md-6">
-              <label for="exampleDataList" class="form-label">Cliente</label>
-              <select class="form-select" aria-label="Default select example">
+              <label htmlFor="exampleDataList" className="form-label">Cliente</label>
+              <select className="form-select" aria-label="Default select example">
                 <option selected>Escolha</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
@@ -277,8 +277,8 @@ const mooc={values:[
               </select>
             </div>
             <div className="col-12 col-md-6">
-              <label for="exampleDataList" class="form-label">Faturamento</label>
-              <select class="form-select" aria-label="Default select example">
+              <label htmlFor="exampleDataList" className="form-label">Faturamento</label>
+              <select className="form-select" aria-label="Default select example">
                 <option selected>Escolha</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
@@ -307,8 +307,8 @@ const mooc={values:[
               <hr/>
             </div>
             <div className="col-12 col-md-4">
-              <label for="exampleDataList" class="form-label">Tipo</label>
-              <select class="form-select" aria-label="Default select example">
+              <label htmlFor="exampleDataList" className="form-label">Tipo</label>
+              <select className="form-select" aria-label="Default select example">
                 <option selected>Escolha</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
@@ -317,8 +317,8 @@ const mooc={values:[
             </div>
 
             <div className="col-12 col-md-4">
-              <label for="exampleDataList" class="form-label">Período</label>
-              <select class="form-select" aria-label="Default select example">
+              <label htmlFor="exampleDataList" className="form-label">Período</label>
+              <select className="form-select" aria-label="Default select example">
                 <option selected>Escolha</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
@@ -327,8 +327,8 @@ const mooc={values:[
             </div>
 
             <div className="col-12 col-md-4">
-              <label for="exampleDataList" class="form-label">Qtd. Motoboys</label>
-              <select class="form-select" aria-label="Default select example">
+              <label htmlFor="exampleDataList" className="form-label">Qtd. Motoboys</label>
+              <select className="form-select" aria-label="Default select example">
                 <option selected>Escolha</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
@@ -347,7 +347,7 @@ const mooc={values:[
                   <div className="card">
                     <div className="card-header">
                       <input type="checkbox" className="btn-check" id="btn-check" autocomplete="off" />
-                      <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" for="btn-check">
+                      <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" htmlFor="btn-check">
                         Segunda
                       </label>
                     </div>
@@ -359,7 +359,7 @@ const mooc={values:[
                           <option value="2">Two</option>
                           <option value="3">Three</option>
                         </select>
-                        <label for="floatingSelect">Hora início</label>
+                        <label htmlFor="floatingSelect">Hora início</label>
                       </div>
 
                       <div className="form-floating mt-2 ">
@@ -369,7 +369,7 @@ const mooc={values:[
                           <option value="2">Two</option>
                           <option value="3">Three</option>
                         </select>
-                        <label for="floatingSelectF">Hora Fim</label>
+                        <label htmlFor="floatingSelectF">Hora Fim</label>
                       </div>
               
                     </div>
@@ -381,7 +381,7 @@ const mooc={values:[
                   <div className="card">
                     <div className="card-header">
                       <input type="checkbox" className="btn-check" id="btn-check" autocomplete="off" />
-                      <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" for="btn-check">
+                      <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" htmlFor="btn-check">
                         Terça
                       </label>
                     </div>
@@ -393,7 +393,7 @@ const mooc={values:[
                           <option value="2">Two</option>
                           <option value="3">Three</option>
                         </select>
-                        <label for="floatingSelect2">Hora início</label>
+                        <label htmlFor="floatingSelect2">Hora início</label>
                       </div>
 
                       <div className="form-floating mt-2 ">
@@ -403,7 +403,7 @@ const mooc={values:[
                           <option value="2">Two</option>
                           <option value="3">Three</option>
                         </select>
-                        <label for="floatingSelectF2">Hora Fim</label>
+                        <label htmlFor="floatingSelectF2">Hora Fim</label>
                       </div>
               
                     </div>
@@ -415,7 +415,7 @@ const mooc={values:[
                   <div className="card">
                     <div className="card-header">
                       <input type="checkbox" className="btn-check" id="btn-check" autocomplete="off" />
-                      <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample" for="btn-check">
+                      <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample" htmlFor="btn-check">
                         Quarta
                       </label>
                     </div>
@@ -427,7 +427,7 @@ const mooc={values:[
                           <option value="2">Two</option>
                           <option value="3">Three</option>
                         </select>
-                        <label for="floatingSelect3">Hora início</label>
+                        <label htmlFor="floatingSelect3">Hora início</label>
                       </div>
 
                       <div className="form-floating mt-2 ">
@@ -437,7 +437,7 @@ const mooc={values:[
                           <option value="2">Two</option>
                           <option value="3">Three</option>
                         </select>
-                        <label for="floatingSelectF3">Hora Fim</label>
+                        <label htmlFor="floatingSelectF3">Hora Fim</label>
                       </div>
               
                     </div>
@@ -450,7 +450,7 @@ const mooc={values:[
                   <div className="card">
                     <div className="card-header">
                       <input type="checkbox" className="btn-check" id="btn-check" autocomplete="off" />
-                      <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample" for="btn-check">
+                      <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample" htmlFor="btn-check">
                         Quinta
                       </label>
                     </div>
@@ -462,7 +462,7 @@ const mooc={values:[
                           <option value="2">Two</option>
                           <option value="3">Three</option>
                         </select>
-                        <label for="floatingSelect4">Hora início</label>
+                        <label htmlFor="floatingSelect4">Hora início</label>
                       </div>
 
                       <div className="form-floating mt-2 ">
@@ -472,7 +472,7 @@ const mooc={values:[
                           <option value="2">Two</option>
                           <option value="3">Three</option>
                         </select>
-                        <label for="floatingSelectF4">Hora Fim</label>
+                        <label htmlFor="floatingSelectF4">Hora Fim</label>
                       </div>
               
                     </div>
@@ -486,7 +486,7 @@ const mooc={values:[
                   <div className="card">
                     <div className="card-header">
                       <input type="checkbox" className="btn-check" id="btn-check" autocomplete="off" />
-                      <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample" for="btn-check">
+                      <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample" htmlFor="btn-check">
                         Sexta
                       </label>
                     </div>
@@ -498,7 +498,7 @@ const mooc={values:[
                           <option value="2">Two</option>
                           <option value="3">Three</option>
                         </select>
-                        <label for="floatingSelect45">Hora início</label>
+                        <label htmlFor="floatingSelect45">Hora início</label>
                       </div>
 
                       <div className="form-floating mt-2 ">
@@ -508,7 +508,7 @@ const mooc={values:[
                           <option value="2">Two</option>
                           <option value="3">Three</option>
                         </select>
-                        <label for="floatingSelectF5">Hora Fim</label>
+                        <label htmlFor="floatingSelectF5">Hora Fim</label>
                       </div>
               
                     </div>
