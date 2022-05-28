@@ -1,0 +1,83 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    container_name: db
+    restart: unless-stopped
+    tty: true
+    build:
+          context: ./db
+          args:
+              - MYSQL_DATABASE=${MYSQL_DATABASE}
+              - MYSQL_DATABASE_EMAIL=${MYSQL_DATABASE_EMAIL}
+              - MYSQL_DATABASE_ONEPUSH=${MYSQL_DATABASE_ONEPUSH}
+              - MYSQL_USER=${MYSQL_USER}
+              - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+              - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    ports:
+      - ${MYSQL_PORT}:3306
+    command: --innodb-use-native-aio=0
+    volumes:
+          - "./db/db/:/var/lib/mysql"
+    networks:
+      - new
+  back:
+    container_name: back
+    depends_on:
+      - db
+    stdin_open: true
+    links:
+      - db
+    build: 
+          context: ./back
+          args:
+              - MYSQL_DATABASE=${MYSQL_DATABASE}
+              - MYSQL_USER=${MYSQL_USER}
+              - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+              - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    ports:
+            - 3200:3200
+    networks:
+      - new
+  # sms:
+  #   container_name: sms
+  #   depends_on:
+  #     - db
+  #   build: 
+  #         context: ./microservices/notification/sms
+  #         args:
+  #             - MYSQL_DATABASE=${MYSQL_DATABASE}
+  #             - MYSQL_USER=${MYSQL_USER}
+  #             - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+  #             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+  #   ports:
+  #           - 3300:3200
+  #   networks:
+  #     - new
+ 
+  admin:
+    container_name: admin
+    build: ./admin
+    networks:
+      - new
+    ports:
+      - 3500:3500
+  front:
+    container_name: front
+    build: ./front
+    ports:
+      - 3000:3000
+    networks:
+      - new
+  nginx:
+    container_name: nginx
+    build: ./nginx
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - new
+networks:
+  new:
+
