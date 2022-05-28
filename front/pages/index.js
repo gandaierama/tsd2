@@ -145,19 +145,19 @@ export default function Home() {
           <div className="col col-md-7 p-5">
             
             <div className="mb-3">
-              <label for="exampleFormControlInput1" className="form-label">Nome</label>
+              <label htmlFor="exampleFormControlInput1" className="form-label">Nome</label>
               <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="Nome" />
             </div>
             <div className="mb-3">
-              <label for="exampleFormControlInput1" className="form-label">Telefone</label>
+              <label htmlFor="exampleFormControlInput1" className="form-label">Telefone</label>
               <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="(11) 1111-1111" />
             </div>
             <div className="mb-3">
-              <label for="exampleFormControlInput1" className="form-label">Email</label>
+              <label htmlFor="exampleFormControlInput1" className="form-label">Email</label>
               <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
             </div>
             <div className="mb-3">
-              <label for="exampleFormControlTextarea1" className="form-label">Mensagem</label>
+              <label htmlFor="exampleFormControlTextarea1" className="form-label">Mensagem</label>
               <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
             <div className="mb-3">
