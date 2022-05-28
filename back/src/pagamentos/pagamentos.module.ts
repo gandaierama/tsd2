@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { PagamentosService } from './pagamentos.service';
 import { PagamentosController } from './pagamentos.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PagamentosEntity } from './entities/pagamentos.entity';
+import { PagamentosEntity } from './entities/pagamento.entity';
 @Module({
   controllers: [PagamentosController],
   providers: [PagamentosService]
