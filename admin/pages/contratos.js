@@ -102,17 +102,7 @@ function Cliente({data}) {
     {id:10,name:'CEP',col: inputSimples, title:'CEP', type:'text', required:true, error: 'Digite o seu endereço'},
     
     ];
-const mooc={values:[
-      'Daniel Batista', 
-      'daniel@teste',
-      '93966633232',
-      'Rua teste',
-      '123',
-      '123',
-      '123',
-      '123',
-      'SP',
-    ]};
+
 
     const [users, setUsers] = useState(null);
 
@@ -141,7 +131,7 @@ const mooc={values:[
 
         useEffect(() => {
           //const clientesJson=clienteService.getAll().then(x => setLista(x))
-          setInputs(mooc);
+
           setUsers([{'id':'1', 'name':'Daniel', 'email': 'daniel@teste.com' }]);
     }, []);
     return (
@@ -241,7 +231,7 @@ const mooc={values:[
         <Modal.Header closeButton>
           <Modal.Title>Editar</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body></Modal.Body>
 
       </Modal>
 <div className="modal  " id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="false">
@@ -346,7 +336,7 @@ const mooc={values:[
                 <div className="col-4 col-md-2">
                   <div className="card">
                     <div className="card-header">
-                      <input type="checkbox" className="btn-check" id="btn-check" autocomplete="off" />
+                      <input type="checkbox" className="btn-check" id="btn-check" autoComplete="off" />
                       <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" htmlFor="btn-check">
                         Segunda
                       </label>
@@ -380,7 +370,7 @@ const mooc={values:[
                 <div className="col-4 col-md-2">
                   <div className="card">
                     <div className="card-header">
-                      <input type="checkbox" className="btn-check" id="btn-check" autocomplete="off" />
+                      <input type="checkbox" className="btn-check" id="btn-check" autoComplete="off" />
                       <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" htmlFor="btn-check">
                         Terça
                       </label>
@@ -414,7 +404,7 @@ const mooc={values:[
                 <div className="col-4 col-md-2">
                   <div className="card">
                     <div className="card-header">
-                      <input type="checkbox" className="btn-check" id="btn-check" autocomplete="off" />
+                      <input type="checkbox" className="btn-check" id="btn-check" autoComplete="off" />
                       <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample" htmlFor="btn-check">
                         Quarta
                       </label>
@@ -449,7 +439,7 @@ const mooc={values:[
                 <div className="col-4 col-md-2">
                   <div className="card">
                     <div className="card-header">
-                      <input type="checkbox" className="btn-check" id="btn-check" autocomplete="off" />
+                      <input type="checkbox" className="btn-check" id="btn-check" autoComplete="off" />
                       <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample" htmlFor="btn-check">
                         Quinta
                       </label>
@@ -485,7 +475,7 @@ const mooc={values:[
                 <div className="col-4 col-md-2">
                   <div className="card">
                     <div className="card-header">
-                      <input type="checkbox" className="btn-check" id="btn-check" autocomplete="off" />
+                      <input type="checkbox" className="btn-check" id="btn-check" autoComplete="off" />
                       <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample" htmlFor="btn-check">
                         Sexta
                       </label>

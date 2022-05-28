@@ -17,7 +17,7 @@ function Login() {
         if (userService.userValue) {
             router.push('/');
         }
-    }, []);
+    }, [ router]);
 
     // form validation rules 
     const validationSchema = Yup.object().shape({

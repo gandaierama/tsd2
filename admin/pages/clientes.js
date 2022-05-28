@@ -100,17 +100,7 @@ function Cliente({data}) {
     {id:10,name:'CEP',col: inputSimples, title:'CEP', type:'text', required:true, error: 'Digite o seu endereço'},
     
     ];
-const mooc={values:[
-      'Daniel Batista', 
-      'daniel@teste',
-      '93966633232',
-      'Rua teste',
-      '123',
-      '123',
-      '123',
-      '123',
-      'SP',
-    ]};
+
 
     const [users, setUsers] = useState(null);
 
@@ -154,9 +144,9 @@ const mooc={values:[
 
         useEffect(() => {
           //const clientesJson=clienteService.getAll().then(x => setLista(x))
-          setInputs(mooc);
+
           setUsers([{'id':'1', 'name':'Daniel', 'email': 'daniel@teste.com' }]);
-    }, []);
+    }, [setInputs,setUsers]);
     return (
         <>
         <header className={`navbar navbar-dark bg-primary sticky-top flex-md-nowrap p-0 shadow `}>
