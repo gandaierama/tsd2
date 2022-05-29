@@ -18,7 +18,7 @@ import { ValoresModule } from './valores/valores.module';
   imports: [
    TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'database',
       port: 3306,
       username: 'user_test',
       password: 'test',
