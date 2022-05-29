@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MotoboysService } from './motoboys.service';
 import { MotoboysController } from './motoboys.controller';
-import { MotoboysEntity } from './entities/motoboys.entity';
+import { Motoboy } from './entities/motoboy.entity';
 @Module({
   controllers: [MotoboysController],
   providers: [MotoboysService]
