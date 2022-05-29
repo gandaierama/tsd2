@@ -20,7 +20,7 @@ import { ValoresModule } from './valores/valores.module';
       type: 'mysql',
       host: 'database',
       port: 3306,
-      username: 'user_test',
+      username: 'root',
       password: 'test',
       database: 'db_main',
       entities: [ClienteEntity, User],
