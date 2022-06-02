@@ -1,26 +1,43 @@
 import { Injectable } from '@nestjs/common';
-import { CreateEntregasDto } from './dto/create-entregas.dto';
-import { UpdateEntregasDto } from './dto/update-entregas.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
+import { CreateEntregaDto } from './dto/create-entregas.dto';
+import { UpdateEntregaDto } from './dto/update-entregas.dto';
+import { Entrega } from './entities/entregas.entity';
+
 
 @Injectable()
-export class EntregasService {
-  create(createEntregasDto: CreateEntregasDto) {
-    return 'This action adds a new entregas';
+export class EntregaService {
+  constructor(
+    @InjectRepository(Entrega)
+    private entregaRepository: Repository<Entrega>,
+  ) {}
+
+
+  
+
+  create(createEntregaDto: CreateEntregaDto): Promise<Entrega> {
+    const obje = new Entrega();
+    obje.name = createEntregaDto.name;
+
+
+    return this.entregaRepository.save(obje);
   }
 
-  findAll() {
-    return `This action returns all entregas`;
+  update(id: string, updateOrdemDto: UpdateEntregaDto) {
+    return `This action updates a #${id} ordem`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} entregas`;
+  findAll(): Promise<Entrega[]> {
+    return this.entregaRepository.find();
   }
 
-  update(id: number, updateEntregasDto: UpdateEntregasDto) {
-    return `This action updates a #${id} entregas`;
+  findOne(id: string): Promise<Entrega> {
+    return this.entregaRepository.findOne(id);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} entregas`;
+  async remove(id: string): Promise<void> {
+    await this.entregaRepository.delete(id);
   }
 }

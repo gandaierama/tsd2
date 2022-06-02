@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { EntregasService } from './entregas.service';
+import { EntregaService } from './entregas.service';
 import { EntregasController } from './entregas.controller';
-import { Entregas } from './entities/entregas.entity';
+import { Entrega } from './entities/entregas.entity';
 
 @Module({
   controllers: [EntregasController],
-  providers: [EntregasService]
+  providers: [EntregaService]
 })
 export class EntregasModule {}

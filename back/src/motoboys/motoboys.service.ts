@@ -1,26 +1,43 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
 import { CreateMotoboyDto } from './dto/create-motoboy.dto';
 import { UpdateMotoboyDto } from './dto/update-motoboy.dto';
+import { Motoboy } from './entities/motoboy.entity';
+
 
 @Injectable()
-export class MotoboysService {
-  create(createMotoboyDto: CreateMotoboyDto) {
-    return 'This action adds a new motoboy';
+export class MotoboyService {
+  constructor(
+    @InjectRepository(Motoboy)
+    private motoboyRepository: Repository<Motoboy>,
+  ) {}
+
+
+  
+
+  create(createMotoboyDto: CreateMotoboyDto): Promise<Motoboy> {
+    const obje = new Motoboy();
+    obje.name = createMotoboyDto.name;
+
+
+    return this.motoboyRepository.save(obje);
   }
 
-  findAll() {
-    return `This action returns all motoboys`;
+  update(id: string, updateOrdemDto: UpdateMotoboyDto) {
+    return `This action updates a #${id} ordem`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} motoboy`;
+  findAll(): Promise<Motoboy[]> {
+    return this.motoboyRepository.find();
   }
 
-  update(id: number, updateMotoboyDto: UpdateMotoboyDto) {
-    return `This action updates a #${id} motoboy`;
+  findOne(id: string): Promise<Motoboy> {
+    return this.motoboyRepository.findOne(id);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} motoboy`;
+  async remove(id: string): Promise<void> {
+    await this.motoboyRepository.delete(id);
   }
 }

@@ -1,34 +1,34 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { EntregasService } from './entregas.service';
-import { CreateEntregasDto } from './dto/create-entregas.dto';
-import { UpdateEntregasDto } from './dto/update-entregas.dto';
+import { EntregaService } from './entregas.service';
+import { CreateEntregaDto } from './dto/create-entregas.dto';
+import { UpdateEntregaDto } from './dto/update-entregas.dto';
 
 @Controller('entregas')
 export class EntregasController {
-  constructor(private readonly entregasService: EntregasService) {}
+  constructor(private readonly entregaService: EntregaService) {}
 
   @Post()
-  create(@Body() createEntregasDto: CreateEntregasDto) {
-    return this.entregasService.create(createEntregasDto);
+  create(@Body() createEntregaDto: CreateEntregaDto) {
+    return this.entregaService.create(createEntregaDto);
   }
 
   @Get()
   findAll() {
-    return this.entregasService.findAll();
+    return this.entregaService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.entregasService.findOne(+id);
+    return this.entregaService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateEntregasDto: UpdateEntregasDto) {
-    return this.entregasService.update(+id, updateEntregasDto);
+  update(@Param('id') id: string, @Body() updateEntregaDto: UpdateEntregaDto) {
+    return this.entregaService.update(id, updateEntregaDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.entregasService.remove(+id);
+    return this.entregaService.remove(id);
   }
 }

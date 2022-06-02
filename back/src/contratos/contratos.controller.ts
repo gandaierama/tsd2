@@ -1,34 +1,34 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { ContratosService } from './contratos.service';
+import { ContratoService } from './contratos.service';
 import { CreateContratoDto } from './dto/create-contrato.dto';
 import { UpdateContratoDto } from './dto/update-contrato.dto';
 
 @Controller('contratos')
 export class ContratosController {
-  constructor(private readonly contratosService: ContratosService) {}
+  constructor(private readonly contratoService: ContratoService) {}
 
   @Post()
   create(@Body() createContratoDto: CreateContratoDto) {
-    return this.contratosService.create(createContratoDto);
+    return this.contratoService.create(createContratoDto);
   }
 
   @Get()
   findAll() {
-    return this.contratosService.findAll();
+    return this.contratoService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.contratosService.findOne(+id);
+    return this.contratoService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateContratoDto: UpdateContratoDto) {
-    return this.contratosService.update(+id, updateContratoDto);
+    return this.contratoService.update(id, updateContratoDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.contratosService.remove(+id);
+    return this.contratoService.remove(id);
   }
 }

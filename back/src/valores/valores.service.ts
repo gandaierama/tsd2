@@ -1,26 +1,43 @@
 import { Injectable } from '@nestjs/common';
-import { CreateValoreDto } from './dto/create-valore.dto';
-import { UpdateValoreDto } from './dto/update-valore.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
+import { CreateValorDto } from './dto/create-valore.dto';
+import { UpdateValorDto } from './dto/update-valore.dto';
+import { Valor } from './entities/valor.entity';
+
 
 @Injectable()
 export class ValoresService {
-  create(createValoreDto: CreateValoreDto) {
-    return 'This action adds a new valore';
+  constructor(
+    @InjectRepository(Valor)
+    private valorRepository: Repository<Valor>,
+  ) {}
+
+
+  
+
+  create(createValorDto: CreateValorDto): Promise<Valor> {
+    const obje = new Valor();
+    obje.name = createValorDto.name;
+
+
+    return this.valorRepository.save(obje);
   }
 
-  findAll() {
-    return `This action returns all valores`;
+  update(id: string, updateValorDto: UpdateValorDto) {
+    return `This action updates a #${id} ordem`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} valore`;
+  findAll(): Promise<Valor[]> {
+    return this.valorRepository.find();
   }
 
-  update(id: number, updateValoreDto: UpdateValoreDto) {
-    return `This action updates a #${id} valore`;
+  findOne(id: string): Promise<Valor> {
+    return this.valorRepository.findOne(id);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} valore`;
+  async remove(id: string): Promise<void> {
+    await this.valorRepository.delete(id);
   }
 }

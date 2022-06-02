@@ -1,15 +1,15 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { ValoresService } from './valores.service';
-import { CreateValoreDto } from './dto/create-valore.dto';
-import { UpdateValoreDto } from './dto/update-valore.dto';
+import { CreateValorDto } from './dto/create-valore.dto';
+import { UpdateValorDto } from './dto/update-valore.dto';
 
 @Controller('valores')
 export class ValoresController {
   constructor(private readonly valoresService: ValoresService) {}
 
   @Post()
-  create(@Body() createValoreDto: CreateValoreDto) {
-    return this.valoresService.create(createValoreDto);
+  create(@Body() createValorDto: CreateValorDto) {
+    return this.valoresService.create(createValorDto);
   }
 
   @Get()
@@ -19,16 +19,16 @@ export class ValoresController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.valoresService.findOne(+id);
+    return this.valoresService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateValoreDto: UpdateValoreDto) {
-    return this.valoresService.update(+id, updateValoreDto);
+  update(@Param('id') id: string, @Body() updateValorDto: UpdateValorDto) {
+    return this.valoresService.update(id, updateValorDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.valoresService.remove(+id);
+    return this.valoresService.remove(id);
   }
 }

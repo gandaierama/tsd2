@@ -1,26 +1,43 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
 import { CreateBloqueioDto } from './dto/create-bloqueio.dto';
 import { UpdateBloqueioDto } from './dto/update-bloqueio.dto';
+import { Bloqueio } from './entities/bloqueio.entity';
+
 
 @Injectable()
-export class BloqueiosService {
-  create(createBloqueioDto: CreateBloqueioDto) {
-    return 'This action adds a new bloqueio';
+export class BloqueioService {
+  constructor(
+    @InjectRepository(Bloqueio)
+    private bloqueioRepository: Repository<Bloqueio>,
+  ) {}
+
+
+
+
+  create(createBloqueioDto: CreateBloqueioDto): Promise<Bloqueio> {
+    const obje = new Bloqueio();
+    obje.name = createBloqueioDto.name;
+
+
+    return this.bloqueioRepository.save(obje);
   }
 
-  findAll() {
-    return `This action returns all bloqueios`;
+  update(id: string, updateOrdemDto: UpdateBloqueioDto) {
+    return `This action updates a #${id} ordem`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} bloqueio`;
+  findAll(): Promise<Bloqueio[]> {
+    return this.bloqueioRepository.find();
   }
 
-  update(id: number, updateBloqueioDto: UpdateBloqueioDto) {
-    return `This action updates a #${id} bloqueio`;
+  findOne(id: string): Promise<Bloqueio> {
+    return this.bloqueioRepository.findOne(id);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} bloqueio`;
+  async remove(id: string): Promise<void> {
+    await this.bloqueioRepository.delete(id);
   }
 }

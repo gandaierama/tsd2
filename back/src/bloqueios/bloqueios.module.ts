@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { BloqueiosService } from './bloqueios.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { BloqueioService } from './bloqueios.service';
 import { BloqueiosController } from './bloqueios.controller';
-
+import { Bloqueio } from './entities/bloqueio.entity';
 @Module({
   controllers: [BloqueiosController],
-  providers: [BloqueiosService]
+  providers: [BloqueioService]
 })
 export class BloqueiosModule {}

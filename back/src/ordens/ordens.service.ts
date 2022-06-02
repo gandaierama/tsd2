@@ -1,26 +1,43 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
 import { CreateOrdenDto } from './dto/create-orden.dto';
 import { UpdateOrdenDto } from './dto/update-orden.dto';
+import { Orden } from './entities/orden.entity';
+
 
 @Injectable()
-export class OrdensService {
-  create(createOrdenDto: CreateOrdenDto) {
-    return 'This action adds a new orden';
+export class OrdenService {
+  constructor(
+    @InjectRepository(Orden)
+    private ordenRepository: Repository<Orden>,
+  ) {}
+
+
+  
+
+  create(createOrdenDto: CreateOrdenDto): Promise<Orden> {
+    const obje = new Orden();
+    obje.name = createOrdenDto.name;
+
+
+    return this.ordenRepository.save(obje);
   }
 
-  findAll() {
-    return `This action returns all ordens`;
+  update(id: string, updateOrdemDto: UpdateOrdenDto) {
+    return `This action updates a #${id} ordem`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} orden`;
+  findAll(): Promise<Orden[]> {
+    return this.ordenRepository.find();
   }
 
-  update(id: number, updateOrdenDto: UpdateOrdenDto) {
-    return `This action updates a #${id} orden`;
+  findOne(id: string): Promise<Orden> {
+    return this.ordenRepository.findOne(id);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} orden`;
+  async remove(id: string): Promise<void> {
+    await this.ordenRepository.delete(id);
   }
 }
