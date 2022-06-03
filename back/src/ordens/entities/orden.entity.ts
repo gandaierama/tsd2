@@ -3,10 +3,22 @@ import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateCol
 @Entity()
 export class Orden {
     @PrimaryGeneratedColumn('uuid')
-    id: string
+    id: string;
 
     @Column({length: 65, default: "Teste", nullable: false})
-    name: string
+    name: string;
+
+    @Column({ default: true, nullable: true })
+    id_motoboy: number;
+
+    @Column({ default: true, nullable: true })
+    id_cliente: number;
+
+    @Column({  type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)"  })
+    start_date: Date;
+
+    @Column({ default: truetype: "timestamp" })
+    end_date: Date;
 
     @Column({ default: true })
     isActive: boolean;
