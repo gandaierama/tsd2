@@ -14,11 +14,6 @@ export class Orden {
     @Column({ default: true, nullable: true })
     id_cliente: number;
 
-    @Column({  type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)"  })
-    start_date: Date;
-
-    @Column({type: "timestamp" })
-    end_date: Date;
 
     @Column({ default: true })
     isActive: boolean;

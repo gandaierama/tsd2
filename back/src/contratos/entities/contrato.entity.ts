@@ -11,11 +11,6 @@ export class Contrato {
     @Column({ default: true, nullable: true })
     id_cliente: number;
 
-    @Column({  type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)"  })
-    start_date: Date;
-
-    @Column({ default: null, type: "timestamp" })
-    end_date: Date;
 
     @Column({  nullable: true })
     entrega: string;

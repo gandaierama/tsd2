@@ -14,12 +14,6 @@ export class Entrega {
     @Column({ default: true, nullable: true })
     id_cliente: number;
 
-    @Column({  type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)"  })
-    start_date: Date;
-
-    @Column({ default: true, type: "timestamp" })
-    end_date: Date;
-
     @Column({  nullable: true })
     entrega: string;
 
