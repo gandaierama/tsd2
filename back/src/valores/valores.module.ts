@@ -4,6 +4,7 @@ import { ValoresController } from './valores.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Valor } from './entities/valor.entity';
 @Module({
+  imports: [TypeOrmModule.forFeature([Valor])],
   controllers: [ValoresController],
   providers: [ValoresService]
 })
