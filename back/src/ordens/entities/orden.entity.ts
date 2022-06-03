@@ -17,7 +17,7 @@ export class Orden {
     @Column({  type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)"  })
     start_date: Date;
 
-    @Column({ default: truetype: "timestamp" })
+    @Column({type: "timestamp" })
     end_date: Date;
 
     @Column({ default: true })

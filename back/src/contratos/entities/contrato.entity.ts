@@ -14,7 +14,7 @@ export class Contrato {
     @Column({  type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)"  })
     start_date: Date;
 
-    @Column({ default: truetype: "timestamp" })
+    @Column({ default: null, type: "timestamp" })
     end_date: Date;
 
     @Column({  nullable: true })
