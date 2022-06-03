@@ -23,7 +23,7 @@ import { ValoresModule } from './valores/valores.module';
       username: 'root',
       password: 'test',
       database: 'db_main',
-      entities: ["src/**/*{.entity.ts}"],
+      entities: ["**/*.entity{.ts,.js}"],
       synchronize: true,
     }),
   AuthModule, UsersModule, ClienteModule, MotoboysModule, ContratosModule, OrdensModule, EntregasModule, PagamentosModule, BloqueiosModule, ValoresModule],
