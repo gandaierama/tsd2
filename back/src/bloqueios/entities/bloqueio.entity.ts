@@ -11,6 +11,13 @@ export class Bloqueio {
     @Column({ default: true })
     isActive: boolean;
 
+    @Column({ default: true, nullable: true })
+    id_motoboy: number;
+
+    @Column({ default: true, nullable: true })
+    id_cliente: number;
+
+
     @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
     created_at: Date;
 

@@ -5,6 +5,7 @@ import { EntregasController } from './entregas.controller';
 import { Entrega } from './entities/entregas.entity';
 
 @Module({
+  imports: [TypeOrmModule.forFeature([Entrega])],
   controllers: [EntregasController],
   providers: [EntregaService]
 })

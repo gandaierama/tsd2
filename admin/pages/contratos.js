@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { MDBDataTableV5 } from 'mdbreact';
 import { clienteService } from '../services';
 import {Modal} from 'react-bootstrap'
+import SideBar from '../components/SideBar'
 export default Cliente;
 
 const { publicRuntimeConfig } = getConfig();
@@ -14,7 +15,6 @@ function Cliente({data}) {
 
 
 
-    console.log(data);
 
     const [show, setShow] = useState(false);
 
@@ -42,7 +42,7 @@ function Cliente({data}) {
       );
       userData.push(item);
           });
-    console.log(userData);
+  
     const buttonsG=()=>{
       return (<div className="btn-group mx-auto d-block w-100">
             <button type="button" className="btn btn-md btn-secondary " data-id="" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>
@@ -52,16 +52,15 @@ function Cliente({data}) {
   const [datatable, setDatatable] =useState({
     columns: [
       {
-        label: 'ID',
-        field: 'id',
-        width: 200,
-      },
-      {
         label: 'Name',
         field: 'name',
         width: 270,
       },
-      
+      {
+        label: 'E-mail',
+        field: 'email',
+        width: 200,
+      },
       {
         label: 'cnpj',
         field: 'cnpj',
@@ -120,10 +119,25 @@ function Cliente({data}) {
       console.log("Delete", id);
       return(true);
     }
-    const handleUpdate = (id)=>{
+    const handleUpdate = async(id)=>{
       console.log("Update", id);
-      handleShow();
-      return(true);
+      
+      const requestOptions = {
+        method: 'GET'
+      };
+      let res;
+      try {
+          let result=[];
+          const res=await fetch(`/api/clientes`, requestOptions);
+          const json = await res.json();
+          const arr = Object.keys(json.data).map((key) => [key, json.data[key]]);
+          setItemUp(arr);
+          console.log(arr);
+          handleShow();
+      } catch(error) {
+        console.log(error);
+      }
+      return(false);
     }
     // useEffect(() => {
     //     userService.getAll().then(x => setUsers(x));
@@ -133,7 +147,7 @@ function Cliente({data}) {
           //const clientesJson=clienteService.getAll().then(x => setLista(x))
 
           setUsers([{'id':'1', 'name':'Daniel', 'email': 'daniel@teste.com' }]);
-    }, []);
+    }, [setInputs,setUsers]);
     return (
         <>
         <header className={`navbar navbar-dark bg-primary sticky-top flex-md-nowrap p-0 shadow `}>
@@ -196,7 +210,7 @@ function Cliente({data}) {
         formPage.map((inputsS, index) =>{
        
           let campo=inputs.values[index];
-          console.log("campo", campo);
+     
           return (
           <div className={inputsS.col} key={index}>
           
@@ -227,11 +241,133 @@ function Cliente({data}) {
 </div>
 
 
-<Modal show={show} onHide={handleClose}>
+<Modal show={show} size="xl" onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Editar</Modal.Title>
+          <Modal.Title>Editar Cliente</Modal.Title>
         </Modal.Header>
-        <Modal.Body></Modal.Body>
+        <Modal.Body>        {itemUp===null ? <button>Logout</button> : <>
+          
+          <div className="row">
+            <div className="col-12 col-md-3 border-end">
+            <div className="p-2 text-center">
+            <div className="img-thumbnail rounded">
+                <div className=" ratio ratio-1x1 mx-auto">
+                  <span>500x500</span>
+                </div>
+           </div>
+                <button className="btn btn-secondary w-100 m-2 " >
+                  Enviar Logo
+                </button>
+                <hr/>
+                <button className="btn btn-warning w-100 m-2 " >
+                  Enviar MEI
+                </button>
+                <button className="btn btn-warning w-100  m-2" >
+                  Enviar CNPJ
+                </button>
+                <button className="btn btn-warning w-100  m-2" >
+                  Enviar RG
+                </button>
+                <button className="btn btn-warning w-100  m-2" >
+                  Enviar Contrato Social
+                </button>
+                <div>
+                </div>
+                </div>
+            </div>
+            <div className="col-12 col-md-9">
+                        <div className="row">
+           {
+
+        formPage.map((inputsS, index) =>{
+       
+          console.log(itemUp[inputsS.name])
+          return (
+          <div className={inputsS.col} key={index}>
+          
+          <div className="form-floating mt-2">
+                            
+                            <input className="form-control" onChange={handleChange} key={inputsS.id} value={itemUp[inputsS.name]} name={inputsS.name} placeholder={inputsS.title} type={inputsS.type} />
+                            <label>{inputsS.title}</label>
+            </div>
+            </div>
+            )}
+                        )}
+</div>
+              <div>{itemUp.id}</div>
+              <div>{itemUp.name}</div>
+              <div>{itemUp.email}</div>
+              <div>{itemUp.cpf}</div>
+              <div>{itemUp.cnpj}</div>
+              <div>{itemUp.endereco}</div>
+              <div>{itemUp.numero}</div>
+              <div>{itemUp.bairro}</div>
+              <div>{itemUp.cidade}</div>
+              <div>{itemUp.estado}</div>
+              <div>{itemUp.cep}</div>
+            
+
+            <div className="row mt-5">
+            <div className="col-12"><hr/></div>
+                <div className="col-6 col-md-3 h-100">
+                  <div className="card text-center">
+
+                      <div className="card-header">
+                        <h4>Ordens</h4>
+                      </div>
+                      <div className="card-body">
+                        <h1 className="display-1 border-5">0</h1>
+                      </div>
+           
+                  </div>
+                </div>
+
+                <div className="col-6 col-md-3 h-100">
+                  <div className="card text-center">
+
+                      <div className="card-header">
+                        <h4>Entregas</h4>
+                      </div>
+                      <div className="card-body">
+                        <h1 className="display-1 border-5">0</h1>
+                      </div>
+           
+                  </div>
+                </div>
+
+                <div className="col-6 col-md-3 h-100">
+                  <div className="card text-center">
+
+                      <div className="card-header">
+                        <h4>Pagamentos</h4>
+                      </div>
+                      <div className="card-body">
+                        <h1 className="display-1 border-5">0</h1>
+                      </div>
+           
+                  </div>
+                </div>
+
+                <div className="col-6 col-md-3 h-100">
+                  <div className="card text-center">
+
+                      <div className="card-header">
+                        <h4>Bloqueios</h4>
+                      </div>
+                      <div className="card-body">
+                        <h1 className="display-1 border-5">0</h1>
+                      </div>
+           
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+          </>
+        }
+</Modal.Body>
 
       </Modal>
 <div className="modal  " id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="false">
@@ -252,275 +388,108 @@ function Cliente({data}) {
       </div>
       <div className="modal-body">
         <div className="row">
-            
-            <div className="col-12 ">
+            <div className="col-12 col-md-3 border-end">
+            <div className="p-2 text-center">
+            <div className="img-thumbnail rounded">
+                <div className=" ratio ratio-1x1 mx-auto">
+                  <span>500x500</span>
+                </div>
+           </div>
+                <button className="btn btn-secondary w-100 m-2 " >
+                  Enviar Logo
+                </button>
+                <hr/>
+                <button className="btn btn-warning w-100 m-2 " >
+                  Enviar MEI
+                </button>
+                <button className="btn btn-warning w-100  m-2" >
+                  Enviar CNPJ
+                </button>
+                <button className="btn btn-warning w-100  m-2" >
+                  Enviar RG
+                </button>
+                <button className="btn btn-warning w-100  m-2" >
+                  Enviar Contrato Social
+                </button>
+                <div>
+                </div>
+                </div>
+            </div>
+            <div className="col-12 col-md-9">
             <div className="row">
+           {
 
-
-            <div className="col-12 col-md-6">
-              <label htmlFor="exampleDataList" className="form-label">Cliente</label>
-              <select className="form-select" aria-label="Default select example">
-                <option selected>Escolha</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-            <div className="col-12 col-md-6">
-              <label htmlFor="exampleDataList" className="form-label">Faturamento</label>
-              <select className="form-select" aria-label="Default select example">
-                <option selected>Escolha</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-            <div className="col-12">
-              <hr/>
-            </div>
-            <div className="col-12 col-md-6">
-              <div className="form-floating mt-2">
+        formPage.map((inputsS, index) =>{
+       
+     
+          return (
+          <div className={inputsS.col} key={index}>
+          
+          <div className="form-floating mt-2">
                             
-                            <input className="form-control"   name="date_start" type="date" />
-                            <label>Data de início</label>
+                            <input className="form-control" onChange={handleChange} key={inputsS.id} value="" name={inputsS.name} placeholder={inputsS.title} type={inputsS.type} />
+                            <label>{inputsS.title}</label>
             </div>
             </div>
-            <div className="col-12 col-md-6">
-              <div className="form-floating mt-2">
-                            
-                            <input className="form-control"   name="date_end" type="date" />
-                            <label>Data de término</label>
-            </div>
-            </div>
+            )}
+                        )}
+</div>
+            <div className="row mt-5">
+            <div className="col-12"><hr/></div>
+                <div className="col-6 col-md-3 h-100">
+                  <div className="card text-center">
 
-            <div className="col-12">
-              <hr/>
-            </div>
-            <div className="col-12 col-md-4">
-              <label htmlFor="exampleDataList" className="form-label">Tipo</label>
-              <select className="form-select" aria-label="Default select example">
-                <option selected>Escolha</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-
-            <div className="col-12 col-md-4">
-              <label htmlFor="exampleDataList" className="form-label">Período</label>
-              <select className="form-select" aria-label="Default select example">
-                <option selected>Escolha</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-
-            <div className="col-12 col-md-4">
-              <label htmlFor="exampleDataList" className="form-label">Qtd. Motoboys</label>
-              <select className="form-select" aria-label="Default select example">
-                <option selected>Escolha</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-
-            <div className="col-12">
-            <hr/>
-            </div>
-            <div className="col-12">
-              <h3>Dias escolhidos</h3>
-              <div className="row" >
-
-                <div className="col-4 col-md-2">
-                  <div className="card">
-                    <div className="card-header">
-                      <input type="checkbox" className="btn-check" id="btn-check" autoComplete="off" />
-                      <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" htmlFor="btn-check">
-                        Segunda
-                      </label>
-                    </div>
-                    <div className="card-body collapse" id="collapseExample">
-                      <div className="form-floating ">
-                        <select className="form-select " id="floatingSelect" aria-label="Default select example">
-                          <option selected>Escolha</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                        <label htmlFor="floatingSelect">Hora início</label>
+                      <div className="card-header">
+                        <h4>Ordens</h4>
                       </div>
-
-                      <div className="form-floating mt-2 ">
-                        <select className="form-select " id="floatingSelectF" aria-label="Default select example">
-                          <option selected>Escolha</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                        <label htmlFor="floatingSelectF">Hora Fim</label>
+                      <div className="card-body">
+                        <h1 className="display-1 border-5">0</h1>
                       </div>
-              
-                    </div>
+           
                   </div>
                 </div>
 
+                <div className="col-6 col-md-3 h-100">
+                  <div className="card text-center">
 
-                <div className="col-4 col-md-2">
-                  <div className="card">
-                    <div className="card-header">
-                      <input type="checkbox" className="btn-check" id="btn-check" autoComplete="off" />
-                      <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" htmlFor="btn-check">
-                        Terça
-                      </label>
-                    </div>
-                    <div className="card-body collapse" id="collapseExample2">
-                      <div className="form-floating ">
-                        <select className="form-select " id="floatingSelect2" aria-label="Default select example">
-                          <option selected>Escolha</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                        <label htmlFor="floatingSelect2">Hora início</label>
+                      <div className="card-header">
+                        <h4>Entregas</h4>
                       </div>
-
-                      <div className="form-floating mt-2 ">
-                        <select className="form-select " id="floatingSelectF2" aria-label="Default select example">
-                          <option selected>Escolha</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                        <label htmlFor="floatingSelectF2">Hora Fim</label>
+                      <div className="card-body">
+                        <h1 className="display-1 border-5">0</h1>
                       </div>
-              
-                    </div>
+           
                   </div>
                 </div>
 
+                <div className="col-6 col-md-3 h-100">
+                  <div className="card text-center">
 
-                <div className="col-4 col-md-2">
-                  <div className="card">
-                    <div className="card-header">
-                      <input type="checkbox" className="btn-check" id="btn-check" autoComplete="off" />
-                      <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample" htmlFor="btn-check">
-                        Quarta
-                      </label>
-                    </div>
-                    <div className="card-body collapse" id="collapseExample3">
-                      <div className="form-floating ">
-                        <select className="form-select " id="floatingSelect3" aria-label="Default select example">
-                          <option selected>Escolha</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                        <label htmlFor="floatingSelect3">Hora início</label>
+                      <div className="card-header">
+                        <h4>Pagamentos</h4>
                       </div>
-
-                      <div className="form-floating mt-2 ">
-                        <select className="form-select " id="floatingSelectF3" aria-label="Default select example">
-                          <option selected>Escolha</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                        <label htmlFor="floatingSelectF3">Hora Fim</label>
+                      <div className="card-body">
+                        <h1 className="display-1 border-5">0</h1>
                       </div>
-              
-                    </div>
+           
                   </div>
                 </div>
 
+                <div className="col-6 col-md-3 h-100">
+                  <div className="card text-center">
 
-
-                <div className="col-4 col-md-2">
-                  <div className="card">
-                    <div className="card-header">
-                      <input type="checkbox" className="btn-check" id="btn-check" autoComplete="off" />
-                      <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample" htmlFor="btn-check">
-                        Quinta
-                      </label>
-                    </div>
-                    <div className="card-body collapse" id="collapseExample4">
-                      <div className="form-floating ">
-                        <select className="form-select " id="floatingSelect4" aria-label="Default select example">
-                          <option selected>Escolha</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                        <label htmlFor="floatingSelect4">Hora início</label>
+                      <div className="card-header">
+                        <h4>Bloqueios</h4>
                       </div>
-
-                      <div className="form-floating mt-2 ">
-                        <select className="form-select " id="floatingSelectF4" aria-label="Default select example">
-                          <option selected>Escolha</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                        <label htmlFor="floatingSelectF4">Hora Fim</label>
+                      <div className="card-body">
+                        <h1 className="display-1 border-5">0</h1>
                       </div>
-              
-                    </div>
+           
                   </div>
                 </div>
 
-
-
-
-                <div className="col-4 col-md-2">
-                  <div className="card">
-                    <div className="card-header">
-                      <input type="checkbox" className="btn-check" id="btn-check" autoComplete="off" />
-                      <label className="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample" htmlFor="btn-check">
-                        Sexta
-                      </label>
-                    </div>
-                    <div className="card-body collapse" id="collapseExample5">
-                      <div className="form-floating ">
-                        <select className="form-select " id="floatingSelect5" aria-label="Default select example">
-                          <option selected>Escolha</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                        <label htmlFor="floatingSelect45">Hora início</label>
-                      </div>
-
-                      <div className="form-floating mt-2 ">
-                        <select className="form-select " id="floatingSelectF5" aria-label="Default select example">
-                          <option selected>Escolha</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                        <label htmlFor="floatingSelectF5">Hora Fim</label>
-                      </div>
-              
-                    </div>
-                  </div>
-                </div>
-  
-
-
-
-
-
-               
-              </div>
             </div>
-
-            <div className="col-12">
-            <hr/>
             </div>
-
-      
-          </div>
-          </div>
         </div>
       </div>
       <div className="modal-footer">
@@ -534,76 +503,11 @@ function Cliente({data}) {
 
         <div className="container-fluid text-light text-center ">
   <div className="row">
-    <nav id="sidebarMenu" className={`col-md-3 col-lg-2 d-md-block bg-light collapse `+styles.sidebar}>
-      <div className="position-sticky pt-3">
-         <Image className="mt-2" src={`/logo.png`} alt="" width="200" height="200"/>
-
-        
-        <hr className="text-dark"/>
-        <ul className="nav flex-column mb-2 p-2">
-          <li className="nav-item"><hr/></li>
-          <li className="nav-item p-1">
-            <a className="btn btn-primary btn-sm 
-            w-100 mt-1 " aria-current="page" href="#">
-              <span data-feather="home" className="align-text-bottom"></span>
-              Home
-            </a>
-          </li>
-          <li className="nav-item p-1">
-            <a className="btn btn-primary btn-sm w-100 mt-1" href="#">
-              <span data-feather="file" className="align-text-bottom"></span>
-              Motoboys
-            </a>
-          </li>
-          <li className="nav-item p-1">
-            <a className=" btn btn-primary btn-sm w-100 mt-1" href="#">
-              <span data-feather="shopping-cart" className="align-text-bottom"></span>
-              Clientes
-            </a>
-          </li>
-          <li className="nav-item p-1">
-            <a className="btn btn-primary btn-sm w-100 mt-1" href="#">
-              <span data-feather="shopping-cart" className="align-text-bottom"></span>
-              Contratos
-            </a>
-          </li>
-          <li className="nav-item p-1">
-            <a className="btn btn-primary btn-sm w-100 mt-1" href="#">
-              <span data-feather="users" className="align-text-bottom"></span>
-              Ordens
-            </a>
-          </li>
-          <li className="nav-item p-1">
-            <a className="btn  btn-primary btn-sm w-100 mt-1" href="#">
-              <span data-feather="bar-chart-2" className="align-text-bottom"></span>
-              Entregas
-            </a>
-          </li>
-          <li className="nav-item p-1">
-            <a className="btn btn-primary btn-sm w-100 mt-1" href="#">
-              <span data-feather="layers" className="align-text-bottom"></span>
-              Pacotes de preços 
-            </a>
-          </li>
-          <li className="nav-item p-1">
-            <a className="btn btn-primary btn-sm w-100 mt-1" href="#">
-              <span data-feather="layers" className="align-text-bottom"></span>
-              Pagamentos
-            </a>
-          </li>
-          <li className="nav-item p-1">
-            <a className="btn btn-primary btn-sm w-100 mt-1" href="#">
-              <span data-feather="layers" className="align-text-bottom"></span>
-              Financeiro
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <SideBar/>
 
     <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div className="d-flex justify-content-between flex-wrap p-2 bg-light text-dark flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom rounded mt-3">
-        <h1 className="h2">Contratos</h1>
+        <h1 className="h2">Clientes</h1>
         <div className="btn-toolbar mb-2 mb-md-0 ">
           <div className="btn-group me-2">
             <button type="button" className="btn btn-md btn-success" data-id="" data-bs-toggle="modal" data-bs-target="#exampleModal2">Novo</button>

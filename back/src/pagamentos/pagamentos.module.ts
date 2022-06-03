@@ -4,6 +4,7 @@ import { PagamentosController } from './pagamentos.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Pagamento } from './entities/pagamento.entity';
 @Module({
+  imports: [TypeOrmModule.forFeature([Pagamento])],
   controllers: [PagamentosController],
   providers: [PagamentosService]
 })
