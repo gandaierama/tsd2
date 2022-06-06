@@ -10,6 +10,7 @@ import { ClienteService } from '../cliente/cliente.service';
 
 @Module({
   imports: [
+    ClienteService,
     UsersModule,
     PassportModule,
     JwtModule.register({
@@ -17,7 +18,7 @@ import { ClienteService } from '../cliente/cliente.service';
       signOptions: { expiresIn: '60s' },
     }),
   ],
-  providers: [AuthService, LocalStrategy, JwtStrategy, ClienteService],
+  providers: [AuthService, LocalStrategy, JwtStrategy],
   exports: [AuthService],
 })
 export class AuthModule {}
