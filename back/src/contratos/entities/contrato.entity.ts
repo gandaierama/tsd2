@@ -11,10 +11,6 @@ export class Contrato {
     @Column({ default: true, nullable: true })
     id_cliente: number;
 
-
-    @Column({  nullable: true })
-    entrega: string;
-
     @Column({  nullable: true })
     pacote: string;
 

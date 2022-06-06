@@ -8,11 +8,14 @@ export class Orden {
     @Column({length: 65, default: "Teste", nullable: false})
     name: string;
 
-    @Column({ default: true, nullable: true })
+    @Column({ default: 0, nullable: true })
     id_motoboy: number;
 
-    @Column({ default: true, nullable: true })
+    @Column({ default: 0, nullable: true })
     id_cliente: number;
+
+    @Column({ default: 0, nullable: true })
+    id_contrato: number;
 
 
     @Column({ default: true })
