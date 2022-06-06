@@ -50,6 +50,10 @@ export class ClienteService {
     return this.clienteRepository.findOne(id);
   }
 
+  findEmail(email: string): Promise<ClienteEntity> {
+    return this.clienteRepository.findOne(email);
+  }
+
   async remove(id: string): Promise<void> {
     await this.clienteRepository.delete(id);
   }
