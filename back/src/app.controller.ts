@@ -11,7 +11,7 @@ export class AppController {
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
   async login(@Body() loginDto: LoginDto) {
-    return this.authService.login(loginDto.user);
+    return this.authService.login(loginDto);
   }
 
   @UseGuards(JwtAuthGuard)
