@@ -10,7 +10,6 @@ export class AuthService {
   constructor(
      @InjectRepository(ClienteEntity)
     private clienteRepository: Repository<ClienteEntity>,
-    private clienteService: ClienteService,
     private jwtService: JwtService
   ) {}
 
