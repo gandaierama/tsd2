@@ -8,14 +8,20 @@ export class Contrato {
     @Column({length: 65, default: "Teste", nullable: false})
     name: string
 
-    @Column({ default: true, nullable: true })
-    id_cliente: number;
+    @Column({ nullable: false })
+    id_cliente: string;
 
-    @Column({  nullable: true })
+    @Column({  nullable: false })
     pacote: string;
 
     @Column({ default: true })
     isActive: boolean;
+
+    @Column({ type: "date" })
+    inicio: Date;
+
+    @Column({ type: "date"})
+    fim: Date;
 
     @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
     created_at: Date;

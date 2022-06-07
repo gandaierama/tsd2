@@ -6,6 +6,7 @@ import { Orden } from './entities/orden.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([Orden])],
   controllers: [OrdensController],
-  providers: [OrdenService]
+  providers: [OrdenService],
+  exports: [OrdenService],
 })
 export class OrdensModule {}

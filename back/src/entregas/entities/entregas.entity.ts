@@ -20,6 +20,11 @@ export class Entrega {
     @Column({  nullable: true })
     entrega: string;
 
+     @Column({ type: "date" })
+    inicio: Date;
+
+    @Column({ type: "date"})
+    fim: Date;
 
     @Column({ default: true })
     isActive: boolean;

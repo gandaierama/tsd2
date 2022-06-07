@@ -17,6 +17,11 @@ export class Orden {
     @Column({ default: 0, nullable: true })
     id_contrato: number;
 
+    @Column({ type: "date" })
+    inicio: Date;
+
+    @Column({ type: "date"})
+    fim: Date;
 
     @Column({ default: true })
     isActive: boolean;

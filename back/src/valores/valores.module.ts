@@ -6,6 +6,7 @@ import { Valor } from './entities/valor.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([Valor])],
   controllers: [ValoresController],
-  providers: [ValoresService]
+  providers: [ValoresService],
+  exports: [ValoresService]
 })
 export class ValoresModule {}

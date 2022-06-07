@@ -2,14 +2,27 @@ import { ApiProperty } from '@nestjs/swagger';
 export class CreateContratoDto {
 
 	@ApiProperty({ required: true, default: "Daniel" })
-  	name: string;
+  name: string;
+
+  @ApiProperty({ required: true, default: "XX133" })
+  id_cliente: string;
+
+  @ApiProperty({  required: true, default: "GG8877" })
+  pacote: string;
+
+  @ApiProperty({ required: false, default: null })
+  type: string;
+
+  @ApiProperty({ type: 'date', format: 'date-time' })
+  inicio: Date;
+
+  @ApiProperty({ type: 'date', format: 'date-time'})
+  fim: Date;
 
 
 
-    @ApiProperty({ required: false, default: null })
-      type: string
 
   @ApiProperty({ default: true })
-  isActive: boolean
+  isActive: boolean;
 
 }
