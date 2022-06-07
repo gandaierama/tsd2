@@ -17,7 +17,7 @@ export class ClienteService {
 
   async login(email: string, senha: string){
     const user = await this.clienteRepository.findOne(email);
-
+    return user;
     console.log(user)
     if(user!==null){
 
