@@ -20,10 +20,10 @@ export class Entrega {
     @Column({  nullable: true })
     entrega: string;
 
-     @Column({ type: "date" })
+     @Column({ type: "date", nullable: false  })
     inicio: Date;
 
-    @Column({ type: "date"})
+    @Column({ type: "date", nullable: false })
     fim: Date;
 
     @Column({ default: true })

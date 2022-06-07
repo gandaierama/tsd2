@@ -17,10 +17,10 @@ export class Orden {
     @Column({ default: 0, nullable: true })
     id_contrato: number;
 
-    @Column({ type: "date" })
+    @Column({ type: "date" , nullable: false })
     inicio: Date;
 
-    @Column({ type: "date"})
+    @Column({ type: "date", nullable: false })
     fim: Date;
 
     @Column({ default: true })
