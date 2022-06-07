@@ -6,11 +6,9 @@ import { UsersModule } from '../users/users.module';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
-import { ClienteService } from '../cliente/cliente.service';
 
 @Module({
   imports: [
-    ClienteService,
     UsersModule,
     PassportModule,
     JwtModule.register({
