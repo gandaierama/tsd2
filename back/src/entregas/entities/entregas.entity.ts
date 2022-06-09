@@ -20,10 +20,10 @@ export class Entrega {
     @Column({  nullable: true })
     entrega: string;
 
-    @Column({ type: 'timestamp', default: () => "CURRENT_TIMESTAMP()" })
+    @Column({ type: 'timestamp', default: () => "CURRENT_TIMESTAMP()", nullable: false })
     inicio: Date;
 
-    @Column({ type: 'timestamp' }) 
+    @Column({ type: 'timestamp', nullable: false }) 
     fim: Date;
 
     @Column({ default: true })
