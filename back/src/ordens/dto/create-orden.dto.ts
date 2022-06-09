@@ -26,7 +26,7 @@ export class CreateOrdenDto {
   @ApiProperty({ type: 'date', format: 'date' })
   fim: Date;
 
-  @ApiProperty({ required: false, default: null })
+  @ApiProperty({ required: false })
   type: string
 
   @ApiProperty({ default: true })

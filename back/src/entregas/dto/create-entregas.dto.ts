@@ -22,7 +22,7 @@ export class CreateEntregaDto {
   fim: Date;
 
 
-  @ApiProperty({ required: false, default: null })
+  @ApiProperty({ required: false })
   type: string
 
   @ApiProperty({ default: true })

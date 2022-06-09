@@ -6,7 +6,7 @@ export class CreatePagamentoDto {
 
 
 
-    @ApiProperty({ required: false, default: null })
+    @ApiProperty({ required: false })
       type: string
 
   @ApiProperty({ default: true })

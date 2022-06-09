@@ -10,7 +10,7 @@ export class CreateContratoDto {
   @ApiProperty({  required: true, default: "GG8877" })
   pacote: string;
 
-  @ApiProperty({ required: false, default: null })
+  @ApiProperty({ required: false })
   type: string;
 
   @ApiProperty({ type: 'timestamp' })
