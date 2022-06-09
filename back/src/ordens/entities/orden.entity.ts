@@ -17,10 +17,10 @@ export class Orden {
     @Column({ default: 0, nullable: true })
     id_contrato: number;
 
-    @Column({ type: 'timestamp', nullable: true }) // Recommended
+    @Column({ type: 'timestamp' }) // Recommended
     inicio: Date;
 
-    @Column({ type: 'timestamp', nullable: true }) // Recommended
+    @Column({ type: 'timestamp' }) // Recommended
     fim: Date;
 
     @Column({ default: true })
