@@ -13,10 +13,10 @@ export class CreateContratoDto {
   @ApiProperty({ required: false, default: null })
   type: string;
 
-  @ApiProperty({ type: 'timestamp', format: 'date' })
+  @ApiProperty({ type: 'timestamp' })
   inicio: Date;
 
-  @ApiProperty({ type: 'timestamp', format: 'date'})
+  @ApiProperty({ type: 'timestamp'})
   fim: Date;
 
 

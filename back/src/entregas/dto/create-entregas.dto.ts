@@ -15,10 +15,10 @@ export class CreateEntregaDto {
   @ApiProperty({ required: true, default: "yyyy" })
   pacote: string;
 
-  @ApiProperty({ type: 'date', format: 'date' })
+  @ApiProperty({ type: 'date' })
   inicio: Date;
 
-  @ApiProperty({type: 'date', format: 'date' })
+  @ApiProperty({type: 'date' })
   fim: Date;
 
 

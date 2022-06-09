@@ -17,10 +17,10 @@ export class Contrato {
     @Column({ default: true })
     isActive: boolean;
 
-    @Column({ type: 'timestamp', nullable: false}) 
+    @Column({ type: 'timestamp',  nullable: true}) 
     inicio: Date;
 
-    @Column({ type: 'timestamp', nullable: false })
+    @Column({ type: 'timestamp', nullable: true })
     fim: Date;
 
     @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
