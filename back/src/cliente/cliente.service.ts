@@ -26,7 +26,7 @@ export class ClienteService {
         }
       }
     }catch(err){
-      throw new UnprocessableEntityException(err.message);
+      throw err.message;
     }
   }
   
