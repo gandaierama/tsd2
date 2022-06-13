@@ -34,11 +34,11 @@ export class MotoboyService {
     const obje = new Motoboy();
     obje.name = createMotoboyDto.name;
 
-    obje.email = createClienteDto.email;
-    obje.telefone = createClienteDto.telefone;
-    obje.senha = createClienteDto.senha;
-    obje.cpf = createClienteDto.cpf;
-    obje.cnpj = createClienteDto.cnpj;
+    obje.email = createMotoboyDto.email;
+    obje.telefone = createMotoboyDto.telefone;
+    obje.senha = createMotoboyDto.senha;
+    obje.cpf = createMotoboyDto.cpf;
+    obje.cnpj = createMotoboyDto.cnpj;
     
     return this.motoboyRepository.save(obje);
   }
