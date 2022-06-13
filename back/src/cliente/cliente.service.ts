@@ -16,7 +16,7 @@ export class ClienteService {
 
 
   async login(email: string, senha: string){
-    try{
+
       const user = await this.clienteRepository.findOne(email);
 
       if(user!==null){
@@ -25,9 +25,7 @@ export class ClienteService {
           return user;
         }
       }
-    }catch(err){
-      return err.message;
-    }
+ 
   }
   
 

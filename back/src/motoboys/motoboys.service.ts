@@ -15,13 +15,31 @@ export class MotoboyService {
   ) {}
 
 
+  async login(email: string, senha: string){
+
+      const user = await this.motoboyRepository.findOne(email);
+
+      if(user!==null){
+        return user;
+        if (senha===user.senha) {
+          return user;
+        }
+      }
+ 
+  }
+  
   
 
   create(createMotoboyDto: CreateMotoboyDto): Promise<Motoboy> {
     const obje = new Motoboy();
     obje.name = createMotoboyDto.name;
 
-
+    obje.email = createClienteDto.email;
+    obje.telefone = createClienteDto.telefone;
+    obje.senha = createClienteDto.senha;
+    obje.cpf = createClienteDto.cpf;
+    obje.cnpj = createClienteDto.cnpj;
+    
     return this.motoboyRepository.save(obje);
   }
 
