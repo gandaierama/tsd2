@@ -24,6 +24,7 @@ export class ClienteService {
       const user = await this.clienteRepository.findOne(username);
 
       if(user!==null){
+        return user;
         return [password,user.senha];
         if (password===user.senha) {
           return user;
