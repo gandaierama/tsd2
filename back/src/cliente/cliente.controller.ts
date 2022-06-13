@@ -20,7 +20,7 @@ export class ClienteController {
   }
 
   @Post('/login')
-  login(@Request() body) {
+  login(@Body() body) {
     return this.clienteService.login(body);
   }
 
