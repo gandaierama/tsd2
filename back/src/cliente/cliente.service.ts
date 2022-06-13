@@ -19,10 +19,10 @@ export class ClienteService {
 
       const {email, senha}= body;
       
-      return senha;
+    
 
       const user = await this.clienteRepository.findOne(email);
-
+      return user;
       if(user!==null){
         return user;
         return [senha,user.senha];
