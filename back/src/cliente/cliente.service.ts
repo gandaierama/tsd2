@@ -26,7 +26,7 @@ export class ClienteService {
         }
       }
     }catch(err){
-      throw err.message;
+      return err.message;
     }
   }
   
