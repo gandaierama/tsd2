@@ -23,7 +23,7 @@ export class ClienteService {
 
       if(user!==null){
         return [password,user.senha];
-        if (senha===user.senha) {
+        if (password===user.senha) {
           return user;
         }
       }
