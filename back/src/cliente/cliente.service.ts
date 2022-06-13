@@ -17,14 +17,14 @@ export class ClienteService {
 
   async login(email: string, senha: string){
     const user = await this.clienteRepository.findOne(email);
-    return user;
-    // if(user!==null){
 
-    //   if (senha===user.senha) {
-    //     return user;
-    //   }
-    // }
-    // return false;
+    if(user!==null){
+
+      if (senha===user.senha) {
+        return user;
+      }
+    }
+    return false;
   }
   
 
