@@ -18,9 +18,9 @@ export class ClienteService {
   async login(body){
 
       const {email, senha}= body;
-      return email;
-      const username=body.email;
-      const password=body.senha;
+   
+      const username=email;
+      const password=senha;
       const user = await this.clienteRepository.findOne(username);
 
       if(user!==null){
