@@ -15,11 +15,9 @@ export class ClienteService {
   ) {}
 
 
-  async login(body){
+  async login(email: string, senha: string ){
 
-      const {email, senha}= body;
-      
-      console.log(body);
+  
 
       console.log(email);
       console.log(senha);
