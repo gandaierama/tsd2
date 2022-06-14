@@ -2,7 +2,7 @@ import { Controller, Request,Get, UseGuards, Post, Body, Patch, Param, Delete } 
 import { ClienteService } from './cliente.service';
 import { CreateClienteDto } from './dto/create-cliente.dto';
 import { UpdateClienteDto } from './dto/update-cliente.dto';
-
+import { LoginClienteDto } from './dto/login-cliente.dto';
 
 @Controller('cliente')
 export class ClienteController {
@@ -20,8 +20,8 @@ export class ClienteController {
   }
 
   @Post('/login')
-  login(@Body() body) {
-    return this.clienteService.login(body);
+  login(@Body() loginClienteDto: LoginClienteDto) {
+    return this.clienteService.login(loginClienteDto);
   }
 
   @Get(':id')

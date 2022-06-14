@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
+import { LoginClienteDto } from './dto/login-cliente.dto';
 import { CreateClienteDto } from './dto/create-cliente.dto';
 import { UpdateClienteDto } from './dto/update-cliente.dto';
 import { ClienteEntity } from './entities/cliente.entity';
@@ -15,9 +16,9 @@ export class ClienteService {
   ) {}
 
 
-  async login(body){
+  async login(loginClienteDto: LoginClienteDto){
 
-      const {email, senha}= body;
+      const {email, senha}= loginClienteDto;
 
       const user = await this.clienteRepository.findOne(email);
       console.log(body);
