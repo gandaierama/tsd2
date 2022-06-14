@@ -21,8 +21,7 @@ export class ClienteService {
       const {email, senha}= loginClienteDto;
 
       const user = await this.clienteRepository.findOne(email);
-      console.log(body);
- 
+    
       if(user!==null){
         if (senha===user.senha) {
           return user;
