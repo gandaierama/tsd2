@@ -20,8 +20,8 @@ export class ClienteController {
   }
 
   @Post('/login')
-  login(@Body("email") email: string, @Body("senha") senha: string) {
-    return this.clienteService.login(email, senha);
+  login(@Body() body) {
+    return this.clienteService.login(body);
   }
 
   @Get(':id')
