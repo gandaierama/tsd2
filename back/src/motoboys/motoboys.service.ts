@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { LoginMotoboyDto } from './dto/login-motoboy.dto';
@@ -15,7 +15,8 @@ export class MotoboyService {
   ) {}
 
 
-
+  private readonly logger = new Logger(ClienteService.name);
+  private readonly loggerC = new Logger("CRON");
 
   async login(loginMotoboyDto: LoginMotoboyDto){
 
