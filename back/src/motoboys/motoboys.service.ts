@@ -30,7 +30,7 @@ export class MotoboyService {
           console.log("USER", user[0].senha);
           return user;
 
-          if (senha===user.senha) {
+          if (senha===user[0].senha) {
             return user;
           } 
 
