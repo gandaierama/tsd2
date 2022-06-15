@@ -1,8 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 export class CreateEntregaDto {
 
-	@ApiProperty({ required: true, default: "Daniel" })
-  name: string;
 
 
   @ApiProperty({ required: true, default: "DDDDD" })
@@ -13,7 +11,7 @@ export class CreateEntregaDto {
 
 
   @ApiProperty({ required: true, default: "yyyy" })
-  pacote: string;
+  id_orden: string;
 
   @ApiProperty({ type: 'date' })
   inicio: Date;
@@ -22,8 +20,6 @@ export class CreateEntregaDto {
   fim: Date;
 
 
-  @ApiProperty({ required: false })
-  type: string
 
   @ApiProperty({ default: true })
   isActive: boolean
