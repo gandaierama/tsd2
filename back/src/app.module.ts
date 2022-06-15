@@ -14,6 +14,7 @@ import { EntregasModule } from './entregas/entregas.module';
 import { PagamentosModule } from './pagamentos/pagamentos.module';
 import { BloqueiosModule } from './bloqueios/bloqueios.module';
 import { ValoresModule } from './valores/valores.module';
+import { TrackModule } from './track/track.module';
 @Module({
   imports: [
    TypeOrmModule.forRoot({
@@ -26,7 +27,7 @@ import { ValoresModule } from './valores/valores.module';
       entities: ["dist/**/*.entity{.ts,.js}"], 
       synchronize: true,
     }),
-  AuthModule, UsersModule, ClienteModule, MotoboysModule, ContratosModule, OrdensModule, EntregasModule, PagamentosModule, BloqueiosModule, ValoresModule],
+  AuthModule, UsersModule, ClienteModule, MotoboysModule, ContratosModule, OrdensModule, EntregasModule, PagamentosModule, BloqueiosModule, ValoresModule, TrackModule],
   controllers: [AppController],
   providers: [AppService],
 })
