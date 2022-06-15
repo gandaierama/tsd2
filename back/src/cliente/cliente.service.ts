@@ -31,7 +31,7 @@ export class ClienteService {
       this.logger.log(loginClienteDto.senha);
       const email = loginClienteDto.email;
       const senha = loginClienteDto.senha;
-      const user = await this.clienteRepository.findAny({ where: { email } });
+      const user = await this.findAny({ where: { email } });
       console.log("USER", user);
       if(user!==null){
         if (senha===user.senha) {
