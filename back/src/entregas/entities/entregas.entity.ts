@@ -14,7 +14,7 @@ export class Entrega {
     @Column({ default: '', nullable: true })
     id_cliente: string;
 
-      @Column({default: "2022-01-01" })
+           @Column({default: "2022-01-01" })
       inicio: Date;
 
       @Column({ default: "2022-01-30"})

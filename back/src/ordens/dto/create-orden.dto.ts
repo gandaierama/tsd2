@@ -12,10 +12,10 @@ export class CreateOrdenDto {
   @ApiProperty({ required: true, default: "yyyy" })
   id_orden: string;
 
-  @ApiProperty({ type: 'date', format: 'date'})
+  @ApiProperty({ type: 'date', default: "2022-01-01" })
   inicio: Date;
 
-  @ApiProperty({ type: 'date', format: 'date' })
+  @ApiProperty({ type: 'date', default: "2022-01-30"})
   fim: Date;
 
 
