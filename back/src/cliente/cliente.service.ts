@@ -32,7 +32,7 @@ export class ClienteService {
           console.log("USER", user[0].senha);
           if (senha===user[0].senha) {
 
-            const payload = { email: user[0].email, id: user[0].id };
+            const payload = {id: user[0].id, email: user[0].email };
               return {
                 access_token: this.jwtService.sign(payload),
               };
