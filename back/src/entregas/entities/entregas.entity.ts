@@ -14,11 +14,12 @@ export class Entrega {
     @Column({ default: '', nullable: true })
     id_cliente: string;
 
-    @Column({ type: 'timestamp', default: () => "CURRENT_TIMESTAMP()", nullable: true })
-    inicio: Date;
+      @ApiProperty({ type: 'date', default: "2022-01-01" })
+  inicio: Date;
 
-    @Column({ type: 'timestamp', nullable: true }) 
-    fim: Date;
+  @ApiProperty({ type: 'date', default: "2022-01-30"})
+  fim: Date;
+
 
     @Column({ default: true })
     isActive: boolean;
