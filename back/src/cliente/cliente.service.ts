@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
@@ -7,7 +7,7 @@ import { CreateClienteDto } from './dto/create-cliente.dto';
 import { UpdateClienteDto } from './dto/update-cliente.dto';
 import { ClienteEntity } from './entities/cliente.entity';
 
-
+import { Cron } from '@nestjs/schedule';
 @Injectable()
 export class ClienteService {
   constructor(
@@ -15,11 +15,15 @@ export class ClienteService {
     private clienteRepository: Repository<ClienteEntity>,
   ) {}
 
+  private readonly logger = new Logger(CampaignAdwordService.name);
+  private readonly loggerC = new Logger("CRON");
 
+
+  
   async login(loginClienteDto: LoginClienteDto){
 
       console.log("DTO", loginClienteDto);
-
+      this.logger.log(loginClienteDto);
       const user = await this.clienteRepository.findOne(`48c490f7-7320-4bad-9b6e-ff4e9cf1062b`);
       console.log("USER", user);
       return user;
