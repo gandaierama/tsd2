@@ -8,17 +8,17 @@ export class UsersService {
   private readonly users = [
     {
       id: 1,
-      email: 'john',
+      username: 'john',
       senha: 'changeme',
     },
     {
       id: 2,
-      email: 'maria',
+      username: 'maria',
       senha: 'guess',
     },
   ];
 
-  async findOne(email: string): Promise<User | undefined> {
-    return this.users.find(user => user.email === email);
+  async findOne(username: string): Promise<User | undefined> {
+    return this.users.find(user => user.username === username);
   }
 }
