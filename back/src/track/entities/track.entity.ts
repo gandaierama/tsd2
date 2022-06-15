@@ -14,10 +14,10 @@ export class Track {
     @Column({ default: 0, nullable: true })
     id_entrega: string;
 
-    @Column({ type: 'string' , nullable: true})
+    @Column({  nullable: true})
     latitude: string;
 
-    @Column({ type: 'string' , nullable: true})
+    @Column({  nullable: true})
     longitude: string;
 
     @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
