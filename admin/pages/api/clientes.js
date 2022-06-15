@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export default async (req, res) => {
-  const url = `http://admin.tsdmotoboys.com.br/cliente`
+  const url = `http://api.tsdmotoboys.com.br/cliente`
 
   await axios
     .get(url)

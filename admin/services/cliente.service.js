@@ -5,7 +5,7 @@ import Router from 'next/router'
 import { fetchWrapper } from '../helpers';
 
 const { publicRuntimeConfig } = getConfig();
-const baseUrl = `${publicRuntimeConfig.apiUrl}/cliente`;
+const baseUrl = `http://api.tsdmotoboys.com.br/cliente`;
 const clienteSubject = new BehaviorSubject(process.browser && JSON.parse(localStorage.getItem('cliente')));
 
 export const clienteService = {
