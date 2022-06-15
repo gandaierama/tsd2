@@ -6,13 +6,14 @@ import { LoginClienteDto } from './dto/login-cliente.dto';
 import { CreateClienteDto } from './dto/create-cliente.dto';
 import { UpdateClienteDto } from './dto/update-cliente.dto';
 import { ClienteEntity } from './entities/cliente.entity';
-
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class ClienteService {
   constructor(
     @InjectRepository(ClienteEntity)
     private clienteRepository: Repository<ClienteEntity>,
+    private jwtService: JwtService
   ) {}
 
   private readonly logger = new Logger(ClienteService.name);
@@ -29,10 +30,13 @@ export class ClienteService {
       console.log("USER", user);
       if(user!==null){
           console.log("USER", user[0].senha);
-          return user;
+          if (senha===user[0].senha) {
 
-          if (senha===user.senha) {
-            return user;
+            const payload = { email: user[0].email, id: user[0].id };
+              return {
+                access_token: this.jwtService.sign(payload),
+              };
+
           } 
 
           return false;
