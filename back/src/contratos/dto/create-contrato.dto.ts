@@ -11,10 +11,10 @@ export class CreateContratoDto {
   @ApiProperty({ required: false })
   type: string;
 
-  @ApiProperty({ type: 'date' })
+  @ApiProperty({ type: 'date', default: "2022-01-01" })
   inicio: Date;
 
-  @ApiProperty({ type: 'date'})
+  @ApiProperty({ type: 'date', default: "2022-01-30"})
   fim: Date;
 
 
