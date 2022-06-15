@@ -19,11 +19,11 @@ export class ClienteService {
   private readonly loggerC = new Logger("CRON");
 
 
-  
+
   async login(loginClienteDto: LoginClienteDto){
 
-      console.log("DTO", loginClienteDto);
-      this.logger.log(loginClienteDto);
+      console.log("DTO", loginClienteDto.senha);
+      this.logger.log(loginClienteDto.senha);
       const user = await this.clienteRepository.findOne(`48c490f7-7320-4bad-9b6e-ff4e9cf1062b`);
       console.log("USER", user);
       return user;
