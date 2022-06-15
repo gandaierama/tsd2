@@ -19,6 +19,20 @@ export class ContratoService {
   
 
   create(createContratoDto: CreateContratoDto): Promise<Contrato> {
+
+const inicio= createContratoDto.inicio;
+const fim= createContratoDto.fim;
+
+    const date1 = new Date(inicio);
+const date2 = new Date(fim);
+  
+  const diaSemana=date1.getDay();
+
+const difTime = date2.getTime() - date1.getTime();
+
+const difDay = difTime / (1000 * 3600 * 24);
+  
+console.log(difDay);
     const obje = new Contrato();
     obje.id_cliente = createContratoDto.id_cliente;
     obje.pacote = createContratoDto.pacote;
