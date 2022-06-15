@@ -17,7 +17,7 @@ export const userService = {
 };
 
 function login(username, password) {
-    return fetchWrapper.post(`${publicRuntimeConfig.apiUrl}/auth/users`, { username, password })
+    return fetchWrapper.post(`http://api.tsdmotoboys.com.br/cliente/login`, { username, password })
         .then(user => {
             // publish user to subscribers and store in local storage to stay logged in between page refreshes
             userSubject.next(user);
