@@ -1,12 +1,20 @@
-import { Controller, Get, Request, Post, UseGuards, Body } from '@nestjs/common';
+import { Controller, Get, Request, Post, UseGuards, Body, Logger } from '@nestjs/common';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { LocalAuthGuard } from './auth/local-auth.guard';
 import { AuthService } from './auth/auth.service';
 import { LoginDto } from './login.dto';
+import { Cron } from '@nestjs/schedule';
 
 @Controller()
 export class AppController {
   constructor(private authService: AuthService) {}
+
+    private readonly logger = new Logger("CRON");
+
+  @Cron('* * 10 * * *')
+  async handleCron() {
+    this.logger.log("ACTION CRON");
+  }
 
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
