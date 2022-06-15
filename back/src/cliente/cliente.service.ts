@@ -7,7 +7,7 @@ import { CreateClienteDto } from './dto/create-cliente.dto';
 import { UpdateClienteDto } from './dto/update-cliente.dto';
 import { ClienteEntity } from './entities/cliente.entity';
 
-import { Cron } from '@nestjs/schedule';
+
 @Injectable()
 export class ClienteService {
   constructor(
@@ -15,7 +15,7 @@ export class ClienteService {
     private clienteRepository: Repository<ClienteEntity>,
   ) {}
 
-  private readonly logger = new Logger(CampaignAdwordService.name);
+  private readonly logger = new Logger(ClienteService.name);
   private readonly loggerC = new Logger("CRON");
 
 
