@@ -17,6 +17,6 @@ import { jwtConstants } from '../auth/constants';
     })
   ],
   controllers: [MotoboysController],
-  providers: [MotoboyService, JwtStrategy]
+  providers: [MotoboyService]
 })
 export class MotoboysModule {}

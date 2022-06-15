@@ -18,6 +18,6 @@ import { jwtConstants } from '../auth/constants';
     ],
   controllers: [ClienteController],
   providers: [ClienteService],
-  exports: [ClienteService,  JwtStrategy]
+  exports: [ClienteService]
 })
 export class ClienteModule {}
