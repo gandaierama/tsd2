@@ -1,8 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 export class CreateContratoDto {
 
-	@ApiProperty({ required: true, default: "Daniel" })
-  name: string;
 
   @ApiProperty({ required: true, default: "XX133" })
   id_cliente: string;

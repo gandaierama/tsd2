@@ -5,8 +5,6 @@ export class Contrato {
     @PrimaryGeneratedColumn('uuid')
     id: string
 
-    @Column({length: 65, default: "Teste", nullable: false})
-    name: string
 
     @Column({ nullable: false })
     id_cliente: string;

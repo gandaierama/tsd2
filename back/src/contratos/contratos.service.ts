@@ -20,7 +20,6 @@ export class ContratoService {
 
   create(createContratoDto: CreateContratoDto): Promise<Contrato> {
     const obje = new Contrato();
-    obje.name = createContratoDto.name;
     obje.id_cliente = createContratoDto.id_cliente;
     obje.pacote = createContratoDto.pacote;
     obje.inicio = createContratoDto.inicio;

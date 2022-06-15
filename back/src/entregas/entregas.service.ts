@@ -19,7 +19,7 @@ export class EntregaService {
 
   create(createEntregaDto: CreateEntregaDto): Promise<Entrega> {
     const obje = new Entrega();
-    obje.name = createEntregaDto.name;
+    obje.id_cliente = createEntregaDto.id_cliente;
 
 
     return this.entregaRepository.save(obje);
