@@ -5,9 +5,6 @@ export class Entrega {
     @PrimaryGeneratedColumn('uuid')
     id: string
 
-    @Column({length: 65, default: "Teste", nullable: false})
-    name: string
-
     @Column({ default: 0, nullable: true })
     id_orden: number;
 
@@ -16,9 +13,6 @@ export class Entrega {
 
     @Column({ default: 0, nullable: true })
     id_cliente: number;
-
-    @Column({  nullable: true })
-    entrega: string;
 
     @Column({ type: 'timestamp', default: () => "CURRENT_TIMESTAMP()", nullable: true })
     inicio: Date;

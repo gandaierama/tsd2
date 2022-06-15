@@ -5,9 +5,6 @@ export class Orden {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column({length: 65, default: "Teste", nullable: false})
-    name: string;
-
     @Column({ default: '',nullable: true })
     id_motoboy: string;
 
@@ -17,10 +14,10 @@ export class Orden {
     @Column({ default: '', nullable: true })
     id_contrato: string;
 
-    @Column({ type: 'timestamp' , nullable: true}) // Recommended
+    @Column({ type: 'date' , nullable: true}) // Recommended
     inicio: Date;
 
-    @Column({ type: 'timestamp' , nullable: true}) // Recommended
+    @Column({ type: 'date' , nullable: true}) // Recommended
     fim: Date;
 
     @Column({ default: true })
