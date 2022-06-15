@@ -5,14 +5,14 @@ export class Entrega {
     @PrimaryGeneratedColumn('uuid')
     id: string
 
-    @Column({ default: 0, nullable: true })
-    id_orden: number;
+    @Column({ default: '', nullable: true })
+    id_orden: string;
 
-    @Column({ default: 0, nullable: true })
-    id_motoboy: number;
+    @Column({ default: '', nullable: true })
+    id_motoboy: string;
 
-    @Column({ default: 0, nullable: true })
-    id_cliente: number;
+    @Column({ default: '', nullable: true })
+    id_cliente: string;
 
     @Column({ type: 'timestamp', default: () => "CURRENT_TIMESTAMP()", nullable: true })
     inicio: Date;
