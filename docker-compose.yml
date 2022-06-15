@@ -1,5 +1,12 @@
 version: '3'
 services:
+  front:
+    container_name: front
+    build: ./front
+    ports:
+      - 3000:3000
+    networks:
+      - new
   database:
     image: mysql:5.7
     container_name: database
@@ -40,19 +47,14 @@ services:
     networks:
       - new
   admin:
+    depends_on:
+      - back
     container_name: admin
     build: ./admin
     networks:
       - new
     ports:
       - 3300:3300
-  front:
-    container_name: front
-    build: ./front
-    ports:
-      - 3000:3000
-    networks:
-      - new
   nginx:
     container_name: nginx
     build: ./nginx
