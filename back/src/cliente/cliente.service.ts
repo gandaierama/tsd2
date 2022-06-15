@@ -20,7 +20,7 @@ export class ClienteService {
 
       console.log("DTO", loginClienteDto);
 
-      const user = await this.clienteRepository.findOne(loginClienteDto.email);
+      const user = await this.clienteRepository.findOne("daniel@teste.com");
       console.log("USER", user);
       return user;
       if(user!==null){
