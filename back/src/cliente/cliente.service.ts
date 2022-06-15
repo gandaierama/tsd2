@@ -18,15 +18,6 @@ export class ClienteService {
   private readonly logger = new Logger(ClienteService.name);
   private readonly loggerC = new Logger("CRON");
 
-async toDto (loginClienteDto: LoginClienteDto) {  
-
-    const obje = new ClienteEntity();
-    obje.senha = loginClienteDto.senha;
-    obje.email = loginClienteDto.email;
-   
-    return obje;
-};
-
 
   async login(loginClienteDto: LoginClienteDto){
 
@@ -34,7 +25,7 @@ async toDto (loginClienteDto: LoginClienteDto) {
       this.logger.log(loginClienteDto.senha);
       const email = loginClienteDto.email;
       const senha = loginClienteDto.senha;
-      const user = await this.findAny({ where: { email } });
+      const user = await this.clienteRepository.find({ where: { email: email } });
       console.log("USER", user);
       if(user!==null){
         if (senha===user.senha) {
@@ -76,13 +67,7 @@ async toDto (loginClienteDto: LoginClienteDto) {
     return this.clienteRepository.findOne(email);
   }
 
-  async findAny(options?: object): Promise<ClienteEntity> {
-    const user =  await this.clienteRepository.findOne(options); 
-    const obje = new ClienteEntity();
-    obje.senha = user.senha;
-    obje.email = user.email;   
-    return obje;  
-}
+
 
   async remove(id: string): Promise<void> {
     await this.clienteRepository.delete(id);
