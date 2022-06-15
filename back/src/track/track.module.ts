@@ -5,7 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Track } from './entities/track.entity';
 
 @Module({
-  import:[TypeOrmModule.forFeature([Track]),],
+  imports:[TypeOrmModule.forFeature([Track])],
   controllers: [TrackController],
   providers: [TrackService]
 })
