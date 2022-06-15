@@ -18,7 +18,7 @@ export class ClienteService {
   private readonly logger = new Logger(ClienteService.name);
   private readonly loggerC = new Logger("CRON");
 
- const toDto = (data: ClienteEntity): LoginClienteDto => {  
+ function toDto = (data: ClienteEntity): LoginClienteDto => {  
     const { senha, email } = data;
     let loginClienteDto: LoginClienteDto = { senha, email };
     return loginClienteDto;
@@ -75,7 +75,7 @@ export class ClienteService {
 
   async findAny(options?: object): Promise<ClienteEntity> {
     const user =  await this.clienteRepository.findOne(options);    
-    return toDto(user);  
+    return this.toDto(user);  
 }
 
   async remove(id: string): Promise<void> {
