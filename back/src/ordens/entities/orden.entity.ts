@@ -14,11 +14,11 @@ export class Orden {
     @Column({ default: '', nullable: true })
     id_contrato: string;
 
-      @ApiProperty({ type: 'date', default: "2022-01-01" })
-  inicio: Date;
+           @Column({default: "2022-01-01" })
+      inicio: Date;
 
-  @ApiProperty({ type: 'date', default: "2022-01-30"})
-  fim: Date;
+      @Column({ default: "2022-01-30"})
+      fim: Date;
 
 
     @Column({ default: true })
