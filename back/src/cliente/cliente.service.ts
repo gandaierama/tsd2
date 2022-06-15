@@ -28,11 +28,9 @@ export class ClienteService {
       const user = await this.clienteRepository.find({ where: { email: email } });
       console.log("USER", user);
       if(user!==null){
-        if (senha===user.senha) {
+ 
           return user;
-        }else{
-          return false;
-        }
+        
       }
       return null;
  
