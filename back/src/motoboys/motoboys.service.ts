@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-
+import { LoginMotoboyDto } from './dto/login-motoboy.dto';
 import { CreateMotoboyDto } from './dto/create-motoboy.dto';
 import { UpdateMotoboyDto } from './dto/update-motoboy.dto';
 import { Motoboy } from './entities/motoboy.entity';
@@ -15,19 +15,30 @@ export class MotoboyService {
   ) {}
 
 
-  async login(email: string, senha: string){
 
-      const user = await this.motoboyRepository.findOne(email);
 
+  async login(loginMotoboyDto: LoginMotoboyDto){
+
+      console.log("DTO", loginMotoboyDto.senha);
+      this.logger.log(loginMotoboyDto.senha);
+      const email = loginMotoboyDto.email;
+      const senha = loginMotoboyDto.senha;
+      const user = await this.motoboyRepository.find({ where: { email } });
+      console.log("USER", user);
       if(user!==null){
-        return user;
-        if (senha===user.senha) {
+          console.log("USER", user[0].senha);
           return user;
-        }
+
+          if (senha===user.senha) {
+            return user;
+          } 
+
+          return false;
+        
       }
+      return null;
  
   }
-  
   
 
   create(createMotoboyDto: CreateMotoboyDto): Promise<Motoboy> {

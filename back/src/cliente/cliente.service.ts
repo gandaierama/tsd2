@@ -30,6 +30,12 @@ export class ClienteService {
       if(user!==null){
           console.log("USER", user[0].senha);
           return user;
+
+          if (senha===user.senha) {
+            return user;
+          } 
+
+          return false;
         
       }
       return null;
