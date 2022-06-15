@@ -18,17 +18,23 @@ export class ClienteService {
   private readonly logger = new Logger(ClienteService.name);
   private readonly loggerC = new Logger("CRON");
 
+  export const toDto = (data: ClienteEntity): UserDto => {  
+    const { senha, email } = data;
+    let userDto: UserDto = { senha, email };
+    return userDto;
+};
 
 
   async login(loginClienteDto: LoginClienteDto){
 
       console.log("DTO", loginClienteDto.senha);
       this.logger.log(loginClienteDto.senha);
-      const user = await this.clienteRepository.findOne(loginClienteDto.email);
+      const email = loginClienteDto.email;
+      const senha = loginClienteDto.senha;
+      const user = await this.clienteRepository.findAny({ where: { email } });
       console.log("USER", user);
-      return user;
       if(user!==null){
-        if (loginClienteDto.senha===user.senha) {
+        if (senha===user.senha) {
           return user;
         }else{
           return false;
@@ -66,6 +72,11 @@ export class ClienteService {
   findEmail(email: string): Promise<ClienteEntity> {
     return this.clienteRepository.findOne(email);
   }
+
+  async findAny(options?: object): Promise<ClienteEntity> {
+    const user =  await this.clienteRepository.findOne(options);    
+    return toDto(user);  
+}
 
   async remove(id: string): Promise<void> {
     await this.clienteRepository.delete(id);
