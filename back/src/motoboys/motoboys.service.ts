@@ -15,7 +15,7 @@ export class MotoboyService {
   ) {}
 
 
-  private readonly logger = new Logger(ClienteService.name);
+  private readonly logger = new Logger(MotoboyService.name);
   private readonly loggerC = new Logger("CRON");
 
   async login(loginMotoboyDto: LoginMotoboyDto){
