@@ -20,7 +20,7 @@ export class ClienteService {
 
       console.log("DTO", loginClienteDto);
 
-      const user = await this.clienteRepository.findOne("daniel@teste.com");
+      const user = await this.clienteRepository.query(`SELECT * FROM cliente_entity LIMIT 1`);
       console.log("USER", user);
       return user;
       if(user!==null){
