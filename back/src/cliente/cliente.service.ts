@@ -24,7 +24,7 @@ export class ClienteService {
 
       console.log("DTO", loginClienteDto.senha);
       this.logger.log(loginClienteDto.senha);
-      const user = await this.clienteRepository.findOne(`48c490f7-7320-4bad-9b6e-ff4e9cf1062b`);
+      const user = await this.clienteRepository.findOne(loginClienteDto.email);
       console.log("USER", user);
       return user;
       if(user!==null){
@@ -34,6 +34,7 @@ export class ClienteService {
           return false;
         }
       }
+      return null;
  
   }
   
