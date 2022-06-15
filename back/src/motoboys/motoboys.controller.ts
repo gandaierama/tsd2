@@ -1,5 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { MotoboyService } from './motoboys.service';
+import { LoginMotoboyDto } from './dto/login-motoboy.dto';
 import { CreateMotoboyDto } from './dto/create-motoboy.dto';
 import { UpdateMotoboyDto } from './dto/update-motoboy.dto';
 
@@ -18,8 +19,8 @@ export class MotoboysController {
   }
 
   @Post('/login')
-  login(@Body() email: string, senha: string) {
-    return this.motoboyService.login(email, senha);
+ login(@Body() loginMotoboyDto: LoginMotoboyDto) {
+    return this.motoboyService.login(loginMotoboyDto);
   }
   
   @Get(':id')
