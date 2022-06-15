@@ -18,10 +18,10 @@ export class ClienteService {
   private readonly logger = new Logger(ClienteService.name);
   private readonly loggerC = new Logger("CRON");
 
- const toDto = (data: ClienteEntity): UserDto => {  
+ const toDto = (data: ClienteEntity): LoginClienteDto => {  
     const { senha, email } = data;
-    let userDto: UserDto = { senha, email };
-    return userDto;
+    let loginClienteDto: LoginClienteDto = { senha, email };
+    return loginClienteDto;
 };
 
 
