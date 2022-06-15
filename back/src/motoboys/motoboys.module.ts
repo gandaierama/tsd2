@@ -4,7 +4,6 @@ import { MotoboyService } from './motoboys.service';
 import { MotoboysController } from './motoboys.controller';
 import { Motoboy } from './entities/motoboy.entity';
 import { PassportModule } from '@nestjs/passport';
-import { LocalStrategy } from '../auth/local.strategy';
 import { JwtStrategy } from '../auth/jwt.strategy';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from '../auth/constants';
@@ -18,6 +17,6 @@ import { jwtConstants } from '../auth/constants';
     })
   ],
   controllers: [MotoboysController],
-  providers: [MotoboyService, JwtStrategy, LocalStrategy]
+  providers: [MotoboyService, JwtStrategy]
 })
 export class MotoboysModule {}
