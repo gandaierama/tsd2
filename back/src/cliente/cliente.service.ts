@@ -18,7 +18,7 @@ export class ClienteService {
   private readonly logger = new Logger(ClienteService.name);
   private readonly loggerC = new Logger("CRON");
 
-  export const toDto = (data: ClienteEntity): UserDto => {  
+ const toDto = (data: ClienteEntity): UserDto => {  
     const { senha, email } = data;
     let userDto: UserDto = { senha, email };
     return userDto;
