@@ -77,8 +77,11 @@ async toDto (loginClienteDto: LoginClienteDto) {
   }
 
   async findAny(options?: object): Promise<ClienteEntity> {
-    const user =  await this.clienteRepository.findOne(options);    
-    return this.toDto(user);  
+    const user =  await this.clienteRepository.findOne(options); 
+    const obje = new ClienteEntity();
+    obje.senha = user.senha;
+    obje.email = user.email;   
+    return obje;  
 }
 
   async remove(id: string): Promise<void> {
