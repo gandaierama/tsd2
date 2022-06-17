@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import styles from '../styles/Dash.module.css'
 import { userService } from '../services';
 import Image from 'next/image';
-import SideBar  from '../components/'
+import {SideBar}  from '../components/'
 export default Home;
 
 function Home() {

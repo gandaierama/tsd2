@@ -40,6 +40,10 @@ module.exports = {
             source: '/:path*',
             destination: 'http://localhost:3200/:path*',
           },
+          {
+            source: '/:path*',
+            destination: 'http://api.tsdmotoboys.com.br/:path*',
+          },
         ]
       },
 }

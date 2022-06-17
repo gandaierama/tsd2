@@ -16,6 +16,10 @@ function Cliente({data}) {
 
 
     const [show, setShow] = useState(false);
+    const [showCad, setShowCad] = useState(false);
+    const [showEdit, setShowEdit] = useState(false);
+    const [showDel, setShowDel] = useState(false);
+ 
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -83,7 +87,17 @@ function Cliente({data}) {
     rows: data,
   });
 
-
+const mooc={values:[
+      'Daniel Batista', 
+      'daniel@teste',
+      '93966633232',
+      'Rua teste',
+      '123',
+      '123',
+      '123',
+      '123',
+      'SP',
+    ]};
   const inputImportante='col col-12 ';
   const inputBase='col col-12 col-xl-6';
   const inputSimples='col col-12 col-sm-4 col-xl-3';
@@ -110,10 +124,23 @@ function Cliente({data}) {
 
     const [inputs, setInputs] = useState(mooc);
 
-    const handleChange = ()=>{
-      return(true);
+      const [formValue, setFormValue] = useState({
+    email: "",
+    senha: ""
+  });
 
-    }
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormValue((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
+  };
+
+  const { email, senha } = formValue;
+
     const handleDelete = (id)=>{
       console.log("Delete", id);
       return(true);
@@ -215,7 +242,7 @@ function Cliente({data}) {
           
           <div className="form-floating mt-2">
                             
-                            <input className="form-control" onChange={handleChange} key={inputsS.id} value={campo} name={inputsS.name} placeholder={inputsS.title} type={inputsS.type} />
+                            <input className="form-control"  onChange={handleChange} key={inputsS.id} value={campo} name={inputsS.name} placeholder={inputsS.title} type={inputsS.type} />
                             <label>{inputsS.title}</label>
             </div>
             </div>
@@ -369,6 +396,24 @@ function Cliente({data}) {
 </Modal.Body>
 
       </Modal>
+
+
+<Modal show={show} size="xl" onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Editar Cliente</Modal.Title>
+        </Modal.Header>
+
+<Modal.Body>
+</Modal.Body>
+
+      </Modal>
+
+
+
+
+
+
+
 <div className="modal  " id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="false">
   <div className="modal-dialog modal-xl">
     <div className="modal-content">
