@@ -6,12 +6,12 @@ import Image from 'next/image';
 import { MDBDataTableV5 } from 'mdbreact';
 import { clienteService } from '../services';
 import {Modal} from 'react-bootstrap'
-import SideBar from '../components/SideBar'
-export default Cliente;
+import {SideBar}  from '../components/'
+export default Contratos;
 
 const { publicRuntimeConfig } = getConfig();
 
-function Cliente({data}) {
+function Contratos({data}) {
 
 
 
@@ -43,12 +43,7 @@ function Cliente({data}) {
       userData.push(item);
           });
   
-    const buttonsG=()=>{
-      return (<div className="btn-group mx-auto d-block w-100">
-            <button type="button" className="btn btn-md btn-secondary " data-id="" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>
-            <button type="button" className="btn btn-md btn-danger">Apagar</button>
-          </div>);
-    }
+
   const [datatable, setDatatable] =useState({
     columns: [
       {
@@ -102,6 +97,17 @@ function Cliente({data}) {
     
     ];
 
+    const mooc={values:[
+      'Daniel Batista', 
+      'daniel@teste',
+      '93966633232',
+      'Rua teste',
+      '123',
+      '123',
+      '123',
+      '123',
+      'SP',
+    ]};
 
     const [users, setUsers] = useState(null);
 
@@ -128,7 +134,7 @@ function Cliente({data}) {
       let res;
       try {
           let result=[];
-          const res=await fetch(`/api/clientes`, requestOptions);
+          const res=await fetch(`/api/contratos`, requestOptions);
           const json = await res.json();
           const arr = Object.keys(json.data).map((key) => [key, json.data[key]]);
           setItemUp(arr);
@@ -507,7 +513,7 @@ function Cliente({data}) {
 
     <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div className="d-flex justify-content-between flex-wrap p-2 bg-light text-dark flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom rounded mt-3">
-        <h1 className="h2">Clientes</h1>
+        <h1 className="h2">Contratos</h1>
         <div className="btn-toolbar mb-2 mb-md-0 ">
           <div className="btn-group me-2">
             <button type="button" className="btn btn-md btn-success" data-id="" data-bs-toggle="modal" data-bs-target="#exampleModal2">Novo</button>
@@ -535,7 +541,7 @@ function Cliente({data}) {
 
 export async function getServerSideProps() {
   // Fetch data from external API
-  const baseUrl = `${publicRuntimeConfig.apiUrl}/cliente`;
+  const baseUrl = `${publicRuntimeConfig.apiUrl}/contratos`;
   const res = await fetch(baseUrl)
   const data = await res.json()
 

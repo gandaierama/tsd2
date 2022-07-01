@@ -22,27 +22,32 @@ export class ClienteService {
 
   async login(loginClienteDto: LoginClienteDto){
 
-      console.log("DTO", loginClienteDto.senha);
+      console.log("DTO", loginClienteDto);
       this.logger.log(loginClienteDto.senha);
       const email = loginClienteDto.email;
       const senha = loginClienteDto.senha;
-      const user = await this.clienteRepository.find({ where: { email } });
-      console.log("USER", user);
-      if(user!==null){
-          console.log("USER", user[0].senha);
-          if (senha===user[0].senha) {
+      const user = await this.clienteRepository.findOne({ email });
 
-            const payload = {id: user[0].id, email: user[0].email };
+      if(user!==undefined){
+          console.log("USER", user);
+          if (loginClienteDto.senha===user.senha) {
+
+            const payload = {id: user.id, email: user.email };
               return {
                 access_token: this.jwtService.sign(payload),
+                id: user.id
               };
 
           } 
 
-          return false;
+          return {
+                error: "senha errada!",
+              };
         
       }
-      return null;
+      return {
+                error: "usuario não encontrado!",
+              };
  
   }
   
@@ -55,12 +60,39 @@ export class ClienteService {
     obje.senha = createClienteDto.senha;
     obje.cpf = createClienteDto.cpf;
     obje.cnpj = createClienteDto.cnpj;
+    obje.endereco = createClienteDto.endereco;
+    obje.numero = createClienteDto.numero;
+    obje.complemento = createClienteDto.complemento;
+    obje.bairro = createClienteDto.bairro;
+    obje.cidade = createClienteDto.cidade;
+    obje.estado = createClienteDto.estado;
+    obje.cep = createClienteDto.cep;
 
     return this.clienteRepository.save(obje);
   }
 
-  update(id: string, updateOrdemDto: UpdateClienteDto) {
-    return `This action updates a #${id} ordem`;
+  async update(id: string, updateOrdemDto: UpdateClienteDto) {
+
+    // Update
+    await this.clienteRepository.update(id, {
+      ...(updateOrdemDto.name && { name: updateOrdemDto.name }),
+      ...(updateOrdemDto.email && { name: updateOrdemDto.email }),
+      ...(updateOrdemDto.telefone && { name: updateOrdemDto.telefone }),
+      ...(updateOrdemDto.senha && { name: updateOrdemDto.senha }),
+      ...(updateOrdemDto.cpf && { name: updateOrdemDto.cpf }),
+      ...(updateOrdemDto.cnpj && { name: updateOrdemDto.cnpj }),
+      ...(updateOrdemDto.endereco && { name: updateOrdemDto.endereco }),
+      ...(updateOrdemDto.numero && { name: updateOrdemDto.numero }),
+      ...(updateOrdemDto.complemento && { name: updateOrdemDto.complemento }),
+      ...(updateOrdemDto.bairro && { name: updateOrdemDto.bairro }),
+      ...(updateOrdemDto.cidade && { name: updateOrdemDto.cidade }),
+      ...(updateOrdemDto.estado && { name: updateOrdemDto.estado }),
+      ...(updateOrdemDto.cep && { name: updateOrdemDto.cep })
+
+    });
+
+    // Return
+    return this.clienteRepository.findOneOrFail(id);
   }
 
   findAll(): Promise<ClienteEntity[]> {

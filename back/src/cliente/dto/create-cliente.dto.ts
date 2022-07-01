@@ -39,6 +39,12 @@ export class CreateClienteDto {
 
     @ApiProperty({ required: false, default: null })
     numero: string
+    @ApiProperty({ required: false, default: null })
+    complemento: string
+
+    @ApiProperty({ required: false, default: null })
+    cep: string
+
 
     @ApiProperty({ required: false, default: null })
       type: string

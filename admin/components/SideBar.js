@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 
 
+export   {SideBar} ;
 
 function SideBar() {
 
@@ -19,55 +20,55 @@ function SideBar() {
           <li className="nav-item"><hr/></li>
           <li className="nav-item p-1">
             <a className="btn btn-primary btn-sm 
-            w-100 mt-1 " aria-current="page" href="#">
+            w-100 mt-1 " aria-current="page" href="/">
               <span data-feather="home" className="align-text-bottom"></span>
               Home
             </a>
           </li>
           <li className="nav-item p-1">
-            <a className="btn btn-primary btn-sm w-100 mt-1" href="#">
+            <a className="btn btn-primary btn-sm w-100 mt-1" href="/motoboy">
               <span data-feather="file" className="align-text-bottom"></span>
               Motoboys
             </a>
           </li>
           <li className="nav-item p-1">
-            <a className=" btn btn-primary btn-sm w-100 mt-1" href="#">
+            <a className=" btn btn-primary btn-sm w-100 mt-1" href="/clientes">
               <span data-feather="shopping-cart" className="align-text-bottom"></span>
               Clientes
             </a>
           </li>
           <li className="nav-item p-1">
-            <a className="btn btn-primary btn-sm w-100 mt-1" href="#">
+            <a className="btn btn-primary btn-sm w-100 mt-1" href="/contratos">
               <span data-feather="shopping-cart" className="align-text-bottom"></span>
               Contratos
             </a>
           </li>
           <li className="nav-item p-1">
-            <a className="btn btn-primary btn-sm w-100 mt-1" href="#">
+            <a className="btn btn-primary btn-sm w-100 mt-1" href="/ordens">
               <span data-feather="users" className="align-text-bottom"></span>
               Ordens
             </a>
           </li>
           <li className="nav-item p-1">
-            <a className="btn  btn-primary btn-sm w-100 mt-1" href="#">
+            <a className="btn  btn-primary btn-sm w-100 mt-1" href="/entregas">
               <span data-feather="bar-chart-2" className="align-text-bottom"></span>
               Entregas
             </a>
           </li>
           <li className="nav-item p-1">
-            <a className="btn btn-primary btn-sm w-100 mt-1" href="#">
+            <a className="btn btn-primary btn-sm w-100 mt-1" href="/pacotes">
               <span data-feather="layers" className="align-text-bottom"></span>
               Pacotes de preços 
             </a>
           </li>
           <li className="nav-item p-1">
-            <a className="btn btn-primary btn-sm w-100 mt-1" href="#">
+            <a className="btn btn-primary btn-sm w-100 mt-1" href="/pagamentos">
               <span data-feather="layers" className="align-text-bottom"></span>
               Pagamentos
             </a>
           </li>
           <li className="nav-item p-1">
-            <a className="btn btn-primary btn-sm w-100 mt-1" href="#">
+            <a className="btn btn-primary btn-sm w-100 mt-1" href="/financeiro">
               <span data-feather="layers" className="align-text-bottom"></span>
               Financeiro
             </a>
@@ -78,4 +79,3 @@ function SideBar() {
     );
 }
 
-export default  SideBar ;

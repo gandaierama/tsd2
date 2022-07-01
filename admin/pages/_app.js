@@ -33,28 +33,29 @@ function App({ Component, pageProps }) {
         }
     }, [router]);
 
-    // function authCheck(url) {
-    //     // redirect to login page if accessing a private page and not logged in 
-    //     const publicPaths = ['/login'];
-    //     const path = url.split('?')[0];
-    //     if (!userService.userValue && !publicPaths.includes(path)) {
-    //         setAuthorized(false);
-    //         router.push({
-    //             pathname: '/login',
-    //             query: { returnUrl: router.asPath }
-    //         });
-    //     } else {
-    //         setAuthorized(true);
-    //     }
-    // }
-
-
     function authCheck(url) {
         // redirect to login page if accessing a private page and not logged in 
-
+        const publicPaths = ['/login'];
+        const path = url.split('?')[0];
+        console.log(userService.userValue);
+        if (!userService.userValue && !publicPaths.includes(path)) {
+            setAuthorized(false);
+            router.push({
+                pathname: '/login',
+                query: { returnUrl: router.asPath }
+            });
+        } else {
             setAuthorized(true);
-
+        }
     }
+
+
+    // function authCheck(url) {
+    //     // redirect to login page if accessing a private page and not logged in 
+
+    //         setAuthorized(true);
+
+    // }
     return (
         <>
      

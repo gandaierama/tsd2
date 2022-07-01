@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import styles from '../styles/Dash.module.css'
 import { userService } from '../services';
 import Image from 'next/image';
-import {SideBar}  from '../components/'
-export default Home;
+import {SideBar, Header}  from '../components/';
 
 function Home() {
     const [users, setUsers] = useState(null);
@@ -17,18 +16,7 @@ function Home() {
     }, []);
     return (
         <>
-        <header className={`navbar navbar-dark bg-primary sticky-top flex-md-nowrap p-0 shadow `}>
-  <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">TSD Motoboys</a>
-  <button className="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-
-  <div className="navbar-nav">
-    <div className="nav-item text-nowrap">
-      <a className="nav-link px-3 btn" href="#">Sign out</a>
-    </div>
-  </div>
-</header>
+<Header/>
         <div className="container-fluid text-light ">
   <div className="row">
     <SideBar/>
@@ -52,7 +40,7 @@ function Home() {
                 <h4>Valor total do dia</h4>
               </div>
               <div className="card-body">
-                <h1 className="display-1 border-5"> R$ 0</h1>
+                <h1 className="display-1 border-5"> R$ 58.00</h1>
               </div>
    
           </div>
@@ -65,63 +53,52 @@ function Home() {
                 <h4>Pagamentos do dia</h4>
               </div>
               <div className="card-body">
-                <h1 className="display-1 border-5"> R$ 0</h1>
+                <h1 className="display-1 border-5"> R$ 24.00</h1>
               </div>
    
           </div>
         </div>
         <div className="col-12"><hr/></div>
-                <div className="col-6 col-md-3 h-100">
+                <div className="col-12 col-md-4 h-100">
                   <div className="card text-center">
 
                       <div className="card-header">
                         <h4>Ordens Ativas</h4>
                       </div>
                       <div className="card-body">
-                        <h1 className="display-1 border-5">0</h1>
+                        <h1 className="display-1 border-5">1</h1>
                       </div>
            
                   </div>
                 </div>
 
-                <div className="col-6 col-md-3 h-100">
+                <div className="col-12 col-md-4 h-100">
                   <div className="card text-center">
 
                       <div className="card-header">
                         <h4>Entregas do dia</h4>
                       </div>
                       <div className="card-body">
-                        <h1 className="display-1 border-5">0</h1>
+                        <h1 className="display-1 border-5">2</h1>
                       </div>
            
                   </div>
                 </div>
 
-                <div className="col-6 col-md-3 h-100">
+                <div className="col-12 col-md-4 h-100">
                   <div className="card text-center">
 
                       <div className="card-header">
                         <h4>Motoboys ativos</h4>
                       </div>
                       <div className="card-body">
-                        <h1 className="display-1 border-5">0</h1>
+                        <h1 className="display-1 border-5">1</h1>
                       </div>
            
                   </div>
                 </div>
 
-                <div className="col-6 col-md-3 h-100">
-                  <div className="card text-center">
-
-                      <div className="card-header">
-                        <h4>Ordens concluídas</h4>
-                      </div>
-                      <div className="card-body">
-                        <h1 className="display-1 border-5">0</h1>
-                      </div>
-           
-                  </div>
-                </div>
+   
       </div>
       </div>
     </main>
@@ -131,3 +108,5 @@ function Home() {
         </>
     );
 }
+
+export default Home;

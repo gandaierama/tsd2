@@ -1,55 +1,97 @@
-import { useEffect } from 'react';
+import { BehaviorSubject } from 'rxjs';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
+const jwt = require('jsonwebtoken');
 import styles from '../styles/Login.module.css'
-import { userService } from '../services';
+import getConfig from 'next/config';
 import Head from 'next/head';
 import Image from 'next/image';
+import { userService } from '../services';
+
+const { serverRuntimeConfig } = getConfig();
+const userSubject = new BehaviorSubject(process.browser && JSON.parse(localStorage.getItem('user')));
 export default Login;
 
 function Login() {
     const router = useRouter();
 
     useEffect(() => {
-        // redirect to home if already logged in
+        setIsRefreshing(false);
         if (userService.userValue) {
             router.push('/');
         }
     }, [ router]);
 
-    // form validation rules 
-    const validationSchema = Yup.object().shape({
-        username: Yup.string().required('Username is required'),
-        password: Yup.string().required('Password is required')
+    const [isRefreshing, setIsRefreshing] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const [formValue, setFormValue] = useState({
+    email: "",
+    senha: ""
     });
-    const formOptions = { resolver: yupResolver(validationSchema) };
 
-    // get functions to build form with useForm() hook
-    const { register, handleSubmit, setError, formState } = useForm(formOptions);
-    const { errors } = formState;
+    const refreshData = () => {
+      router.replace("/");
+      setIsRefreshing(true);
+    };
 
-    function onSubmit({ username, password }) {
-        
-        return userService.login(username, password)
-            .then(() => {
-                // get return url from query parameters or default to '/'
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormValue((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
+  };
+
+    const onSubmit = async()=> {
+     console.log("senha", formValue.senha);
+     console.log("login", formValue.email);
+
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({ 
+              email: formValue.email,
+              senha: formValue.senha
+            }),
+            headers: new Headers({
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            }),
+          };
+          let res;
+          try {
+              let result=[];
+              const res=await fetch(`/api/login`, requestOptions);
+              const json = await res.json();
+              console.log(json);
+              if(json.data.access_token){
+                // create a jwt token that is valid for 7 days
+                const token = jwt.sign({ id: json.data.id }, "secretKeyTSDa1b9c5@!DDDD", { expiresIn: '7d' });
+                console.log(token);
+                // publish user to subscribers and store in local storage to stay logged in between page refreshes
+                const data={ id: json.data.id, access_token: token };
+
+                
+                await localStorage.setItem('user', JSON.stringify(data));
+                const user = await localStorage.getItem('user');
+           
                 const returnUrl = router.query.returnUrl || '/';
-                router.push(returnUrl);
-            })
-            .catch(error => {
-                setError('apiError', { message: error });
-            });
+                //router.push(returnUrl);
+                window.location.href='/';
+                console.log(user);
+              }else{
+                console.log("opssss");
+              }
+   
+              
+          } catch(error) {
+            console.log(error);
+          }
     }
 
-    // function onSubmit({ username, password }) {
-
-            
-    //         const returnUrl = router.query.returnUrl || '/';
-    //         router.push(returnUrl);
-    
-    // }
 
     return (
             <>
@@ -57,39 +99,46 @@ function Login() {
                 <title>TSD Administrador</title>
 
             </Head>
+
         <div className={styles.containerBlue}>
 
         <main className={styles.formSignin +` w-100 m-auto`}>
         <div className="container-fluid">
             <div className="row text-center">
                 <div className="col-12 col-md-4 offset-md-4 mt-5 ">
-                    <form onSubmit={handleSubmit(onSubmit)}>
+               
+
                         <Image className="mt-2" src={`/logo.png`} alt="" width="200" height="200"/>
                         <h1 className="h3 mb-3 fw-normal text-light">Administrador</h1>
 
                         <div className="form-floating mt-5">
-                        
-                        <input name="username"  id="floatingInput" type="email" {...register('username')} className={`form-control ${errors.username ? 'is-invalid' : ''}`} />
-                        <div className="invalid-feedback">{errors.username?.message}</div>
+                            <input 
+                                onChange={handleChange} 
+                                name="email"  
+                                id="floatingInput"
+                                type="email"
+                                className={`form-control`} 
+                            />
+             
                         <label htmlFor="floatingInput">E-mail</label>
                         </div>
-                        <div className="form-floating mt-5">
-                        
-                        <input name="password" id="floatingPassword"  type="password" {...register('password')} className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
-                        <div className="invalid-feedback">{errors.password?.message}</div>
-                        <label htmlFor="floatingPassword">Senha</label>
+                        <div className="form-floating mt-5">                            
+                            <input 
+                                onChange={handleChange} 
+                                name="senha" 
+                                id="floatingPassword"  
+                                type="password"
+                                className={`form-control`} />
+                     
+                            <label htmlFor="floatingPassword">Senha</label>
                         </div>
 
                
-                        <button disabled={formState.isSubmitting} className="btn btn-warning w-100 btn-lg">
-                        {formState.isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
+                        <button disabled={isSubmitting} onClick={onSubmit} className="btn btn-warning w-100 btn-lg">
+                        {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
                         Entrar
                         </button>
-                        {errors.apiError &&
-                        <div className="alert alert-danger mt-3 mb-0">{errors.apiError?.message}</div>
-                        }
-
-                    </form>
+                        
                 </div>
             </div>
         </div>
