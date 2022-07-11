@@ -5,21 +5,26 @@ export class Contrato {
     @PrimaryGeneratedColumn('uuid')
     id: string
 
+    @Column({ nullable: true })
+    cliente: string;
 
-    @Column({ nullable: false })
+    @Column({ nullable: true })
     id_cliente: string;
 
-    @Column({  nullable: false })
-    pacote: string;
+    @Column({  nullable: true })
+    id_pacote: string;
+
+    @Column({  nullable: true, default: true })
+    type: string;
 
     @Column({ default: true })
     isActive: boolean;
 
-          @Column({default: "2022-01-01" })
-      inicio: Date;
+    @Column({nullable: true, default: "2022-01-01" })
+    start_date: Date;
 
-      @Column({ default: "2022-01-30"})
-      fim: Date;
+    @Column({ nullable: true, default: "2022-01-30"})
+    end_date: Date;
 
     @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
     created_at: Date;
@@ -28,3 +33,5 @@ export class Contrato {
     updated_at: Date;
     
 }
+
+

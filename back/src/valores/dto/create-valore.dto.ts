@@ -5,105 +5,72 @@ export class CreateValorDto {
   	name: string;
 
 
-
+    @ApiProperty({ required: false, default: null })
+      status: string
     @ApiProperty({ required: false, default: null })
       type: string
-    @ApiProperty({ default: false })
-    segunda: boolean;
-
-    @ApiProperty({ default: '07:00' })
-    ini_segunda: string;
-
-    @ApiProperty({ default: '07:00' })
-    fim_segunda: string;
+    @ApiProperty({ default: null })
+    segunda: string;
 
 
 
 
-    @ApiProperty({ default: true })
-    terca: boolean;
+    @ApiProperty({ default: null })
+    terca: string;
 
-    @ApiProperty({ default: '07:00' })
-    ini_terca: string;
-
-    @ApiProperty({ default: '07:00' })
-    fim_terca: string;
+ 
 
 
 
-    @ApiProperty({ default: true })
-    quarta: boolean;
-
-    @ApiProperty({ default: '07:00' })
-    ini_quarta: string;
-
-    @ApiProperty({ default: '07:00' })
-    fim_quarta: string;
+    @ApiProperty({ default: null })
+    quarta: string;
 
 
 
 
-    @ApiProperty({ default: true })
-    quinta: boolean;
 
-    @ApiProperty({ default: '07:00' })
-    ini_quinta: string;
-
-    @ApiProperty({ default: '07:00' })
-    fim_quinta: string;
+    @ApiProperty({ default: null })
+    quinta: string;
 
 
 
 
-    @ApiProperty({ default: true })
-    sexta: boolean;
 
-    @ApiProperty({ default: '07:00' })
-    ini_sexta: string;
-
-    @ApiProperty({ default: '07:00' })
-    fim_sexta: string;
+    @ApiProperty({ default: null })
+    sexta: string;
 
 
-    @ApiProperty({ default: true })
-    sabado: boolean;
 
-    @ApiProperty({ default: '07:00' })
-    ini_sabado: string;
-
-    @ApiProperty({ default: '07:00' })
-    fim_sabado: string;
+    @ApiProperty({ default: null })
+    sabado: string;
 
 
-    @ApiProperty({ default: true })
-    domingo: boolean;  
 
-    @ApiProperty({ default: '07:00' })
-    ini_domingo: string;
+    @ApiProperty({ default: null })
+    domingo: string;  
 
-    @ApiProperty({ default: '07:00' })
-    fim_domingo: string;
-
-
-    @ApiProperty({ default: '20.00' })
-    diaria_periodo1: string;
-
-    @ApiProperty({ default: '25.00' })
-    diaria_periodo2: string;
-
-    @ApiProperty({ default: '30.00' })
-    diaria_periodo3: string;
 
 
 
     @ApiProperty({ default: '20.00' })
-    entrega_periodo1: string;
+    diaria1: string;
 
     @ApiProperty({ default: '25.00' })
-    entrega_periodo2: string;
+    diaria2: string;
 
     @ApiProperty({ default: '30.00' })
-    entraga_periodo3: string;
+    diaria3: string;
+
+
+
+    @ApiProperty({ default: '20.00' })
+    entrega1: string;
+
+    @ApiProperty({ default: '25.00' })
+    entrega2: string;
+
+    @ApiProperty({ default: '30.00' })
+    entrega3: string;
 
 
     

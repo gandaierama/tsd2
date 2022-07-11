@@ -24,6 +24,12 @@ export class CreateMotoboyDto {
     endereco: string
 
     @ApiProperty({ required: false, default: null })
+    complemento: string
+
+    @ApiProperty({ required: false, default: null })
+    cep: string
+
+    @ApiProperty({ required: false, default: null })
     bairro: string
 
     @ApiProperty({ required: false, default: null })

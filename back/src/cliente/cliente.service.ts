@@ -67,27 +67,28 @@ export class ClienteService {
     obje.cidade = createClienteDto.cidade;
     obje.estado = createClienteDto.estado;
     obje.cep = createClienteDto.cep;
-
+    console.log(obje);
     return this.clienteRepository.save(obje);
   }
 
   async update(id: string, updateOrdemDto: UpdateClienteDto) {
 
     // Update
+    console.log(updateOrdemDto);
     await this.clienteRepository.update(id, {
       ...(updateOrdemDto.name && { name: updateOrdemDto.name }),
-      ...(updateOrdemDto.email && { name: updateOrdemDto.email }),
-      ...(updateOrdemDto.telefone && { name: updateOrdemDto.telefone }),
-      ...(updateOrdemDto.senha && { name: updateOrdemDto.senha }),
-      ...(updateOrdemDto.cpf && { name: updateOrdemDto.cpf }),
-      ...(updateOrdemDto.cnpj && { name: updateOrdemDto.cnpj }),
-      ...(updateOrdemDto.endereco && { name: updateOrdemDto.endereco }),
-      ...(updateOrdemDto.numero && { name: updateOrdemDto.numero }),
-      ...(updateOrdemDto.complemento && { name: updateOrdemDto.complemento }),
-      ...(updateOrdemDto.bairro && { name: updateOrdemDto.bairro }),
-      ...(updateOrdemDto.cidade && { name: updateOrdemDto.cidade }),
-      ...(updateOrdemDto.estado && { name: updateOrdemDto.estado }),
-      ...(updateOrdemDto.cep && { name: updateOrdemDto.cep })
+      ...(updateOrdemDto.email && { email: updateOrdemDto.email }),
+      ...(updateOrdemDto.telefone && { telefone: updateOrdemDto.telefone }),
+      ...(updateOrdemDto.senha && { senha: updateOrdemDto.senha }),
+      ...(updateOrdemDto.cpf && { cpf: updateOrdemDto.cpf }),
+      ...(updateOrdemDto.cnpj && { cnpj: updateOrdemDto.cnpj }),
+      ...(updateOrdemDto.endereco && { endereco: updateOrdemDto.endereco }),
+      ...(updateOrdemDto.numero && { numero: updateOrdemDto.numero }),
+      ...(updateOrdemDto.complemento && { complemento: updateOrdemDto.complemento }),
+      ...(updateOrdemDto.bairro && { bairro: updateOrdemDto.bairro }),
+      ...(updateOrdemDto.cidade && { cidade: updateOrdemDto.cidade }),
+      ...(updateOrdemDto.estado && { estado: updateOrdemDto.estado }),
+      ...(updateOrdemDto.cep && { cep: updateOrdemDto.cep })
 
     });
 

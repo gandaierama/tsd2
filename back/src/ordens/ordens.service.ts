@@ -20,6 +20,7 @@ export class OrdenService {
   create(createOrdenDto: CreateOrdenDto): Promise<Orden> {
     const obje = new Orden();
     obje.id_cliente = createOrdenDto.id_cliente;
+    obje.id_pacote = createOrdenDto.id_pacote;
 
 
     return this.ordenRepository.save(obje);

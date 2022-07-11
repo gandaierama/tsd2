@@ -38,6 +38,9 @@ export class Motoboy {
     numero: string
 
     @Column({length: 65, default: "", nullable: true })
+    complemento: string
+
+    @Column({length: 65, default: "", nullable: true })
     cep: string
 
     @Column({default: null})

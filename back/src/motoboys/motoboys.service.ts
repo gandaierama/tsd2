@@ -50,13 +50,39 @@ export class MotoboyService {
     obje.telefone = createMotoboyDto.telefone;
     obje.senha = createMotoboyDto.senha;
     obje.cpf = createMotoboyDto.cpf;
-    obje.cnpj = createMotoboyDto.cnpj;
+    obje.endereco = createMotoboyDto.endereco;
+    obje.numero = createMotoboyDto.numero;
+    obje.complemento = createMotoboyDto.complemento;
+    obje.cep = createMotoboyDto.cep;
+    obje.cidade = createMotoboyDto.cidade;
+    obje.estado = createMotoboyDto.estado;
+    obje.bairro = createMotoboyDto.bairro;
     
     return this.motoboyRepository.save(obje);
   }
 
-  update(id: string, updateOrdemDto: UpdateMotoboyDto) {
-    return `This action updates a #${id} ordem`;
+    async update(id: string, updateOrdemDto: UpdateMotoboyDto) {
+
+    // Update
+    await this.motoboyRepository.update(id, {
+      ...(updateOrdemDto.name && { name: updateOrdemDto.name }),
+      ...(updateOrdemDto.email && { email: updateOrdemDto.email }),
+      ...(updateOrdemDto.telefone && { telefone: updateOrdemDto.telefone }),
+      ...(updateOrdemDto.senha && { senha: updateOrdemDto.senha }),
+      ...(updateOrdemDto.cpf && { cpf: updateOrdemDto.cpf }),
+      ...(updateOrdemDto.cnpj && { cnpj: updateOrdemDto.cnpj }),
+      ...(updateOrdemDto.endereco && { endereco: updateOrdemDto.endereco }),
+      ...(updateOrdemDto.numero && { numero: updateOrdemDto.numero }),
+      ...(updateOrdemDto.complemento && { complemento: updateOrdemDto.complemento }),
+      ...(updateOrdemDto.bairro && { bairro: updateOrdemDto.bairro }),
+      ...(updateOrdemDto.cidade && { cidade: updateOrdemDto.cidade }),
+      ...(updateOrdemDto.estado && { estado: updateOrdemDto.estado }),
+      ...(updateOrdemDto.cep && { cep: updateOrdemDto.cep })
+
+    });
+
+    // Return
+    return this.motoboyRepository.findOneOrFail(id);
   }
 
   findAll(): Promise<Motoboy[]> {

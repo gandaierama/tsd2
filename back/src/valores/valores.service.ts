@@ -20,6 +20,24 @@ export class ValoresService {
   create(createValorDto: CreateValorDto): Promise<Valor> {
     const obje = new Valor();
     obje.name = createValorDto.name;
+    obje.status = createValorDto.status;
+
+    obje.diaria1 = createValorDto.diaria1;
+    obje.diaria2 = createValorDto.diaria2;
+    obje.diaria3 = createValorDto.diaria3;
+
+    obje.entrega1 = createValorDto.entrega1;
+    obje.entrega2 = createValorDto.entrega2;
+    obje.entrega3 = createValorDto.entrega3;
+
+    obje.segunda = createValorDto.segunda;
+    obje.terca = createValorDto.terca;
+    obje.quarta = createValorDto.quarta;
+    obje.quinta = createValorDto.quinta;
+    obje.sexta = createValorDto.sexta;
+    obje.sabado = createValorDto.sabado;
+    obje.domingo = createValorDto.domingo;
+
 
 
     return this.valorRepository.save(obje);

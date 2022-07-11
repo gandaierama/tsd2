@@ -8,105 +8,52 @@ export class Valor {
     @Column({length: 65, default: "Teste", nullable: false})
     name: string
 
+    @Column({ default: null, nullable: true })
+    status: string;
 
-    @Column({ default: false })
-    segunda: boolean;
+    @Column({ default: null, nullable: true })
+    segunda: string;
 
-    @Column({ default: '07:00' })
-    ini_segunda: string;
+    @Column({ default: null, nullable: true })
+    terca: string;
 
-    @Column({ default: '07:00' })
-    fim_segunda: string;
-
-
-
-
-    @Column({ default: true })
-    terca: boolean;
-
-    @Column({ default: '07:00' })
-    ini_terca: string;
-
-    @Column({ default: '07:00' })
-    fim_terca: string;
+    @Column({ default: null, nullable: true })
+    quarta: string;
 
 
+    @Column({ default: null, nullable: true })
+    quinta: string;
 
-    @Column({ default: true })
-    quarta: boolean;
+    @Column({ default: null, nullable: true })
+    sexta: string;
 
-    @Column({ default: '07:00' })
-    ini_quarta: string;
-
-    @Column({ default: '07:00' })
-    fim_quarta: string;
-
-
-
-
-    @Column({ default: true })
-    quinta: boolean;
-
-    @Column({ default: '07:00' })
-    ini_quinta: string;
-
-    @Column({ default: '07:00' })
-    fim_quinta: string;
-
-
-
-
-    @Column({ default: true })
-    sexta: boolean;
-
-    @Column({ default: '07:00' })
-    ini_sexta: string;
-
-    @Column({ default: '07:00' })
-    fim_sexta: string;
-
-
-    @Column({ default: true })
-    sabado: boolean;
-
-    @Column({ default: '07:00' })
-    ini_sabado: string;
-
-    @Column({ default: '07:00' })
-    fim_sabado: string;
-
-
-    @Column({ default: true })
-    domingo: boolean;  
-
-    @Column({ default: '07:00' })
-    ini_domingo: string;
-
-    @Column({ default: '07:00' })
-    fim_domingo: string;
+    @Column({ default: null, nullable: true })
+    sabado: string;
+    @Column({ default: null, nullable: true })
+    domingo: string;
 
 
 
 
     @Column({ default: '20.00' })
-    diaria_periodo1: string;
-
-    @Column({ default: '25.00' })
-    diaria_periodo2: string;
-
-    @Column({ default: '30.00' })
-    diaria_periodo3: string;
-
-
+    diaria1: string;
 
     @Column({ default: '20.00' })
-    entrega_periodo1: string;
+    diaria2: string;
+
+    @Column({ default: '20.00' })
+    diaria3: string;
+
 
     @Column({ default: '25.00' })
-    entrega_periodo2: string;
+    entrega1: string;
 
-    @Column({ default: '30.00' })
-    entraga_periodo3: string;
+    @Column({ default: '25.00' })
+    entrega2: string;
+
+    @Column({ default: '25.00' })
+    entrega3: string;
+
 
 
     @Column({ default: true })

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Script from "next/script"
@@ -31,7 +30,7 @@ function App({ Component, pageProps }) {
             router.events.off('routeChangeStart', hideContent);
             router.events.off('routeChangeComplete', authCheck);
         }
-    }, [router]);
+    }, [router, autoCheck]);
 
     function authCheck(url) {
         // redirect to login page if accessing a private page and not logged in 

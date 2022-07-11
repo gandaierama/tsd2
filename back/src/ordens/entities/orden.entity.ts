@@ -9,10 +9,30 @@ export class Orden {
     id_motoboy: string;
 
     @Column({ default: '', nullable: true })
+    cliente: string;
+
+    @Column({ default: '', nullable: true })
     id_cliente: string;
 
     @Column({ default: '', nullable: true })
     id_contrato: string;
+    @Column({ default: '', nullable: true })
+    id_pacote: string;
+
+    @Column({ default: '', nullable: true })
+    entregas: string;
+
+    @Column({ default: '', nullable: true })
+    motoboys: string;
+
+    @Column({ default: '', nullable: true })
+    periodo: string;
+
+    @Column({ default: '', nullable: true })
+    diaria: string;
+
+    @Column({ default: '', nullable: true })
+    total: string;
 
            @Column({default: "2022-01-01" })
       inicio: Date;
