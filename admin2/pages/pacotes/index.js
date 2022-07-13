@@ -206,23 +206,6 @@ function Pacotes({ data }) {
     return false;
   };
 
-  const handleSubmitEdit = async (e) => {
-    const requestOptions = {
-      method: "POST",
-      body: JSON.stringify(formValueEdit),
-      headers: new Headers(fetchHeader),
-    };
-    let res;
-    try {
-      let result = [];
-      const res = await fetch(`/api/${nameModule}/edit`, requestOptions);
-      const json = await res.json();
-      setShowAlertEdit(true);
-    } catch (error) {
-      console.log(error);
-    }
-    return false;
-  };
   const handleContinueEdit = () => {
     setFormValueEdit(formClean);
     handleClose();
@@ -231,24 +214,6 @@ function Pacotes({ data }) {
 
 
 
-  const handleSubmit = async (e) => {
-    let res;
-    const requestOptions = {
-      method: "POST",
-      body: JSON.stringify(formValue),
-      headers: new Headers(fetchHeader),
-    };
-
-    try {
-      let result = [];
-      const res = await fetch(`/api/${nameModule}/insert`, requestOptions);
-      const json = await res.json();
-      setShowAlert(true);
-    } catch (error) {
-      console.log(error);
-    }
-    return false;
-  };
   const handleContinue = () => {
     setFormValue(formClean);
     handleCloseCad();
@@ -277,11 +242,11 @@ function Pacotes({ data }) {
 
       <ModalInsert 
         show={showCad}  
-        onHide={handleCloseCad} 
-        handleContinue={handleContinue} 
-        refreshData={refreshData} 
-        namePage={namePage}
-        nameModule={nameModule}
+        onHideI={handleCloseCad} 
+        handleContinueI={handleContinue} 
+        refreshDataI={refreshData} 
+        namePageI={namePage}
+        nameModuleI={nameModule}
       />
      
 

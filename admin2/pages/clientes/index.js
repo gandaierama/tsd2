@@ -77,8 +77,7 @@ function Cliente({ data }) {
   const [showEdit, setShowEdit] = useState(false);
   const [showDel, setShowDel] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
-  const [showAlertEdit, setShowAlertEdit] = useState(false);
+
 
   const handleClose = () => setShow(false);
   const handleCloseCad = () => setShowCad(false);
@@ -214,23 +213,6 @@ function Cliente({ data }) {
     return false;
   };
 
-  const handleSubmitEdit = async (e) => {
-    const requestOptions = {
-      method: "POST",
-      body: JSON.stringify(formValueEdit),
-      headers: new Headers(fetchHeader),
-    };
-    let res;
-    try {
-      let result = [];
-      const res = await fetch(`/api/${nameModule}/edit`, requestOptions);
-      const json = await res.json();
-      setShowAlertEdit(true);
-    } catch (error) {
-      console.log(error);
-    }
-    return false;
-  };
   const handleContinueEdit = () => {
     setFormValueEdit(formClean);
     handleClose();
@@ -239,29 +221,6 @@ function Cliente({ data }) {
 
 
 
-  const handleSubmit = async (e) => {
-    let res;
-    const requestOptions = {
-      method: "POST",
-      body: JSON.stringify(formValue),
-      headers: new Headers(fetchHeader),
-    };
-
-    try {
-      let result = [];
-      const res = await fetch(`/api/${nameModule}/insert`, requestOptions);
-      const json = await res.json();
-      setShowAlert(true);
-    } catch (error) {
-      console.log(error);
-    }
-    return false;
-  };
-  const handleContinue = () => {
-    setFormValue(formClean);
-    handleCloseCad();
-    refreshData();
-  };
 
 
   useEffect(() => {

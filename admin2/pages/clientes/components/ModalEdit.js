@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+
 import styles from './styles/ModalEdit.module.css';
 import Image from 'next/image';
 
@@ -199,7 +199,7 @@ function ModalEdit({show, onHide, handleContinue, namePage, refreshData, nameMod
                           onChange={handleChange}
                           value={formValue.estado}
                           name="estado"
-                          maxlength="2"
+                          maxLength="2"
                           placeholder="Digite o estado"
                           type="text"
                         />
