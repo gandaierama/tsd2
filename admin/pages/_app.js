@@ -24,6 +24,7 @@ function App({ Component, pageProps }) {
         if (!userService.userValue && !publicPaths.includes(path)) {
             setAuthorized(false);
             console.log("nao logado");
+            router.push('/login');
         } else {
             console.log("logado");
             setAuthorized(true);
