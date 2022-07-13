@@ -209,7 +209,11 @@ function Pagamentos({ data }) {
   };
 
 
-
+    const handleContinue = () => {
+    setFormValue(formClean);
+    handleCloseCad();
+    refreshData();
+  };
 
   useEffect(() => {
     setIsRefreshing(false);

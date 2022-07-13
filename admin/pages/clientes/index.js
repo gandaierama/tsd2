@@ -220,7 +220,11 @@ function Cliente({ data }) {
   };
 
 
-
+    const handleContinue = () => {
+    setFormValue(formClean);
+    handleCloseCad();
+    refreshData();
+  };
 
 
   useEffect(() => {
