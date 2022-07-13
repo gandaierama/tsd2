@@ -65,6 +65,7 @@ function Login() {
           try {
               let result=[];
               const res=await fetch(`/api/login`, requestOptions);
+              console.log(res);
               const json = await res.json();
               console.log(json);
               if(json.data.access_token){
