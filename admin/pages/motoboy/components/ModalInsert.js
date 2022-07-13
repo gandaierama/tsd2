@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import styles from './styles/ModalInsert.module.css'
 import Image from 'next/image';
 
-import { Modal, Alert, Button, Badge } from "react-bootstrap";
+import { Modal, Alert, Button, Badge,  } from "react-bootstrap";
 import Link from 'next/link'
+import InputMask from "react-input-mask";
 
-
-function ModalInsert({show, onHide, handleContinue, namePage, refreshData}) {
+function ModalInsert({show, onHide, handleContinue, namePage, refreshData, nameModule}) {
     
     const formClean={
       email: "",
@@ -21,6 +21,11 @@ function ModalInsert({show, onHide, handleContinue, namePage, refreshData}) {
       cidade: "",
       estado: "",
       cep: "",
+      telefone: ""
+    };
+    const fetchHeader={
+      "Content-Type": "application/json",
+      Accept: "application/json",
     };
     const [showAlert, setShowAlert] = useState(false);
     const [formValue, setFormValue] = useState(formClean);
@@ -34,6 +39,25 @@ function ModalInsert({show, onHide, handleContinue, namePage, refreshData}) {
           };
         });
     };
+
+     const handleSubmit = async (e) => {
+        let res;
+        const requestOptions = {
+          method: "POST",
+          body: JSON.stringify(formValue),
+          headers: new Headers(fetchHeader),
+        };
+        console.log("handleSubmit", requestOptions);
+        try {
+          let result = [];
+          const res = await fetch(`/api/${nameModule}/insert`, requestOptions);
+          const json = await res.json();
+          setShowAlert(true);
+        } catch (error) {
+          console.log(error);
+        }
+        return false;
+      };
 
     return (
         <Modal show={show} size="xl" onHide={onHide}>
@@ -71,15 +95,16 @@ function ModalInsert({show, onHide, handleContinue, namePage, refreshData}) {
                     </div>
                     <div className="col-12 col-md-6">
                       <div className="form-floating mt-2">
-                        <input
+                        <InputMask
                           className="form-control"
                           onChange={handleChange}
                           value={formValue.cpf}
                           name="cpf"
+                          mask="999.999.999-99"
                           placeholder="Digite o cpf"
                           type="text"
                         />
-                        <label>CNPJ</label>
+                        <label>CPF</label>
                       </div>
                     </div>
 

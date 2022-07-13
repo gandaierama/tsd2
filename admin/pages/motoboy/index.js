@@ -7,9 +7,11 @@ import { MDBDataTableV5 } from "mdbreact";
 import { clienteService } from "../../services";
 import { Modal, Alert, Button, Badge } from "react-bootstrap";
 import { SideBar, Header } from "../../components/";
-import {ModalInsert} from "./components/ModalInsert";
-import {ModalEdit} from "./components/ModalEdit";
+import ModalInsert from "./components/ModalInsert";
+import ModalEdit from "./components/ModalEdit";
 import { useRouter } from "next/router";
+import InputMask from "react-input-mask";
+import CurrencyFormat from 'react-currency-format';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -21,26 +23,26 @@ function Motoboy({ data }) {
     
   let userData = [];
 
-  // (data.data).map((item, index) => {
-  //   item.action = (
-  //     <div>
-  //       <div
-  //         className="btn btn-sm btn-secondary m-1"
-  //         onClick={() => handleUpdate(item.id)}
-  //       >
-  //         Editar
-  //       </div>
+  (data.data).map((item, index) => {
+    item.action = (
+      <div>
+        <div
+          className="btn btn-sm btn-secondary m-1"
+          onClick={() => handleUpdate(item.id)}
+        >
+          Editar
+        </div>
 
-  //       <div
-  //         className="btn btn-sm btn-danger m-1"
-  //         onClick={() => handleDelete(item.id)}
-  //       >
-  //         Apagar
-  //       </div>
-  //     </div>
-  //   );
-  //   userData.push(item);
-  // });
+        <div
+          className="btn btn-sm btn-danger m-1"
+          onClick={() => handleDelete(item.id)}
+        >
+          Apagar
+        </div>
+      </div>
+    );
+    userData.push(item);
+  });
   const router = useRouter();
   console.log(data);
 
@@ -57,6 +59,7 @@ function Motoboy({ data }) {
     cidade: "",
     estado: "",
     cep: "",
+    telefone: "",
   };
   const [formValueEdit, setFormValueEdit] = useState(formClean);
   const [formValue, setFormValue] = useState(formClean);
@@ -98,33 +101,33 @@ function Motoboy({ data }) {
 
 
 
-  // const [datatable, setDatatable] = useState({
-  //   columns: [
-  //     {
-  //       label: "Name",
-  //       field: "name",
-  //       width: 270,
-  //     },
-  //     {
-  //       label: "E-mail",
-  //       field: "email",
-  //       width: 200,
-  //     },
-  //     {
-  //       label: "cpf",
-  //       field: "cpf",
-  //       sort: "asc",
-  //       width: 100,
-  //     },
-  //     {
-  //       label: "Ação",
-  //       field: "action",
-  //       sort: "disabled",
-  //       width: 50,
-  //     },
-  //   ],
-  //   rows: data ,
-  // });
+  const [datatable, setDatatable] = useState({
+    columns: [
+      {
+        label: "Name",
+        field: "name",
+        width: 270,
+      },
+      {
+        label: "E-mail",
+        field: "email",
+        width: 200,
+      },
+      {
+        label: "cpf",
+        field: "cpf",
+        sort: "asc",
+        width: 100,
+      },
+      {
+        label: "Ação",
+        field: "action",
+        sort: "disabled",
+        width: 50,
+      },
+    ],
+    rows: data.data ,
+  });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -205,8 +208,7 @@ function Motoboy({ data }) {
       const res = await fetch(`/api/${nameModule}/get`, requestOptions);
       const json = await res.json();
 
-      setFormValueEdit(json.data);
-      console.log(json.data);
+      await setFormValueEdit(json.data);
       handleShow();
     } catch (error) {
       console.log(error);
@@ -270,12 +272,17 @@ function Motoboy({ data }) {
 
   return (
     <>
-      <ModalEdit show={showCad}  
-        onHide={handleCloseCad} 
-        showAlert={showAlert} 
-        handleContinue={handleContinue} 
+      <ModalEdit 
+        show={show}  
+        onHide={handleClose} 
+        handleContinue={handleContinueEdit} 
         refreshData={refreshData} 
-        namePage={namePage} />
+        namePage={namePage}
+        nameModule={nameModule}
+        formValue={formValueEdit}
+        setFormValue={setFormValueEdit}
+         />
+  
       
 
       <ModalInsert 
@@ -283,7 +290,8 @@ function Motoboy({ data }) {
         onHide={handleCloseCad} 
         handleContinue={handleContinue} 
         refreshData={refreshData} 
-        namePage={namePage} 
+        namePage={namePage}
+        nameModule={nameModule}
       />
      
 
@@ -310,7 +318,7 @@ function Motoboy({ data }) {
             </div>
 
             <div className="table-responsive text-light bg-light p-3 rounded">
-{/*              <MDBDataTableV5
+              <MDBDataTableV5
                 hover
                 entriesOptions={[5, 20, 25]}
                 entries={5}
@@ -318,7 +326,7 @@ function Motoboy({ data }) {
                 data={datatable}
                 searchTop
                 searchBottom={false}
-              />*/}
+              />
             </div>
           </main>
         </div>

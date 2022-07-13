@@ -1,7 +1,5 @@
 import { apiHandler } from '../../../helpers/api';
 
-// users in JSON file for simplicity, store in a db for production applications
-const users = require('../../../data/users.json');
 
 export default apiHandler(handler);
 
@@ -15,10 +13,7 @@ function handler(req, res) {
 
     function getUsers() {
         // return users without passwords in the response
-        const response = users.map(user => {
-            const { password, ...userWithoutPassword } = user;
-            return userWithoutPassword;
-        });
+        const response = {};
         return res.status(200).json(response);
     }
 }

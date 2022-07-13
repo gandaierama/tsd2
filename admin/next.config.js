@@ -1,4 +1,5 @@
 module.exports = {
+    productionBrowserSourceMaps: true,
     serverRuntimeConfig: {
         secret: 'secretKeyTSDa1b9c5@!DDDD'
     },

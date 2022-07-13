@@ -4,6 +4,8 @@ import { userService } from '../services';
 import Image from 'next/image';
 import {SideBar, Header}  from '../components/';
 
+
+
 function Home() {
     const [users, setUsers] = useState(null);
 
@@ -30,7 +32,7 @@ function Home() {
       <div className="container-fluid rounded bg-light text-dark pb-2">
       
       <div className="row mt-5 py-3">
-            
+
       <h2>Dados de hoje</h2>
         <div className="col-12"><hr/></div>
         <div className="col-12 col-md-6 h-100">

@@ -14,6 +14,23 @@ function App({ Component, pageProps }) {
     const router = useRouter();
     const [authorized, setAuthorized] = useState(false);
 
+
+    function authCheck(url) {
+        // redirect to login page if accessing a private page and not logged in 
+        const publicPaths = ['/login'];
+        const path = url.split('?')[0];
+        console.log(userService.userValue);
+        console.log(publicPaths.includes(path));
+        if (!userService.userValue && !publicPaths.includes(path)) {
+            setAuthorized(false);
+            console.log("nao logado");
+        } else {
+            console.log("logado");
+            setAuthorized(true);
+        }
+    }
+
+
     useEffect(() => {
         // run auth check on initial load
         authCheck(router.asPath);
@@ -30,31 +47,7 @@ function App({ Component, pageProps }) {
             router.events.off('routeChangeStart', hideContent);
             router.events.off('routeChangeComplete', authCheck);
         }
-    }, [router, autoCheck]);
-
-    function authCheck(url) {
-        // redirect to login page if accessing a private page and not logged in 
-        const publicPaths = ['/login'];
-        const path = url.split('?')[0];
-        console.log(userService.userValue);
-        if (!userService.userValue && !publicPaths.includes(path)) {
-            setAuthorized(false);
-            router.push({
-                pathname: '/login',
-                query: { returnUrl: router.asPath }
-            });
-        } else {
-            setAuthorized(true);
-        }
-    }
-
-
-    // function authCheck(url) {
-    //     // redirect to login page if accessing a private page and not logged in 
-
-    //         setAuthorized(true);
-
-    // }
+    }, [router ]);
     return (
         <>
      

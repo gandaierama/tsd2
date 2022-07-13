@@ -22,6 +22,12 @@
   }
 }
 
+
+.homeMap {
+  width: 100%;
+  height: 20rem;
+}
+
 .customFileUpload {
     border: 1px solid #ccc;
     display: inline-block;

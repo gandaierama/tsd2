@@ -49,8 +49,8 @@ services:
   admin:
     depends_on:
       - back
-    container_name: admin2
-    build: ./admin2
+    container_name: admin
+    build: ./admin
     networks:
       - new
     ports:

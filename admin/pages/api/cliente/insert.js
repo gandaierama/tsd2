@@ -16,6 +16,7 @@ export default async (req, res) => {
     estado: req.body.estado, 
     cep: req.body.cep, 
     telefone: req.body.telefone, 
+    senha: req.body.senha, 
     bairro: req.body.bairro 
   };
   let config = {

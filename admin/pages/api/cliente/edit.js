@@ -6,13 +6,13 @@ export default async (req, res) => {
     name: req.body.nome, 
     email: req.body.email, 
     cnpj: req.body.cnpj, 
-    cpf: req.body.cpf, 
     endereco: req.body.endereco, 
     numero: req.body.numero, 
     complemento: req.body.complemento, 
     cidade: req.body.cidade, 
     estado: req.body.estado, 
     cep: req.body.cep, 
+    senha: req.body.senha, 
     telefone: req.body.telefone, 
     bairro: req.body.bairro 
   };

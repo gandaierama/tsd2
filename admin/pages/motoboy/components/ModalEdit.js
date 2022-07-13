@@ -6,25 +6,16 @@ import { Modal, Alert, Button, Badge } from "react-bootstrap";
 import Link from 'next/link'
 
 
-function ModalEdit({show, onHide, handleContinue, namePage, refreshData}) {
+function ModalEdit({show, onHide, handleContinue, namePage, refreshData, nameModule, formValue, setFormValue}) {
     
-    const formClean={
-      email: "",
-      senha: "",
-      nome: "",
-      email: "",
-      cpf: "",
-      endereco: "",
-      numero: "",
-      complemento: "",
-      bairro: "",
-      cidade: "",
-      estado: "",
-      cep: "",
-    };
-    const [showAlert, setShowAlert] = useState(false);
-    const [formValue, setFormValue] = useState(formClean);
 
+    const [showAlert, setShowAlert] = useState(false);
+ 
+    const fetchHeader={
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    };
+    console.log(formValue);
     const handleChange = (event) => {
     const { name, value } = event.target;
         setFormValue((prevState) => {
@@ -35,10 +26,29 @@ function ModalEdit({show, onHide, handleContinue, namePage, refreshData}) {
         });
     };
 
+     const handleSubmit = async (e) => {
+      let res;
+      const requestOptions = {
+        method: "POST",
+        body: JSON.stringify(formValue),
+        headers: new Headers(fetchHeader),
+      };
+
+      try {
+        let result = [];
+        const res = await fetch(`/api/${nameModule}/edit`, requestOptions);
+        const json = await res.json();
+        setShowAlert(true);
+      } catch (error) {
+        console.log(error);
+      }
+      return false;
+    };
+
     return (
         <Modal show={show} size="xl" onHide={onHide}>
         <Modal.Header closeButton>
-          <Modal.Title>Novo {namePage}</Modal.Title>
+          <Modal.Title>Editar {namePage}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Alert show={showAlert} variant="success">
@@ -61,8 +71,8 @@ function ModalEdit({show, onHide, handleContinue, namePage, refreshData}) {
                         <input
                           className="form-control"
                           onChange={handleChange}
-                          value={formValue.nome}
-                          name="nome"
+                          value={formValue.name}
+                          name="name"
                           placeholder="Digite o nome"
                           type="text"
                         />
@@ -249,4 +259,4 @@ function ModalEdit({show, onHide, handleContinue, namePage, refreshData}) {
       </Modal>
     );
 }
-export  default ModalEdit ;
+export default ModalEdit;

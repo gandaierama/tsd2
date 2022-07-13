@@ -7,6 +7,7 @@ export default async (req, res) => {
   let payload = { 
     name: req.body.nome, 
     email: req.body.email, 
+    senha: req.body.senha, 
     cnpj: req.body.cnpj, 
     cpf: req.body.cpf, 
     endereco: req.body.endereco, 
@@ -19,11 +20,11 @@ export default async (req, res) => {
     bairro: req.body.bairro 
   };
   let config = {
-  headers: {
-    Authorization: user.access_token,
+    headers: {
+      Authorization: user.access_token,
+    }
   }
-}
-
+    
   console.log(payload);
   await axios
     .post(url, payload,{
@@ -34,7 +35,7 @@ export default async (req, res) => {
       res.status(200).json({ data })
     })
     .catch(({ err }) => {
-      console.log(err);
+      console.log(err.message);
       res.status(400).json({ err })
     })
 }

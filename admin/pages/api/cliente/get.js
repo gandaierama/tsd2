@@ -2,8 +2,6 @@ import axios from "axios"
 
 export default async (req, res) => {
   const url = `http://localhost:3200/cliente/${req.body.id}`
-
-  console.log(req)
   await axios
     .get(url)
     .then(({ data }) => {
