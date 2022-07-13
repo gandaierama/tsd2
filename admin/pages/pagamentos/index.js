@@ -210,30 +210,6 @@ function Pagamentos({ data }) {
 
 
 
-  const handleSubmit = async (e) => {
-    let res;
-    const requestOptions = {
-      method: "POST",
-      body: JSON.stringify(formValue),
-      headers: new Headers(fetchHeader),
-    };
-
-    try {
-      let result = [];
-      const res = await fetch(`/api/${nameModule}/insert`, requestOptions);
-      const json = await res.json();
-      setShowAlert(true);
-    } catch (error) {
-      console.log(error);
-    }
-    return false;
-  };
-  const handleContinue = () => {
-    setFormValue(formClean);
-    handleCloseCad();
-    refreshData();
-  };
-
 
   useEffect(() => {
     setIsRefreshing(false);

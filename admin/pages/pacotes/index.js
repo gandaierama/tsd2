@@ -242,11 +242,11 @@ function Pacotes({ data }) {
 
       <ModalInsert 
         show={showCad}  
-        onHideI={handleCloseCad} 
-        handleContinueI={handleContinue} 
-        refreshDataI={refreshData} 
-        namePageI={namePage}
-        nameModuleI={nameModule}
+        onHide={handleCloseCad} 
+        handleContinue={handleContinue} 
+        refreshData={refreshData} 
+        namePage={namePage}
+        nameModule={nameModule}
       />
      
 
