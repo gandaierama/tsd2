@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export default async (req, res) => {
-  const url = `http://localhost:3200/contratos/${req.body.id}`;
+  const url = `http://api.tsdmotoboys.com.br/contratos/${req.body.id}`;
   let payload = { 
     end_date: req.body.end_date, 
     id_pacote: req.body.id_pacote, 

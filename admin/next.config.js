@@ -39,7 +39,7 @@ module.exports = {
         return [
           {
             source: '/:path*',
-            destination: 'http://localhost:3200/:path*',
+            destination: 'http://api.tsdmotoboys.com.br/:path*',
           },
           {
             source: '/:path*',

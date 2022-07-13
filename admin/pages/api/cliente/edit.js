@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export default async (req, res) => {
-  const url = `http://localhost:3200/cliente/${req.body.id}`;
+  const url = `http://api.tsdmotoboys.com.br/cliente/${req.body.id}`;
   let payload = { 
     name: req.body.nome, 
     email: req.body.email, 

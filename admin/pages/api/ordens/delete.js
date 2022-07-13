@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export default async (req, res) => {
-  const url = `http://localhost:3200/ordens/${req.body.id}`;
+  const url = `http://api.tsdmotoboys.com.br/ordens/${req.body.id}`;
   await axios
     .delete(url)
     .then(({ data }) => {

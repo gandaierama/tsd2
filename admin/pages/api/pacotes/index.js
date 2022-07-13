@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export default async (req, res) => {
-  const url = `http://localhost:3200/valores`
+  const url = `http://api.tsdmotoboys.com.br/valores`
   await axios
     .get(url)
     .then(({ data }) => {
