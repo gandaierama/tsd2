@@ -1,7 +1,10 @@
 import axios from "axios"
+const { publicRuntimeConfig } = getConfig();
 
 export default async (req, res) => {
-  const url = `http://api.tsdmotoboys.com.br/cliente/${req.body.id}`
+  const url = `${publicRuntimeConfig.backUrl}/cliente/${req.body.id}`;
+  console.log("Req",req.body);
+  console.log("Url",url);
   await axios
     .get(url)
     .then(({ data }) => {
