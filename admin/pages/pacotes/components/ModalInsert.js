@@ -1,17 +1,67 @@
 import { useState, useEffect } from 'react';
 import styles from './styles/ModalInsert.module.css'
 import Image from 'next/image';
-
+import InputMask from "react-input-mask";
+import CurrencyFormat from 'react-currency-format';
 import { Modal, Alert, Button, Badge,  } from "react-bootstrap";
 import Link from 'next/link'
-import InputMask from "react-input-mask";
+
 
 function ModalInsert({show, onHide, handleContinue, namePage, refreshData, nameModule}) {
     
-    const formClean={
-    };
+     const formClean={
+      nome:"",
+      diaria1: 0,
+      diaria2: "",
+      diaria3: "",
+      entrega1: "",
+      entrega2: "",
+      entrega3: "",
+      segunda: "",
+      terca: "",
+      quarta: "",
+      quinta: "",
+      sexta: "",
+      sabado: "",
+      domingo: "",
+      dia1: false,
+      moto1: "",
+      periodo1: "",
+      start1: "",
+      end1: "",
+      dia2: false,
+      moto2: "",
+      periodo2: "",
+      start2: "",
+      end2: "",
+      dia3: false,
+      moto3: "",
+      periodo3: "",
+      start3: "",
+      end3: "",
+      dia4: false,
+      moto4: "",
+      periodo4: "",
+      start4: "",
+      end4: "",
+      dia5: false,
+      moto5: "",
+      periodo5: "",
+      start5: "",
+      end5: "",
+      dia6: false,
+      moto6: "",
+      periodo6: "",
+      start6: "",
+      end6: "",
+      dia7: false,
+      moto7: "",
+      periodo7: "",
+      start7: "",
+      end7: "",
 
- const fetchHeader={
+    };
+    const fetchHeader={
       "Content-Type": "application/json",
       Accept: "application/json",
     };
@@ -68,7 +118,7 @@ function ModalInsert({show, onHide, handleContinue, namePage, refreshData, nameM
               <div className="row">
                 <div className="col-12 ">
                   <div className="row">
-                                      <div className="col-12 ">
+                    <div className="col-12 ">
 
 
                       <div className="form-floating mt-2">
@@ -184,6 +234,550 @@ function ModalInsert({show, onHide, handleContinue, namePage, refreshData, nameM
                         <label>Entrega madrugada</label>
                       </div>
                     </div>
+                   
+                      <div className="col-12">
+                      <hr/>
+                      <b>Agenda</b>
+                    </div>
+                    <div className="col-12 mt-1 p-2">
+                      <div className="row  p-2 border">
+                        <div className="col-2">
+                
+                          <div className="form-floating form-control py-3 px-2 mt-2">
+                            <div className="form-check">
+                              <input className="form-check-input" onChange={handleChange} type="checkbox" name="dia1" value={formValue.dia1} />
+                              <label className="form-check-label">Segunda</label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="col-2">
+                   
+                          <div className="input-group form-floating mt-2">
+
+                            <input
+                              className="form-control"
+                              onChange={handleChange}
+                              name="moto1"
+                              value={formValue.moto1}
+                              placeholder="Digite o valor"
+                              type="number"
+                            />
+                            <label>Qtd. Motoboys</label>
+                          </div>
+                        </div>
+                        <div className="col-2">
+                      
+                          <div className="input-group form-floating mt-2">
+                            <select
+                              className="form-select"
+                              onChange={handleChange}
+                              name="periodo1"
+                              placeholder="Escolha o período"
+                     
+                              >
+                              <option ></option>
+                              <option value="1">Normal</option>
+                              <option value="2">Norturno</option>
+                              <option value="3">Madrugada</option>
+                            </select>
+                            <label>Período</label>
+                          </div>
+
+                         
+
+                        </div>
+
+                         <div className="col-3">
+                            <div className="form-floating mt-2">
+                              <InputMask
+                                className="form-control"
+                                onChange={handleChange}
+                                name="start1"
+                                mask="99:99"
+                                placeholder="Digite a hora inicial"
+                                type="text"
+                              />
+                              <label>Hora início</label>
+                            </div>
+                          </div>
+                          <div className="col-3">
+                            <div className="form-floating mt-2">
+                              <InputMask
+                                className="form-control"
+                                onChange={handleChange}
+                                name="end1"
+                                mask="99:99"
+                                placeholder="Digite a hora final"
+                                type="text"
+                              />
+                              <label>Hora fim</label>
+                            </div>
+                          </div>
+
+                      </div>
+
+
+                      <div className="row  p-2 border">
+                        <div className="col-2">
+                
+                          <div className="form-floating form-control py-3 px-2 mt-2">
+                            <div className="form-check">
+                              <input className="form-check-input" onChange={handleChange} type="checkbox" name="dia2" value={formValue.dia2} />
+                              <label className="form-check-label">Terça</label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="col-2">
+                   
+                          <div className="input-group form-floating mt-2">
+
+                            <input
+                              className="form-control"
+                              onChange={handleChange}
+                              name="moto2"
+                              placeholder="Digite o valor"
+                              type="number"
+                            />
+                            <label>Qtd. Motoboys</label>
+                          </div>
+                        </div>
+                        <div className="col-2">
+                      
+                          <div className="input-group form-floating mt-2">
+                            <select
+                              className="form-select"
+                              onChange={handleChange}
+                              name="periodo2"
+                              placeholder="Escolha o período"
+                     
+                              >
+                              <option ></option>
+                              <option value="1">Normal</option>
+                              <option value="2">Norturno</option>
+                              <option value="3">Madrugada</option>
+                            </select>
+                            <label>Período</label>
+                          </div>
+
+                         
+
+                        </div>
+
+                          <div className="col-3">
+                            <div className="form-floating mt-2">
+                              <InputMask
+                                className="form-control"
+                                onChange={handleChange}
+                                name="start2"
+                                mask="99:99"
+                                placeholder="Digite a hora inicial"
+                                type="text"
+                              />
+                              <label>Hora início</label>
+                            </div>
+                          </div>
+                          <div className="col-3">
+                            <div className="form-floating mt-2">
+                              <InputMask
+                                className="form-control"
+                                onChange={handleChange}
+                                name="end2"
+                                mask="99:99"
+                                placeholder="Digite a hora final"
+                                type="text"
+                              />
+                              <label>Hora fim</label>
+                            </div>
+                          </div>
+                      </div>
+                
+
+                      <div className="row  p-2 border">
+                        <div className="col-2">
+                
+                          <div className="form-floating form-control py-3 px-2 mt-2">
+                            <div className="form-check">
+                              <input className="form-check-input"  onChange={handleChange} type="checkbox" name="dia3" value={formValue.dia3} />
+                              <label className="form-check-label">Quarta</label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="col-2">
+                   
+                          <div className="input-group form-floating mt-2">
+
+                            <input
+                              className="form-control"
+                              onChange={handleChange}
+                              name="moto3"
+                              placeholder="Digite o valor"
+                              type="number"
+                            />
+                            <label>Qtd. Motoboys</label>
+                          </div>
+                        </div>
+                        <div className="col-2">
+                      
+                          <div className="input-group form-floating mt-2">
+                            <select
+                              className="form-select"
+                              onChange={handleChange}
+                              name="periodo3"
+                              placeholder="Escolha o período"
+                     
+                              >
+                              <option ></option>
+                              <option value="1">Normal</option>
+                              <option value="2">Norturno</option>
+                              <option value="3">Madrugada</option>
+                            </select>
+                            <label>Período</label>
+                          </div>
+
+                         
+
+                        </div>
+
+                         <div className="col-3">
+                            <div className="form-floating mt-2">
+                              <InputMask
+                                className="form-control"
+                                onChange={handleChange}
+                                name="start3"
+                                mask="99:99"
+                                placeholder="Digite a hora inicial"
+                                type="text"
+                              />
+                              <label>Hora início</label>
+                            </div>
+                          </div>
+                          <div className="col-3">
+                            <div className="form-floating mt-2">
+                              <InputMask
+                                className="form-control"
+                                onChange={handleChange}
+                                name="end3"
+                                mask="99:99"
+                                placeholder="Digite a hora final"
+                                type="text"
+                              />
+                              <label>Hora fim</label>
+                            </div>
+                          </div>
+                      </div>
+
+
+                    {/*  <div className="row  p-2 border">
+                        <div className="col-2">
+                
+                          <div className="form-floating form-control py-3 px-2 mt-2">
+                            <div className="form-check">
+                              <input className="form-check-input"type="checkbox"  onChange={handleChange} type="checkbox" name="dia4" value={formValue.dia4} />
+                              <label className="form-check-label">Quinta</label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="col-2">
+                   
+                          <div className="input-group form-floating mt-2">
+
+                            <input
+                              className="form-control"
+                              onChange={handleChange}
+                              name="moto4"
+                              placeholder="Digite o valor"
+                              type="number"
+                            />
+                            <label>Qtd. Motoboys</label>
+                          </div>
+                        </div>
+                        <div className="col-2">
+                      
+                          <div className="input-group form-floating mt-2">
+                            <select
+                              className="form-select"
+                              onChange={handleChange}
+                              name="periodo4"
+                              placeholder="Escolha o período"
+                     
+                              >
+                              <option ></option>
+                              <option value="1">Normal</option>
+                              <option value="2">Norturno</option>
+                              <option value="3">Madrugada</option>
+                            </select>
+                            <label>Período</label>
+                          </div>
+
+                         
+
+                        </div>
+
+                          <div className="col-3">
+                            <div className="form-floating mt-2">
+                              <InputMask
+                                className="form-control"
+                                onChange={handleChange}
+                                name="start4"
+                                mask="99:99"
+                                placeholder="Digite a hora inicial"
+                                type="text"
+                              />
+                              <label>Hora início</label>
+                            </div>
+                          </div>
+                          <div className="col-3">
+                            <div className="form-floating mt-2">
+                              <InputMask
+                                className="form-control"
+                                onChange={handleChange}
+                                name="end4"
+                                mask="99:99"
+                                placeholder="Digite a hora final"
+                                type="text"
+                              />
+                              <label>Hora fim</label>
+                            </div>
+                          </div>
+                      </div>
+*/}
+
+
+                      <div className="row  p-2 border">
+                        <div className="col-2">
+                
+                          <div className="form-floating form-control py-3 px-2 mt-2">
+                            <div className="form-check">
+                              <input className="form-check-input"   onChange={handleChange} type="checkbox" name="dia5" value={formValue.dia5} />
+                              <label className="form-check-label">Sexta</label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="col-2">
+                   
+                          <div className="input-group form-floating mt-2">
+
+                            <input
+                              className="form-control"
+                              onChange={handleChange}
+                              name="moto5"
+                              placeholder="Digite o valor"
+                              type="number"
+                            />
+                            <label>Qtd. Motoboys</label>
+                          </div>
+                        </div>
+                        <div className="col-2">
+                      
+                          <div className="input-group form-floating mt-2">
+                            <select
+                              className="form-select"
+                              onChange={handleChange}
+                              name="periodo5"
+                              placeholder="Escolha o período"
+                     
+                              >
+                              <option ></option>
+                              <option value="1">Normal</option>
+                              <option value="2">Norturno</option>
+                              <option value="3">Madrugada</option>
+                            </select>
+                            <label>Período</label>
+                          </div>
+
+                         
+
+                        </div>
+
+                          <div className="col-3">
+                            <div className="form-floating mt-2">
+                              <InputMask
+                                className="form-control"
+                                onChange={handleChange}
+                                name="start5"
+                                mask="99:99"
+                                placeholder="Digite a hora inicial"
+                                type="text"
+                              />
+                              <label>Hora início</label>
+                            </div>
+                          </div>
+                          <div className="col-3">
+                            <div className="form-floating mt-2">
+                              <InputMask
+                                className="form-control"
+                                onChange={handleChange}
+                                name="end5"
+                                mask="99:99"
+                                placeholder="Digite a hora final"
+                                type="text"
+                              />
+                              <label>Hora fim</label>
+                            </div>
+                          </div>
+                      </div>
+
+
+
+                      <div className="row  p-2 border">
+                        <div className="col-2">
+                
+                          <div className="form-floating form-control py-3 px-2 mt-2">
+                            <div className="form-check">
+                              <input className="form-check-input"   onChange={handleChange} type="checkbox" name="dia6" value={formValue.dia6} />
+                              <label className="form-check-label">Sábado</label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="col-2">
+                   
+                          <div className="input-group form-floating mt-2">
+
+                            <input
+                              className="form-control"
+                              onChange={handleChange}
+                              name="moto6"
+                              placeholder="Digite o valor"
+                              type="number"
+                            />
+                            <label>Qtd. Motoboys</label>
+                          </div>
+                        </div>
+                        <div className="col-2">
+                      
+                          <div className="input-group form-floating mt-2">
+                            <select
+                              className="form-select"
+                              onChange={handleChange}
+                              name="periodo6"
+                              placeholder="Escolha o período"
+                     
+                              >
+                              <option ></option>
+                              <option value="1">Normal</option>
+                              <option value="2">Norturno</option>
+                              <option value="3">Madrugada</option>
+                            </select>
+                            <label>Período</label>
+                          </div>
+
+                         
+
+                        </div>
+
+                          <div className="col-3">
+                            <div className="form-floating mt-2">
+                              <InputMask
+                                className="form-control"
+                                onChange={handleChange}
+                                name="start6"
+                                mask="99:99"
+                                placeholder="Digite a hora inicial"
+                                type="text"
+                              />
+                              <label>Hora início</label>
+                            </div>
+                          </div>
+                          <div className="col-3">
+                            <div className="form-floating mt-2">
+                              <InputMask
+                                className="form-control"
+                                onChange={handleChange}
+                                name="end6"
+                                mask="99:99"
+                                placeholder="Digite a hora final"
+                                type="text"
+                              />
+                              <label>Hora fim</label>
+                            </div>
+                          </div>
+                      </div>
+
+
+                      <div className="row  p-2 border">
+                        <div className="col-2">
+                
+                          <div className="form-floating form-control py-3 px-2 mt-2">
+                            <div className="form-check">
+                              <input className="form-check-input"   onChange={handleChange} type="checkbox" name="dia7" value={formValue.dia7} />
+                              <label className="form-check-label">Domingo</label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="col-2">
+                   
+                          <div className="input-group form-floating mt-2">
+
+                            <input
+                              className="form-control"
+                              onChange={handleChange}
+                              name="moto1"
+                              placeholder="Digite o valor"
+                              type="number"
+                            />
+                            <label>Qtd. Motoboys</label>
+                          </div>
+                        </div>
+                        <div className="col-2">
+                      
+                          <div className="input-group form-floating mt-2">
+                            <select
+                              className="form-select"
+                              onChange={handleChange}
+                              name="periodo1"
+                              placeholder="Escolha o período"
+                     
+                              >
+                              <option ></option>
+                              <option value="1">Normal</option>
+                              <option value="2">Norturno</option>
+                              <option value="3">Madrugada</option>
+                            </select>
+                            <label>Período</label>
+                          </div>
+
+                         
+
+                        </div>
+
+                         <div className="col-3">
+                            <div className="form-floating mt-2">
+                              <InputMask
+                                className="form-control"
+                                onChange={handleChange}
+                                name="start7"
+                                mask="99:99"
+                                placeholder="Digite a hora inicial"
+                                type="text"
+                              />
+                              <label>Hora início</label>
+                            </div>
+                          </div>
+                          <div className="col-3">
+                            <div className="form-floating mt-2">
+                              <InputMask
+                                className="form-control"
+                                onChange={handleChange}
+                                name="end7"
+                                mask="99:99"
+                                placeholder="Digite a hora final"
+                                type="text"
+                              />
+                              <label>Hora fim</label>
+                            </div>
+                          </div>
+                      </div>
+
+            
+                    </div>
+
                   </div>
                   <div className="row mt-5">
                     <div className="col-12 mt-3 d-flex">
