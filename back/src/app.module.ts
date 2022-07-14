@@ -19,7 +19,7 @@ import { TrackModule } from './track/track.module';
   imports: [
    TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'database',
       port: 3306,
       username: 'root',
       password: 'test',
