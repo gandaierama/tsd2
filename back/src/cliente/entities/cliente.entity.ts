@@ -10,7 +10,7 @@ export class ClienteEntity {
 
     @Column({length: 65, default: "ghost@texte.com", nullable: false})
     email: string
-    @Column({length: 65, default: "", nullable: false})
+    @Column({length: 65, default: "", nullable: true})
     senha: string
 
     @Column({length: 65, default: "", nullable: true })

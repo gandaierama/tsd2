@@ -53,6 +53,7 @@ export class ClienteService {
   
 
   create(createClienteDto: CreateClienteDto): Promise<ClienteEntity> {
+    console.log("Back Create1", createClienteDto);
     const obje = new ClienteEntity();
     obje.name = createClienteDto.name;
     obje.email = createClienteDto.email;
@@ -67,7 +68,7 @@ export class ClienteService {
     obje.cidade = createClienteDto.cidade;
     obje.estado = createClienteDto.estado;
     obje.cep = createClienteDto.cep;
-    console.log("Back Create", obje);
+    console.log("Back Create2", obje);
     return this.clienteRepository.save(obje);
   }
 
