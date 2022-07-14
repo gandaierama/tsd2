@@ -16,10 +16,10 @@ export class Motoboy {
     @Column({length: 65, default: "", nullable: true })
     telefone: string
 
-    @Column({length: 65, unique:true, default: "", nullable: true })
+    @Column({length: 65,  default: "", nullable: true })
     cpf: string
 
-    @Column({length: 65, unique:true,  default: "", nullable: true })
+    @Column({length: 65,   default: "", nullable: true })
     cnpj: string
 
     @Column({length: 65, default: "", nullable: true})
