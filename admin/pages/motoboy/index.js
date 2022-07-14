@@ -21,28 +21,30 @@ const namePage ="Motoboy";
 function Motoboy({ data }) {
 
     
-  let userData = [];
+    let userData = [];
+    if(data.data){
+    data.data.map((item, index) => {
+      item.action = (
+        <div>
+          <div
+            className="btn btn-sm btn-secondary m-1"
+            onClick={() => handleUpdate(item.id)}
+          >
+            Editar
+          </div>
 
-  (data.data).map((item, index) => {
-    item.action = (
-      <div>
-        <div
-          className="btn btn-sm btn-secondary m-1"
-          onClick={() => handleUpdate(item.id)}
-        >
-          Editar
+          <div
+            className="btn btn-sm btn-danger m-1"
+            onClick={() => handleDelete(item.id)}
+          >
+            Apagar
+          </div>
         </div>
-
-        <div
-          className="btn btn-sm btn-danger m-1"
-          onClick={() => handleDelete(item.id)}
-        >
-          Apagar
-        </div>
-      </div>
-    );
-    userData.push(item);
-  });
+      );
+      item.inicio = new Date(item.inicio).toLocaleDateString('pt-BR');
+      userData.push(item);
+    });
+  }
   const router = useRouter();
   console.log(data);
 
