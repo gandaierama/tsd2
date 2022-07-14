@@ -67,7 +67,7 @@ export class ClienteService {
     obje.cidade = createClienteDto.cidade;
     obje.estado = createClienteDto.estado;
     obje.cep = createClienteDto.cep;
-    console.log(obje);
+    console.log("Back Create", obje);
     return this.clienteRepository.save(obje);
   }
 

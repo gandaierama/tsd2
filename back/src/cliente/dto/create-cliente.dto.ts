@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 export class CreateClienteDto {
 
-	@ApiProperty({ required: true, default: "Daniel" })
+	@ApiProperty({ required: false, default: "Daniel" })
   	name: string;
 
   	@ApiProperty({ required: false, default: "daniel@teste.com" })
