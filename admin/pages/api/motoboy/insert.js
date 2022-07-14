@@ -2,6 +2,7 @@ import axios from "axios"
 import { userService } from '../../../services';
 
 export default async (req, res) => {
+  console.log(req.body);
   const url = `http://api.tsdmotoboys.com.br/motoboys`;
   const user = userService.userValue;
   let payload = { 

@@ -4,6 +4,7 @@ module.exports = {
         secret: 'secretKeyTSDa1b9c5@!DDDD'
     },
     publicRuntimeConfig: {
+        backUrl: 'http://api.tsdmotoboys.com.br',
         apiUrl: process.env.NODE_ENV === 'development'
             ? 'http://localhost:3300/api' // development api
             : 'http://admin.tsdmotoboys.com.br/api' // production api
