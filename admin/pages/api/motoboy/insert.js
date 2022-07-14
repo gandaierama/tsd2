@@ -1,9 +1,12 @@
 import axios from "axios"
 import { userService } from '../../../services';
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
 
 export default async (req, res) => {
-  console.log(req.body);
-  const url = `http://api.tsdmotoboys.com.br/motoboys`;
+  const url = `${publicRuntimeConfig.backUrl}/motoboys`;
+  console.log("Req",req.body);
+  console.log("Url",url);
   const user = userService.userValue;
   let payload = { 
     name: req.body.nome, 
@@ -26,7 +29,7 @@ export default async (req, res) => {
     }
   }
     
-  console.log(payload);
+  console.log("Pay",payload);
   await axios
     .post(url, payload,{
   headers: {

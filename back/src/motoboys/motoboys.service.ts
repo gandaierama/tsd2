@@ -43,6 +43,8 @@ export class MotoboyService {
   
 
   create(createMotoboyDto: CreateMotoboyDto): Promise<Motoboy> {
+
+    console.log("Req",createMotoboyDto);
     const obje = new Motoboy();
     obje.name = createMotoboyDto.name;
 
@@ -57,7 +59,7 @@ export class MotoboyService {
     obje.cidade = createMotoboyDto.cidade;
     obje.estado = createMotoboyDto.estado;
     obje.bairro = createMotoboyDto.bairro;
-    
+    console.log("Objeto",obje);
     return this.motoboyRepository.save(obje);
   }
 

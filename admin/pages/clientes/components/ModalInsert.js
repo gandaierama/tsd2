@@ -21,7 +21,7 @@ function ModalInsert({show, onHide, handleContinue, namePage, refreshData, nameM
       cidade: "",
       estado: "",
       cep: "",
-      teleefone: ""
+      telefone: ""
     };
     const fetchHeader={
       "Content-Type": "application/json",

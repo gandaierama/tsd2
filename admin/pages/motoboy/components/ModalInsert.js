@@ -21,7 +21,7 @@ function ModalInsert({show, onHide, handleContinue, namePage, refreshData, nameM
       cidade: "",
       estado: "",
       cep: "",
-      teleefone: ""
+      telefone: ""
     };
     const fetchHeader={
       "Content-Type": "application/json",
@@ -38,6 +38,7 @@ function ModalInsert({show, onHide, handleContinue, namePage, refreshData, nameM
             [name]: value,
           };
         });
+        console.log(formValue);
     };
 
      const handleSubmit = async (e) => {
@@ -47,10 +48,11 @@ function ModalInsert({show, onHide, handleContinue, namePage, refreshData, nameM
           body: JSON.stringify(formValue),
           headers: new Headers(fetchHeader),
         };
-
+        console.log(requestOptions);
         try {
           let result = [];
           const res = await fetch(`/api/${nameModule}/insert`, requestOptions);
+          console.log(res);
           const json = await res.json();
           setShowAlert(true);
         } catch (error) {
