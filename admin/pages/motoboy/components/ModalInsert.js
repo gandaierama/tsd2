@@ -21,7 +21,7 @@ function ModalInsert({show, onHide, handleContinue, namePage, refreshData, nameM
       cidade: "",
       estado: "",
       cep: "",
-      telefone: ""
+      teleefone: ""
     };
     const fetchHeader={
       "Content-Type": "application/json",
@@ -47,7 +47,7 @@ function ModalInsert({show, onHide, handleContinue, namePage, refreshData, nameM
           body: JSON.stringify(formValue),
           headers: new Headers(fetchHeader),
         };
-        console.log("handleSubmit", requestOptions);
+
         try {
           let result = [];
           const res = await fetch(`/api/${nameModule}/insert`, requestOptions);
@@ -101,7 +101,7 @@ function ModalInsert({show, onHide, handleContinue, namePage, refreshData, nameM
                           value={formValue.cpf}
                           name="cpf"
                           mask="999.999.999-99"
-                          placeholder="Digite o cpf"
+                          placeholder="Digite o CPF"
                           type="text"
                         />
                         <label>CPF</label>
@@ -222,13 +222,14 @@ function ModalInsert({show, onHide, handleContinue, namePage, refreshData, nameM
 
                     <div className="col-12 col-md-6">
                       <div className="form-floating mt-2">
-                        <input
+                        <InputMask
                           className="form-control"
                           onChange={handleChange}
                           value={formValue.cep}
                           name="cep"
                           placeholder="Digite o cep"
                           type="text"
+                          mask="99999-999"
                         />
                         <label>CEP</label>
                       </div>
