@@ -1,7 +1,9 @@
 import axios from "axios"
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
 
 export default async (req, res) => {
-  const url = `http://api.tsdmotoboys.com.br/cliente/${req.body.id}`;
+  const url = `${publicRuntimeConfig.apiUrl}/cliente/${req.body.id}`;
   await axios
     .delete(url)
     .then(({ data }) => {

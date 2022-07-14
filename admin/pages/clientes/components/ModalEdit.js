@@ -1,4 +1,4 @@
-
+import { useState, useEffect } from "react";
 import styles from './styles/ModalEdit.module.css';
 import Image from 'next/image';
 
