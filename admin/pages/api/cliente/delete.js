@@ -3,6 +3,7 @@ import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 
 export default async (req, res) => {
+  console.log(req.body);
   const url = `${publicRuntimeConfig.backUrl}/cliente/${req.body.id}`;
   await axios
     .delete(url)
