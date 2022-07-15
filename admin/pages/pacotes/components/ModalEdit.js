@@ -17,17 +17,28 @@ function ModalEdit({show, onHide, handleContinue, namePage, refreshData, nameMod
     }
     if(formValue.segunda){
       const segunda = JSON.parse(formValue.segunda);
-      console.log("segunda", segunda.motoboys);
-      const value1=segunda.motoboys;
-      const name="moto1"
-      
+      console.log("segunda", segunda);
+      setFormValue(formValue => ({
+        ...formValue,
+        dia1: segunda.status,
+        moto1: segunda.motoboys,
+        start1: segunda.start,
+        end1: segunda.end,
+        periodo1: segunda.periodo,
+      }));
         
     }
     if(formValue.terca){
       const terca = JSON.parse(formValue.terca);
       console.log("terca", terca.motoboys);
-      const value2=terca.motoboys;
-      const name="moto2"
+      setFormValue(formValue => ({
+        ...formValue,
+        dia2: terca.status,
+        moto2: terca.motoboys,
+        start2: terca.start,
+        end2: terca.end,
+        period2: terca.periodo,
+      }));
       
     }
     if(formValue.quarta){
