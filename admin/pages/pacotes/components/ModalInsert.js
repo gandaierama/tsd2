@@ -470,12 +470,12 @@ function ModalInsert({show, onHide, handleContinue, namePage, refreshData, nameM
                       </div>
 
 
-                    {/*  <div className="row  p-2 border">
+                      <div className="row  p-2 border">
                         <div className="col-2">
                 
                           <div className="form-floating form-control py-3 px-2 mt-2">
                             <div className="form-check">
-                              <input className="form-check-input"type="checkbox"  onChange={handleChange} type="checkbox" name="dia4" value={formValue.dia4} />
+                              <input className="form-check-input" type="checkbox"  onChange={handleChange} type="checkbox" name="dia4" value={formValue.dia4} />
                               <label className="form-check-label">Quinta</label>
                             </div>
                           </div>
@@ -544,7 +544,7 @@ function ModalInsert({show, onHide, handleContinue, namePage, refreshData, nameM
                             </div>
                           </div>
                       </div>
-*/}
+
 
 
                       <div className="row  p-2 border">
