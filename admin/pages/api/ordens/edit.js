@@ -1,7 +1,9 @@
 import axios from "axios"
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
 
 export default async (req, res) => {
-  const url = `http://api.tsdmotoboys.com.br/ordens/${req.body.id}`;
+  const url = `${publicRuntimeConfig.backUrl}/ordens/${req.body.id}`;
   let payload = { 
     name: req.body.name, 
     email: req.body.email, 

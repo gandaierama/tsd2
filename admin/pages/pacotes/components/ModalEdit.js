@@ -39,13 +39,19 @@ function ModalEdit({show, onHide, handleContinue, namePage, refreshData, nameMod
         end2: terca.end,
         period2: terca.periodo,
       }));
-      
+        
     }
     if(formValue.quarta){
       const quarta = JSON.parse(formValue.quarta);
       console.log("quarta", quarta.motoboys);
-      const value3=quarta.motoboys;
-      const name="moto1"
+      setFormValue(formValue => ({
+        ...formValue,
+        dia3: quarta.status,
+        moto3: quarta.motoboys,
+        start3: quarta.start,
+        end3: quarta.end,
+        period3: quarta.periodo,
+      }));
       
         
     }

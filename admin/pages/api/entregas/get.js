@@ -1,7 +1,10 @@
 import axios from "axios"
 
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
+
 export default async (req, res) => {
-  const url = `http://api.tsdmotoboys.com.br/motoboys/${req.body.id}`
+  const url = `${publicRuntimeConfig.backUrl}/entregas/${req.body.id}`
   await axios
     .get(url)
     .then(({ data }) => {

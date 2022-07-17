@@ -1,8 +1,11 @@
 import axios from "axios"
 import { userService } from '../../../services';
 
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
+
 export default async (req, res) => {
-  const url = `http://api.tsdmotoboys.com.br/pagamentos`;
+  const url = `${publicRuntimeConfig.backUrl}/pagamentos`;
   const user = userService.userValue;
   let payload = { 
     name: req.body.nome, 

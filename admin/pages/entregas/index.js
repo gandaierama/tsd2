@@ -168,7 +168,7 @@ function Entregas({ data }) {
     let res;
     try {
       let result = [];
-      const res = await fetch(`/api/${nameModule}/delete`, requestOptions);
+      const res = await fetch(`${publicRuntimeConfig.apiUrl}/${nameModule}/delete`, requestOptions);
       const json = await res.json();
       refreshData();
     } catch (error) {
@@ -197,7 +197,7 @@ function Entregas({ data }) {
     let res;
     try {
       let result = [];
-      const res = await fetch(`/api/${nameModule}/get`, requestOptions);
+      const res = await fetch(`${publicRuntimeConfig.apiUrl}/${nameModule}/get`, requestOptions);
       const json = await res.json();
 
       await setFormValueEdit(json.data);
@@ -217,7 +217,7 @@ function Entregas({ data }) {
     let res;
     try {
       let result = [];
-      const res = await fetch(`/api/${nameModule}/edit`, requestOptions);
+      const res = await fetch(`${publicRuntimeConfig.apiUrl}/${nameModule}/edit`, requestOptions);
       const json = await res.json();
       setShowAlertEdit(true);
     } catch (error) {
@@ -243,7 +243,7 @@ function Entregas({ data }) {
 
     try {
       let result = [];
-      const res = await fetch(`/api/${nameModule}/insert`, requestOptions);
+      const res = await fetch(`${publicRuntimeConfig.apiUrl}/${nameModule}/insert`, requestOptions);
       const json = await res.json();
       setShowAlert(true);
     } catch (error) {

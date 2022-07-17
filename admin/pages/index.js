@@ -26,13 +26,13 @@ function Home() {
     <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 className="h2">Home</h1>
-      
+        
       </div>
 
       <div className="container-fluid rounded bg-light text-dark pb-2">
       
       <div className="row mt-5 py-3">
-
+        <div id="google-map" />
       <h2>Dados de hoje</h2>
         <div className="col-12"><hr/></div>
         <div className="col-12 col-md-6 h-100">
