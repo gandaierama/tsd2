@@ -27,7 +27,7 @@ const FotoScreen = ({ navigation }) => {
 
   useEffect(() => {
     (async () => {
-        const cameraStatus = await Camera.requestPermissionsAsync();
+        const cameraStatus = await Camera.requestCameraPermissionsAsync();
         setHasCameraPermission(cameraStatus.status === 'granted');
     })();
   }, []);
@@ -37,6 +37,7 @@ return (
   <>
 
   <View>
+  {!image && <>
   <Button
         title="Trocar Camera"
          buttonStyle={{
@@ -67,15 +68,36 @@ return (
       type="solid"
     onPress={() => takePicture()}
      />
+     </>}
+     {image && 
+      <Button 
+      title="Salvar Foto"
+      buttonStyle={{
+        paddingHorizontal:10,
+        fontSize:30,
+        backgroundColor: "rgba(78, 116, 289, 1)",
+      }}
+      containerStyle={{
+        marginHorizontal: 10,
+        fontSize:30,
+        paddingHorizontal:20,
+        paddingVertical:20,
+        marginVertical: 10,
+      }}
+      type="solid"
+    onPress={() => takePicture()}
+     />
+     }
    </View>
    <View style={{ flex: 1}}>
+      {!image && 
       <View style={styles.cameraContainer}>
             <Camera 
             ref={ref => setCamera(ref)}
             style={styles.fixedRatio} 
             type={type}
             ratio={'1:1'} />
-      </View>
+      </View>}
       
         {image && <Image source={{uri: image}} style={{flex:1}}/>}
    </View>

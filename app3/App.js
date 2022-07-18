@@ -20,7 +20,11 @@ import CadastroScreen from "./screens/CadastroScreen";
 import MotoboyScreen from "./screens/MotoboyScreen";
 import ClienteScreen from "./screens/ClienteScreen";
 import DashboardScreen from "./screens/DashboardScreen";
+import EntregaScreen from "./screens/EntregaScreen";
+import DashboardClienteScreen from "./screens/DashboardClienteScreen";
 import FotoScreen from "./screens/FotoScreen";
+import OrdenScreen from "./screens/OrdenScreen";
+import ResumoScreen from "./screens/ResumoScreen";
 
 
 function App({ navigation }) {
@@ -42,6 +46,9 @@ const [base, setBase] = useState(null);
         <Stack.Screen name="Motoboy" title="MOTOBOY" component={MotoboyScreen} />
         <Stack.Screen name="Painel" title="Painel" component={DashboardScreen} />
         <Stack.Screen name="Foto" title="Foto" component={FotoScreen} />
+        <Stack.Screen name="Orden" title="Ordens" component={OrdenScreen} />
+        <Stack.Screen name="Entrega" title="Entrega" component={EntregaScreen} />
+        <Stack.Screen name="Resumo" title="Resumo" component={ResumoScreen} />
 
 
        

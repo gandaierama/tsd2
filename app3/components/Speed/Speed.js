@@ -52,7 +52,7 @@ return (
     onOpen={() => setOpen(!open)}
     onClose={() => setOpen(!open)}
   >
-    <SpeedDial.Action
+{/*    <SpeedDial.Action
       icon={{ name: 'groups', color: '#fff' }}
       title="Login"
       onPress={() => navigation.navigate('Login')}
@@ -66,6 +66,21 @@ return (
       icon={{ name: 'hail', color: '#fff' }}
       title="Cadastrar Cliente"
       onPress={() => navigation.navigate('Cliente')}
+    />*/}
+    <SpeedDial.Action
+      icon={{ name: 'hail', color: '#fff' }}
+      title="Resumo"
+      onPress={() => navigation.navigate('Resumo')}
+    />
+    <SpeedDial.Action
+      icon={{ name: 'hail', color: '#fff' }}
+      title="Entregas"
+      onPress={() => navigation.navigate('Entrega')}
+    />
+    <SpeedDial.Action
+      icon={{ name: 'hail', color: '#fff' }}
+      title="Ordens"
+      onPress={() => navigation.navigate('Orden')}
     />
     <SpeedDial.Action
       icon={{ name: 'hail', color: '#fff' }}
