@@ -265,7 +265,8 @@ const DashboardScreen = ({ navigation }) => {
       />
 
             </MapView>
-          )}
+          ) }
+          {region === null && (<View><Text>Carregando..</Text></View>)}
         </View>
       </View>
       </TabView.Item>

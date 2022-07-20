@@ -74,6 +74,11 @@ return (
     />
     <SpeedDial.Action
       icon={{ name: 'hail', color: '#fff' }}
+      title="Minha Conta"
+      onPress={() => navigation.navigate('Perfil')}
+    />
+    <SpeedDial.Action
+      icon={{ name: 'hail', color: '#fff' }}
       title="Entregas"
       onPress={() => navigation.navigate('Entrega')}
     />
@@ -92,11 +97,11 @@ return (
       title="Painel"
       onPress={() => navigation.navigate('Painel')}
     />
-    <SpeedDial.Action
+{/*    <SpeedDial.Action
       icon={{ name: 'share', color: '#fff' }}
       title="Compartilhar"
       onPress={onShare}
-    />
+    />*/}
   </SpeedDial>
 );
 };

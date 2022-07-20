@@ -39,7 +39,9 @@ import {
 } from "@rneui/base";
 
 
-const OrdenScreen = ({ navigation }) => {
+import Speed from "../components/Speed";
+
+const ResumoScreen = ({ navigation }) => {
 
       const date = new Date();
     const timeString = date.toISOString();
@@ -55,7 +57,16 @@ const OrdenScreen = ({ navigation }) => {
   const [isActive, setIsActive] = useState(true);
   const [time, setTime] = useState(timeString);
 
-    
+  const CustomTitle = () => {
+return (
+  <View style={{ flexDirection: 'column' }}>
+    <Text style={{ fontWeight: 'bold', fontSize: 18 }}>John Doe</Text>
+    <Text style={{ fontStyle: 'italic', fontSize: 12 }}>
+      Minister of Magic
+    </Text>
+  </View>
+);
+};
     
 
   const toggleDialog1 = () => {
@@ -101,41 +112,146 @@ const OrdenScreen = ({ navigation }) => {
       <Tab.Item
         title="Informações gerais"
         titleStyle={{ fontSize: 11 }}
-        icon={{ name: 'paper-plane-outline', type: 'ionicon', color: 'white' }}
+        icon={{ name: 'sports-motorsports', type: 'material-icons', color: 'white' }}
       />
 
       <Tab.Item
         title="Saldo"
         titleStyle={{ fontSize: 11 }}
-        icon={{ name: 'paper-plane-outline', type: 'ionicon', color: 'white' }}
+        icon={{ name: 'motorcycle', type: 'font-awesome', color: 'white' }}
       />
 
     </Tab>
 
     <TabView value={index} onChange={setIndex} animationType="spring">
-      <TabView.Item style={{ width: '100%' }}>
-        <View style={{ height: "100%" }}>
-        <View style={styles.container}>
+<TabView.Item style={{ marginTop: 10, height:'100%', width: '100%', flexDirection:'row', alingContent:'center', justifyContent: 'center' }}>
+        
 
-        </View>
-      </View>
+        <Card containerStyle={{ marginTop: 30,  flex:1}}>
+          <Card.Title>Seu Resumo</Card.Title>
+          <Card.Divider />
+          <Text style={styles.fonts}>Nesta parte vocë encontra </Text>
+          <Button
+              title={<CustomTitle />}
+              titleStyle={{ fontWeight: 'bold', fontSize: 18 }}
+              linearGradientProps={{
+                colors: ['#FF9800', '#F44336'],
+                start: [1, 0],
+                end: [0.2, 0],
+              }}
+              buttonStyle={{
+                borderWidth: 0,
+                borderColor: 'transparent',
+                borderRadius: 20,
+              }}
+              containerStyle={{
+                width: 200,
+                marginHorizontal: 50,
+                marginVertical: 10,
+              }}
+              icon={{
+                name: 'arrow-right',
+                type: 'font-awesome',
+                size: 15,
+                color: 'white',
+              }}
+              iconRight
+              iconContainerStyle={{ marginLeft: 10, marginRight: -10 }}
+            />
+
+
+            <Button
+              title={<CustomTitle />}
+              titleStyle={{ fontWeight: 'bold', fontSize: 18 }}
+              linearGradientProps={{
+                colors: ['#FF9800', '#F44336'],
+                start: [1, 0],
+                end: [0.2, 0],
+              }}
+              buttonStyle={{
+                borderWidth: 0,
+                borderColor: 'transparent',
+                borderRadius: 20,
+              }}
+              containerStyle={{
+                width: 200,
+                marginHorizontal: 50,
+                marginVertical: 10,
+              }}
+              icon={{
+                name: 'arrow-right',
+                type: 'font-awesome',
+                size: 15,
+                color: 'white',
+              }}
+              iconRight
+              iconContainerStyle={{ marginLeft: 10, marginRight: -10 }}
+            />
+
+            <Button
+              title={<CustomTitle />}
+              titleStyle={{ fontWeight: 'bold', fontSize: 18 }}
+              linearGradientProps={{
+                colors: ['#FF9800', '#F44336'],
+                start: [1, 0],
+                end: [0.2, 0],
+              }}
+              buttonStyle={{
+                borderWidth: 0,
+                borderColor: 'transparent',
+                borderRadius: 20,
+              }}
+              containerStyle={{
+                width: 200,
+                marginHorizontal: 50,
+                marginVertical: 10,
+              }}
+              icon={{
+                name: 'arrow-right',
+                type: 'font-awesome',
+                size: 15,
+                color: 'white',
+              }}
+              iconRight
+              iconContainerStyle={{ marginLeft: 10, marginRight: -10 }}
+            />
+        </Card>
+        
       </TabView.Item>
 
       <TabView.Item style={{ marginTop: 10, height:'100%', width: '100%', flexDirection:'row', alingContent:'center', justifyContent: 'center' }}>
+        
+
         <Card containerStyle={{ marginTop: 30,  flex:1}}>
-          <Card.Title>Finalizar entrega</Card.Title>
+          <Card.Title>Titulo</Card.Title>
+
           <Card.Divider />
-          <Text style={styles.fonts}>Cliente: Padaria dona maria</Text>
-          <Card.Divider />
-          <Text style={styles.fonts} h5>
-           Orden: XXXXX-XXXXX
-          </Text>
-          <Text style={styles.fonts} h5>
-           Entrega: 0000-0000
-          </Text>
           
+          <Text style={styles.fonts} h5>
+
+          </Text>
+
         </Card>
+        
       </TabView.Item>
+
+
+      <TabView.Item style={{ marginTop: 10, height:'100%', width: '100%', flexDirection:'row', alingContent:'center', justifyContent: 'center' }}>
+        
+
+        <Card containerStyle={{ marginTop: 30,  flex:1}}>
+          <Card.Title>Titulo</Card.Title>
+
+          <Card.Divider />
+          
+          <Text style={styles.fonts} h5>
+
+          </Text>
+
+        </Card>
+        
+      </TabView.Item>
+
     </TabView>
       
 
@@ -145,6 +261,7 @@ const OrdenScreen = ({ navigation }) => {
 
               <Text style={styles.white2}>{errorMsg}{text}</Text>
       </View>
+      <Speed navigation={navigation} />
     </>
   );
 };
@@ -192,4 +309,4 @@ const styles = StyleSheet.create({
     marginTop: 0,
   },
 });
-export default OrdenScreen;
+export default ResumoScreen;
