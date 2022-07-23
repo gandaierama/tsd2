@@ -6,7 +6,7 @@ import { CreateMotoboyDto } from './dto/create-motoboy.dto';
 import { UpdateMotoboyDto } from './dto/update-motoboy.dto';
 import { Motoboy } from './entities/motoboy.entity';
 import { JwtService } from '@nestjs/jwt';
-import md5 from 'md5';
+
 @Injectable()
 export class MotoboyService {
   constructor(
@@ -29,10 +29,10 @@ export class MotoboyService {
       console.log("MOTO", user);
        if(user!==undefined){
           console.log("MOTO", user);
-                       const senha2= md5(loginMotoboyDto.senha);
-          if (senha2===user.senha) {
 
-            const payload = {id: user.id, email: user.email };
+          if (loginMotoboyDto.senha===user.senha) {
+
+            const payload = {id: user.id, email: user.email , nome: user.email , email: user.email };
               return {
                 access_token: this.jwtService.sign(payload),
                 id: user.id
