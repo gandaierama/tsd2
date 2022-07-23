@@ -68,7 +68,6 @@ console.log(resPac);
         obje2.id_cliente = createContratoDto.id_cliente;
         obje2.id_pacote = createContratoDto.id_pacote;
         obje2.cliente = resCli.name;
-        obje2.entrega = resPac.entrega1;
         obje2.diaria = resPac.diaria1;
         obje2.bairro = resCli.bairro;
         obje2.cep = resCli.cep;
