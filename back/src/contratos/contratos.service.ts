@@ -59,7 +59,7 @@ console.log(resPac);
     for (i; difDay > i; i++) {
       var d = new Date();
       d.setDate(date1.getDate()+i);
-      console.log(JSON.stringify(diasSemana[d.getDay()]));
+      console.log("INFO", diasSemana[d.getDay()].motoboys);
       // var configDia=JSON.parse(JSON.stringify(diasSemana[d.getDay()+1]);
       // if(configDia.motoboys > 0){
       //   const obje2 = new Orden();
