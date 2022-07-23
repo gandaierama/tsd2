@@ -5,13 +5,14 @@ import { LoginMotoboyDto } from './dto/login-motoboy.dto';
 import { CreateMotoboyDto } from './dto/create-motoboy.dto';
 import { UpdateMotoboyDto } from './dto/update-motoboy.dto';
 import { Motoboy } from './entities/motoboy.entity';
-
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class MotoboyService {
   constructor(
     @InjectRepository(Motoboy)
     private motoboyRepository: Repository<Motoboy>,
+    private jwtService: JwtService
   ) {}
 
 
@@ -25,19 +26,27 @@ export class MotoboyService {
       const email = loginMotoboyDto.email;
       const senha = loginMotoboyDto.senha;
       const user = await this.motoboyRepository.find({ where: { email } });
-      console.log("USER", user);
-      if(user!==null){
-          console.log("USER", user[0].senha);
-          return user;
+      console.log("MOTO", user);
+       if(user!==undefined){
+          console.log("MOTO", user);
+          if (loginMotoboyDto.senha===user.senha) {
 
-          if (senha===user[0].senha) {
-            return user;
+            const payload = {id: user.id, email: user.email };
+              return {
+                access_token: this.jwtService.sign(payload),
+                id: user.id
+              };
+
           } 
 
-          return false;
+          return {
+                error: "senha errada!",
+              };
         
       }
-      return null;
+      return {
+                error: "motoboy não encontrado!",
+              };
  
   }
   
