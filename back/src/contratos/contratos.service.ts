@@ -59,16 +59,17 @@ console.log(resPac);
     for (i; difDay > i; i++) {
       var d = new Date();
       d.setDate(date1.getDate()+i);
-      var configDia=JSON.parse(JSON.stringify(diasSemana[d.getDay()+1]));
-      if(configDia.motoboys > 0){
-        const obje2 = new Orden();
-        obje2.id_cliente = createContratoDto.id_cliente;
-        obje2.id_pacote = createContratoDto.id_pacote;
-        obje2.cliente = resCli.name;
-        obje2.inicio = d;
-        obje2.motoboys=configDia.motoboys;
-        await this.ordenRepository.save(obje2);
-      }
+      console.log(diasSemana[d.getDay()+1]);
+      // var configDia=JSON.parse(JSON.stringify(diasSemana[d.getDay()+1]);
+      // if(configDia.motoboys > 0){
+      //   const obje2 = new Orden();
+      //   obje2.id_cliente = createContratoDto.id_cliente;
+      //   obje2.id_pacote = createContratoDto.id_pacote;
+      //   obje2.cliente = resCli.name;
+      //   obje2.inicio = d;
+      //   obje2.motoboys=configDia.motoboys;
+      //   await this.ordenRepository.save(obje2);
+      // }
       
     }
 
