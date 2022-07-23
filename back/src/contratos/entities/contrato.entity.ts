@@ -9,6 +9,18 @@ export class Contrato {
     cliente: string;
 
     @Column({ nullable: true })
+    cep: string;
+
+    @Column({ nullable: true })
+    bairro: string;
+
+    @Column({ nullable: true })
+    numero: string;
+
+    @Column({ nullable: true })
+    telefone_cliente: string;
+
+    @Column({ nullable: true })
     id_cliente: string;
 
     @Column({  nullable: true })

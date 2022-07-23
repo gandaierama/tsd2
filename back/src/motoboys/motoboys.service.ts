@@ -52,6 +52,7 @@ export class MotoboyService {
     obje.telefone = createMotoboyDto.telefone;
     obje.senha = createMotoboyDto.senha;
     obje.cpf = createMotoboyDto.cpf;
+    obje.rg = createMotoboyDto.rg;
     obje.endereco = createMotoboyDto.endereco;
     obje.numero = createMotoboyDto.numero;
     obje.complemento = createMotoboyDto.complemento;
@@ -59,6 +60,18 @@ export class MotoboyService {
     obje.cidade = createMotoboyDto.cidade;
     obje.estado = createMotoboyDto.estado;
     obje.bairro = createMotoboyDto.bairro;
+
+    obje.cnh = createMotoboyDto.cnh;
+    obje.placa = createMotoboyDto.placa;
+
+    obje.banco = createMotoboyDto.banco;
+    obje.agencia = createMotoboyDto.agencia;
+    obje.conta = createMotoboyDto.conta;
+    obje.chave_pix = createMotoboyDto.chave_pix;
+
+    obje.valor_entrega = createMotoboyDto.valor_entrega;
+    obje.valor_diaria = createMotoboyDto.valor_diaria;
+
     console.log("Objeto",obje);
     return this.motoboyRepository.save(obje);
   }

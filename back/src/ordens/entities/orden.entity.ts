@@ -12,6 +12,18 @@ export class Orden {
     cliente: string;
 
     @Column({ default: '', nullable: true })
+    cep: string;
+
+    @Column({ default: '', nullable: true })
+    bairro: string;
+
+    @Column({ default: '', nullable: true })
+    latitude: string;
+
+    @Column({ default: '', nullable: true })
+    longitude: string;
+
+    @Column({ default: '', nullable: true })
     id_cliente: string;
 
     @Column({ default: '', nullable: true })
@@ -24,6 +36,9 @@ export class Orden {
 
     @Column({ default: '', nullable: true })
     motoboys: string;
+
+    @Column({ default: '[]', nullable: true })
+    motoboys_ids: string;
 
     @Column({ default: '', nullable: true })
     periodo: string;

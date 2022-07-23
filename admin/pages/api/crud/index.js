@@ -4,50 +4,54 @@ const { publicRuntimeConfig } = getConfig();
 const baseUrl = `${publicRuntimeConfig.apiUrl}`;
 
 export const crudService = {
-    create,
+    post,
     get,
     list,
-    delete,
-    update
+    _delete,
+    put
 };
 
-
-
-function create async (req, res) => {
-  const url = `${publicRuntimeConfig.backUrl}/entregas`;
-  const user = userService.userValue;
-  let payload = { 
-    name: req.body.nome, 
-    email: req.body.email, 
-    cnpj: req.body.cnpj, 
-    cpf: req.body.cpf, 
-    endereco: req.body.endereco, 
-    numero: req.body.numero, 
-    complemento: req.body.complemento, 
-    cidade: req.body.cidade, 
-    estado: req.body.estado, 
-    cep: req.body.cep, 
-    telefone: req.body.telefone, 
-    bairro: req.body.bairro 
-  };
-  let config = {
-  headers: {
-    Authorization: user.access_token,
-  }
+function get (url) {
+    const requestOptions = {
+        method: 'GET',
+        headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST,PUT'}
+    };
+    let res;
+    try {
+        // code that we will 'try' to run
+        const res= fetch(url, requestOptions).then(handleResponse);
+        return res;
+    } catch(error) {
+      // code to run if there are any problems
+      console.log(error);
+     
+    }
+    return res;
+}
+function post(url, body) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...authHeader(url) },
+        credentials: 'include',
+        body: JSON.stringify(body)
+    };
+    return fetch(url, requestOptions).then(handleResponse);
 }
 
-  console.log(payload);
-  await axios
-    .post(url, payload,{
-  headers: {
-    Authorization: 'Bearer ' + user.access_token
-  } })
-    .then(({ data }) => {
-      res.status(200).json({ data })
-    })
-    .catch(({ err }) => {
-      console.log(err);
-      res.status(400).json({ err })
-    })
+function put(url, body) {
+    const requestOptions = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', ...authHeader(url) },
+        body: JSON.stringify(body)
+    };
+    return fetch(url, requestOptions).then(handleResponse);    
 }
+
+// prefixed with underscored because delete is a reserved word in javascript
+function _delete(url) {
+    const requestOptions = {
+        method: 'DELETE',
+        headers: authHeader(url)
+    };
+    return fetch(url, requestOptions).then(handleResponse);
 }

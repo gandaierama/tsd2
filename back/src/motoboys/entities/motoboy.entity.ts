@@ -22,6 +22,15 @@ export class Motoboy {
     @Column({length: 65,   default: "", nullable: true })
     cnpj: string
 
+    @Column({length: 65,   default: "", nullable: true })
+    cnh: string
+
+    @Column({length: 65,   default: "", nullable: true })
+    rg: string
+
+    @Column({length: 65,   default: "", nullable: true })
+    placa: string
+
     @Column({length: 65, default: "", nullable: true})
     endereco: string
 
@@ -42,6 +51,24 @@ export class Motoboy {
 
     @Column({length: 65, default: "", nullable: true })
     cep: string
+
+    @Column({length: 65, default: "", nullable: true })
+    banco: string
+
+    @Column({length: 65, default: "", nullable: true })
+    agencia: string
+
+    @Column({length: 65, default: "", nullable: true })
+    conta: string
+
+    @Column({length: 65, default: "", nullable: true })
+    chave_pix: string
+
+    @Column({length: 65, default: "", nullable: true })
+    valor_entrega: string
+
+    @Column({length: 65, default: "", nullable: true })
+    valor_diaria: string
 
     @Column({default: null})
     doc_cnpj: string;

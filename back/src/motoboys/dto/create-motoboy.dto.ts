@@ -19,6 +19,36 @@ export class CreateMotoboyDto {
     @ApiProperty({ required: false, default: "991254789645" })
     telefone: string;
 
+    @ApiProperty({ required: false, default: null })
+    endereco: string
+
+    @ApiProperty({ required: false, default: null })
+    banco: string
+
+    @ApiProperty({ required: false, default: null })
+    agencia: string
+
+    @ApiProperty({ required: false, default: null })
+    conta: string
+
+    @ApiProperty({ required: false, default: null })
+    chave_pix: string
+
+    @ApiProperty({ required: false, default: null })
+    cnh: string
+
+    @ApiProperty({ required: false, default: null })
+    rg: string
+
+    @ApiProperty({ required: false, default: null })
+    placa: string
+
+    @ApiProperty({ required: false, default: null })
+    valor_entrega: string
+
+    @ApiProperty({ required: false, default: null })
+    valor_diaria: string
+
 
     @ApiProperty({ required: false, default: null })
     endereco: string
