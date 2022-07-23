@@ -60,16 +60,16 @@ console.log(resPac);
       var d = new Date();
       d.setDate(date1.getDate()+i);
       console.log("INFO", diasSemana[d.getDay()].motoboys);
-      // var configDia=JSON.parse(JSON.stringify(diasSemana[d.getDay()+1]);
-      // if(configDia.motoboys > 0){
-      //   const obje2 = new Orden();
-      //   obje2.id_cliente = createContratoDto.id_cliente;
-      //   obje2.id_pacote = createContratoDto.id_pacote;
-      //   obje2.cliente = resCli.name;
-      //   obje2.inicio = d;
-      //   obje2.motoboys=configDia.motoboys;
-      //   await this.ordenRepository.save(obje2);
-      // }
+      var motoboysV=diasSemana[d.getDay()].motoboys;
+      if(motoboysV > 0){
+        const obje2 = new Orden();
+        obje2.id_cliente = createContratoDto.id_cliente;
+        obje2.id_pacote = createContratoDto.id_pacote;
+        obje2.cliente = resCli.name;
+        obje2.inicio = d;
+        obje2.motoboys=motoboysV;
+        await this.ordenRepository.save(obje2);
+      }
       
     }
 
