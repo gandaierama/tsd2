@@ -49,6 +49,11 @@ export class Orden {
     @Column({ default: '', nullable: true })
     total: string;
 
+    @Column({ default: '', nullable: true })
+    start: string;
+    @Column({ default: '', nullable: true })
+    end: string;
+
            @Column({default: "2022-01-01" })
       inicio: Date;
 
