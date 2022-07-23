@@ -6,7 +6,7 @@ import { CreateMotoboyDto } from './dto/create-motoboy.dto';
 import { UpdateMotoboyDto } from './dto/update-motoboy.dto';
 import { Motoboy } from './entities/motoboy.entity';
 import { JwtService } from '@nestjs/jwt';
-
+import md5 from 'md5';
 @Injectable()
 export class MotoboyService {
   constructor(
@@ -29,7 +29,8 @@ export class MotoboyService {
       console.log("MOTO", user);
        if(user!==undefined){
           console.log("MOTO", user);
-          if (loginMotoboyDto.senha===user.senha) {
+                       const senha2= md5(loginMotoboyDto.senha);
+          if (senha2===user.senha) {
 
             const payload = {id: user.id, email: user.email };
               return {
@@ -52,7 +53,6 @@ export class MotoboyService {
   
 
   create(createMotoboyDto: CreateMotoboyDto): Promise<Motoboy> {
-
     console.log("Req",createMotoboyDto);
     const obje = new Motoboy();
     obje.name = createMotoboyDto.name;

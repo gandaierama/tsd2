@@ -19,7 +19,7 @@ export class CreateMotoboyDto {
     @ApiProperty({ required: false, default: "991254789645" })
     telefone: string;
 
-
+    
 
     @ApiProperty({ required: false, default: null })
     banco: string
