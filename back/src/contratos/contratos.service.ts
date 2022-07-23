@@ -55,7 +55,7 @@ console.log(resPac);
     obje.start_date = date1;
     obje.end_date = date2;
     let i =0;
-    const diasSemana= [resPac.segunda, resPac.terca, resPac.quarta, resPac.quinta, resPac.sexta, resPac.sabado, resPac.domingo];
+    const diasSemana= [JSON.parse(resPac.segunda), JSON.parse(resPac.terca), resPac.quarta, resPac.quinta, resPac.sexta, resPac.sabado, resPac.domingo];
     for (i; difDay > i; i++) {
       var d = new Date();
       d.setDate(date1.getDate()+i);
