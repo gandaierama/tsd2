@@ -32,7 +32,7 @@ export class MotoboyService {
 
           if (loginMotoboyDto.senha===user.senha) {
 
-            const payload = {id: user.id, email: user.email , nome: user.email , email: user.email };
+            const payload = {id: user.id, email: user.email , nome: user.name , cpf: user.cpf };
               return {
                 access_token: this.jwtService.sign(payload),
                 id: user.id
