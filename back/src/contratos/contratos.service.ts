@@ -59,7 +59,7 @@ console.log(resPac);
     for (i; difDay > i; i++) {
       var d = new Date();
       d.setDate(date1.getDate()+i);
-      var configDia=JSON.parse(diasSemana[d.getDay()+1]);
+      var configDia=diasSemana[d.getDay()+1];
       if(configDia.motoboys > 0){
         const obje2 = new Orden();
         obje2.id_cliente = createContratoDto.id_cliente;
