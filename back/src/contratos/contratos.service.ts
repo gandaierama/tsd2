@@ -61,13 +61,19 @@ console.log(resPac);
       d.setDate(date1.getDate()+i);
       console.log("INFO", diasSemana[d.getDay()].motoboys);
       var motoboysV=diasSemana[d.getDay()].motoboys;
+      var startV=diasSemana[d.getDay()].start;
+      var endV=diasSemana[d.getDay()].end;
       if(motoboysV > 0){
         const obje2 = new Orden();
         obje2.id_cliente = createContratoDto.id_cliente;
         obje2.id_pacote = createContratoDto.id_pacote;
         obje2.cliente = resCli.name;
+        obje2.bairro = resCli.bairro;
+        obje2.cep = resCli.cep;
         obje2.inicio = d;
         obje2.motoboys=motoboysV;
+        obje2.start=startV;
+        obje2.end=endV;
         await this.ordenRepository.save(obje2);
       }
       
