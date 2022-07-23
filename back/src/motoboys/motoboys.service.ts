@@ -25,7 +25,7 @@ export class MotoboyService {
       this.logger.log(loginMotoboyDto.senha);
       const email = loginMotoboyDto.email;
       const senha = loginMotoboyDto.senha;
-      const user = await this.motoboyRepository.find({ where: { email } });
+      const user = await this.motoboyRepository.findOne({ email });
       console.log("MOTO", user);
        if(user!==undefined){
           console.log("MOTO", user);
